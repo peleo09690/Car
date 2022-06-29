@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  localization: {
+    languages: [
+      { code: 'en', name: 'EN', culture: 'en-EN' },
+      { code: 'ja', name: 'JP', culture: 'ja-JP' }
+    ],
+    defaultLanguage: 'en'
+  },
+  API_SERVICE: 'http://localhost:8081'
 };
 
 /*

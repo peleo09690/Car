@@ -1,0 +1,48 @@
+<div class="container">
+  <div *ngIf="(displayColumns.length > 0)"
+       class="table-container">
+    <table mat-table
+           #matTable
+           [dataSource]="dataSource"
+           matSort
+           (matSortChange)="hanldeSort.emit($event)">
+      <ng-container *ngFor="let column of columnDefinition"
+                    [matColumnDef]="column.id"
+                    [sticky]="column.sticky !== undefined && column.sticky ? true : false">
+        <th mat-header-cell
+            mat-sort-header
+            disabled="{{ !column.orderable }}"
+            *matHeaderCellDef
+            [ngStyle]="{ 'min-width': (column.weight || 0) * 10 + 'px', 'max-width':(column.weight || 0) * 10 + 'px' }">
+          {{ column.name }}
+        </th>
+        <td *matCellDef="let element"
+            mat-cell
+            class="overflow"
+            [ngStyle]="{ 'min-width': (column.weight || 0) * 10 + 'px', 'max-width':(column.weight || 0) * 10 + 'px' }"
+            [class.cell-align-right]="column.alignRight"
+            [class.cell-align-center]="column.alignCenter">
+          <span *ngIf="!column.format">
+            {{ Utils.getValueByKey(element, column.id) }}
+          </span>
+          <span *ngIf="column && column.format && isNumber(column.format)">
+            {{ Utils.getValueByKey(element, column.id)| currencyFormatPipe: pipeNumber(column.format) }}
+          </span>
+          <span *ngIf="column && column.format && isDateTime(column.format)">
+            {{ Utils.getValueByKey(element, column.id)| datetimeformat2: pipeDateTime(column.format) }}
+          </span>
+        </td>
+      </ng-container>
+      <tr mat-header-row
+          *matHeaderRowDef="displayColumns"></tr>
+      <tr mat-row
+          (click)="tableClick.emit(row)"
+          *matRowDef="let row; columns: displayColumns;"></tr>
+    </table>
+  </div>
+  <div class="total">
+    <span>
+      全 {{dataSource.length}} 件中 {{dataSource.length}} 件表示
+    </span>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@import "styles-variables.scss";
+
+/** Font Definition - Open Sans */
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/Open_Sans/OpenSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/Open_Sans/OpenSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/Open_Sans/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/Open_Sans/OpenSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+/**
+ Material Theming ref: https://medium.com/@bogac/customization-of-an-angular-material-2-theme-typography-components-3ca5584f36ca
+*/
+$general-typography: mat-typography-config($font-family: "Arial, Open Sans, sans-serif"
+  );
+
+@include mat-core($general-typography);
+
+$tc3s-app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+@include angular-material-theme($tc3s-app-theme);
+
+body {
+  margin: 0;
+  font-family: "Open Sans";
+  font-size: 14px;
+  color: $black3s;
+}
+
+
+main {
+  z-index: 0 !important;
+  padding-top: $mainToolbarHeight;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans";
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+/*---------------- GLOBAL SHARED CLASSES ----------------*/
+
+::-webkit-scrollbar-track {
+  background-color: #e7e7e7;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #050519;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #000;
+  border-radius: 10px;
+  width: 1px;
+}
+
+.overflow {
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/*-----------------------------------------------------------------------------------*/

@@ -1,0 +1,97 @@
+<div class="group-search-container">
+  <div class="header-group">
+    <div class="title-header">
+      <span>{{searchConfig.title}}</span>
+      <button mat-button
+              matTooltip="Add new"
+              matTooltipClass="tooltip-orange"
+              (click)="onBtnAddClick()"
+              *ngIf="btnConfig.btnAddMore">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="expansion-panel">
+      <button mat-button
+              matTooltip="Export CSV"
+              matTooltipClass="tooltip-orange"
+              (click)="onBtnExportClick()"
+              *ngIf="btnConfig.btnExportCsv">
+        <mat-icon>cloud_download</mat-icon>
+      </button>
+      <button mat-button
+              (click)="handleExpansion()">
+        <mat-icon>{{icon}}</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="container"
+       [ngClass]="{'closed-search': !panelOpenState}">
+    <div class="search-group">
+      <div *ngFor="let item of searchConfig.config; let i = index"
+           [formGroup]="searchGroup">
+        <ng-container [ngSwitch]="item.type">
+          <!-- ::::::::::::::::::::::::::::::::::INPUT:::::::::::::::::::::::::::::::::::::::: -->
+          <div *ngSwitchCase="'input'"
+               class="control">
+            <mat-label class="label">{{item.name}}</mat-label>
+            <mat-form-field appearance="outline"
+                            class="input-search">
+              <input matInput
+                     [formControlName]="item.id"
+                     placeholder="{{item.placeholder}}"
+                     autocomplete="off">
+            </mat-form-field>
+          </div>
+
+          <!-- ::::::::::::::::::::::::::::::::::DATETIME:::::::::::::::::::::::::::::::::::::::: -->
+          <div *ngSwitchCase="'date'"
+               class="control">
+            <mat-label class="label">{{item.name}}</mat-label>
+            <mat-form-field class="date-time">
+              <input matInput
+                     autocomplete="off"
+                     [formControlName]="item.id"
+                     [matDatepicker]="dp">
+              <mat-datepicker-toggle matSuffix
+                                     [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <!-- ::::::::::::::::::::::::::::::::::SELECT:::::::::::::::::::::::::::::::::::::::: -->
+          <div *ngSwitchCase="'select'"
+               class="control">
+            <mat-label class="label">{{item.name}}</mat-label>
+            <mat-form-field>
+              <mat-select [formControlName]="item.id">
+                <mat-option *ngFor="let op of item.data"
+                            [value]="op.value">{{op.label}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="btn-area">
+      <ng-container *ngIf="btnConfig.btnSearchIcon">
+        <button mat-raised-button
+                matTooltip="Search"
+                matTooltipClass="tooltip-orange"
+                color="primary"
+                (click)="onBtnSearchClk()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *ngIf="btnConfig.btnSearchLabel">
+        <button mat-raised-button
+                matTooltip="Search"
+                matTooltipClass="tooltip-orange"
+                color="primary"
+                (click)="onBtnSearchClk()">
+          Search
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
