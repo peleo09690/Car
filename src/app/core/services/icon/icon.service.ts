@@ -16,5 +16,6 @@ export class IconService {
 
   public init(): void {
     const domain = (isPlatformServer(this.platformId)) ? environment.API_SERVICE : '';
+    this.iconRegistry.addSvgIcon('plus', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/icon-svg/plus.svg'));
   }
 }

@@ -13,7 +13,7 @@ $md-primary: (
   900: #33307d,
   A100: #c8c6ff,
   A200: #9793ff,
-  A400: #6660ff,
+  A400: #4392BB,
   A700: #4e47ff,
   contrast: (50: #000000,
     100: #000000,
@@ -32,17 +32,18 @@ $md-primary: (
 );
 
 // Copy the palettes from your selected theme (usually theme.scss).
-$app-primary: mat-palette($md-primary);
+$app-primary: mat-palette($md-primary, A400);
 $app-accent: mat-palette($mat-deep-purple, 900, A100, A400);
 $app-warn: mat-palette($mat-red);
 
 // Create your Sass color vars (will be available in all the project)
 // $primary: mat-color($app-primary);
-$primary: #2000ff;
+$primary: mat-color($app-primary);
 $accent: mat-color($app-accent);
 $warn: #FF0606;
+$color-primary: #4392BB;
 
-$font-primary: white;
+$font-primary: #4392BB;
 $font-strong: #252525;
 $font-accent: black;
 $font-warn: red;

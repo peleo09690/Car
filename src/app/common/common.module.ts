@@ -4,6 +4,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { TranslateModule } from '@ngx-translate/core';
 import { AngularMaterialModule } from './angular-material.module';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { GroupButtonComponent } from './components/group-button/group-button.component';
@@ -36,12 +37,14 @@ const CustomPipes = [
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule
   ],
   exports: [
     ...CommonComponents,
     ...CustomPipes,
-    AngularMaterialModule
+    AngularMaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class CommonAppModule {

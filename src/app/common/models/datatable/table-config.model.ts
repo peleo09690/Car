@@ -9,6 +9,7 @@ export interface IFilterBy {
 export interface ITableConfig {
   columnDefinition: Array<IDisplayColumn>;
   pagination?: IColumnData;
+  showMore: boolean;
   stickyHeader?: boolean;
   filterBy?: Array<IFilterBy>;
   expandable?: boolean;
@@ -20,6 +21,7 @@ export class TableConfig implements ITableConfig {
   constructor(
     public columnDefinition: Array<IDisplayColumn>,
     public pagination: IColumnData,
+    public showMore: boolean = false,
     public stickyHeader?: boolean,
     public filterBy?: Array<IFilterBy>,
     public expandable?: boolean,
