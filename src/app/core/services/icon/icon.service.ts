@@ -15,6 +15,19 @@ export class IconService {
   ) { }
 
   public init(): void {
-    const domain = (isPlatformServer(this.platformId)) ? environment.API_SERVICE : '';
+    const domain = (isPlatformServer(this.platformId)) ? 'http://localhost:4200/' : '';
+    this.iconRegistry.addSvgIcon('iconBntPlus', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-bnt-plus.svg'));
+    this.iconRegistry.addSvgIcon('iconDeleteRed', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-delete-red.svg'));
+    this.iconRegistry.addSvgIcon('iconPlusBlue', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-plus-blue.svg'));
+    this.iconRegistry.addSvgIcon('iconPlusGray', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-plus-gray.svg'));
+    this.iconRegistry.addSvgIcon('iconPlusWhite', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-plus-white.svg'));
+    this.iconRegistry.addSvgIcon('iconWaningGreen', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-waning-green.svg'));
+    this.iconRegistry.addSvgIcon('inconCalendar', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/incon-calendar.svg'));
+    this.iconRegistry.addSvgIcon('iconLogin', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-login.svg'));
+    this.iconRegistry.addSvgIcon('iconUserIp', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/user.svg'));
+    this.iconRegistry.addSvgIcon('iconPasswordIp', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/lock.svg'));
+    this.iconRegistry.addSvgIcon('iconShowPasswordIp', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/eye.svg'));
+    this.iconRegistry.addSvgIcon('iconHiddenPasswordIp', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/eye-slash.svg'));
+    this.iconRegistry.addSvgIcon('iconClose', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-close.svg'));
   }
 }

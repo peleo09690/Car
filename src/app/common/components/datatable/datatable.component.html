@@ -36,13 +36,13 @@
       <tr mat-header-row
           *matHeaderRowDef="displayColumns"></tr>
       <tr mat-row
-          (click)="tableClick.emit(row)"
+          (dblclick)="tableClick.emit(row)"
           *matRowDef="let row; columns: displayColumns;"></tr>
     </table>
   </div>
-  <div class="total">
+  <!-- <div class="total">
     <span>
       全 {{dataSource.length}} 件中 {{dataSource.length}} 件表示
     </span>
-  </div>
+  </div> -->
 </div>

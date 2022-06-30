@@ -1,0 +1,6 @@
+
+<div class="container-background">
+  <app-datatable [tableConfig]="config" [dataSource]="datasource" class="content {{ isOpen ? 'content-left' : 'content-full'}}" (tableClick)="handelDbClick($event)"></app-datatable>
+  <app-edit-user [headerContent]="headerContent" [data]="dataPopup" class="{{ isOpen ? 'content-right': 'content-none'}}" (eventHandlerClose)="eventHandlerClose($event)"></app-edit-user>
+</div>
+

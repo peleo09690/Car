@@ -1,0 +1,20 @@
+.container-background{
+  display: flex;
+}
+.content{
+  height: 100%;
+}
+.content-right{
+  transition: width .3s ease-in-out;
+  position: relative;
+  width: 30%;
+}
+.content-left{
+  width: 70%;
+}
+.content-full{
+  width: 100%;
+}
+.content-none{
+  width: 0;
+}

@@ -1,5 +1,8 @@
 export const ApiPathConfig = {
   auth: {
-    login: '/api/login'
+    login: 'oauth/token'
+  },
+  service:{
+    getUserInfor: 'api/user/customers'
   }
 };

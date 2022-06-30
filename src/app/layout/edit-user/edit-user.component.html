@@ -1,0 +1,30 @@
+<div class="detail-user">
+  <div class="backgournd-header">
+    <div class="header">
+      <span>{{headerContent}}</span>
+    </div>
+    <mat-icon
+      svgIcon="iconClose"
+      class="icon-close"
+      (click)="handelClose()"
+    ></mat-icon>
+  </div>
+  <div class="body">
+    <div class="input-wrapper">
+      <label class="input-label"> Label </label>
+      <div class="input-normal">
+        <input type="text" [value]="data?.customer_first_name" />
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label class="input-label"> Label </label>
+      <div class="input-normal input-calendar">
+        <input matInput [matDatepicker]="picker" placeholder="____/__/__" />
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon svgIcon="inconCalendar"></mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </div>
+  </div>
+</div>

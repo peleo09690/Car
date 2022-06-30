@@ -11,7 +11,8 @@ export const environment = {
     ],
     defaultLanguage: 'en'
   },
-  API_SERVICE: 'http://localhost:8081'
+  API_SERVICE: 'http://localhost:8081/',
+  API_AUTH: 'http://localhost:8080/'
 };
 
 /*

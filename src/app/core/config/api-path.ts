@@ -1,5 +1,6 @@
 import { environment } from '@env/environment';
 import { ApiPathConfig } from '.';
 export class ApiPath {
-  public static LOGIN = environment.API_SERVICE.concat(ApiPathConfig.auth.login);
+  public static LOGIN = environment.API_AUTH.concat(ApiPathConfig.auth.login);
+  public static GET_CUSTOMER_INFO = environment.API_SERVICE.concat(ApiPathConfig.service.getUserInfor);
 }
