@@ -27,13 +27,13 @@
                 [class.cell-align-right]="column.alignRight"
                 [class.cell-align-center]="column.alignCenter">
               <span *ngIf="!column.format">
-                {{ Utils.getValueByKey(element, column.id) }}
+                {{ utils.getValueByKey(element, column.id) }}
               </span>
               <span *ngIf="column && column.format && isNumber(column.format)">
-                {{ Utils.getValueByKey(element, column.id)| currencyFormatPipe: pipeNumber(column.format) }}
+                {{ utils.getValueByKey(element, column.id)| currencyFormatPipe: pipeNumber(column.format) }}
               </span>
               <span *ngIf="column && column.format && isDateTime(column.format)">
-                {{ Utils.getValueByKey(element, column.id)| datetimeformat2: pipeDateTime(column.format) }}
+                {{ utils.getValueByKey(element, column.id)| datetimeformat2: pipeDateTime(column.format) }}
               </span>
             </td>
           </div>
@@ -63,6 +63,7 @@
           *matHeaderRowDef="displayColumns"></tr>
       <tr mat-row
           (click)="tableClick.emit(row)"
+          (dblclick)="tableClick.emit(row)"
           *matRowDef="let row; columns: displayColumns;"></tr>
     </table>
   </div>

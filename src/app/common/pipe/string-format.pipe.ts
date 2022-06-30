@@ -45,11 +45,11 @@ export class DecimalFormatPipe implements PipeTransform {
 })
 export class CurrencyFormatPipe implements PipeTransform {
   transform(value: number, decimals: number): string {
-    let valueString = value.toString();
     if (value && decimals) {
-      valueString = this.formatNumber(value, '').toString();
+      let valueString = value.toString();
+      return valueString = this.formatNumber(value, '').toString();
     }
-    return valueString;
+    return value ? value.toString() : '';
   }
 
   formatNumber(number: number, prefix: string): string {

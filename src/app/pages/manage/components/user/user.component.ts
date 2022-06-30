@@ -1,10 +1,13 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpParams } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Sort } from "@angular/material/sort";
 import { Router } from "@angular/router";
 import { ButtonConfig, DateTimeSearch, DropListSearch, IConfigSearch, IDropList, InputSearch, ITableConfig, TextColumn } from "@common/models";
 import { environment } from '@env/environment';
+import { RequestUser, UserModel } from "../../models/user.model";
 import { SelectColumn } from './../../../../common/models/datatable/display-column.model';
+import { ManageHttpService } from './../../services/manage-http.service';
 
 export interface PeriodicElement {
   index: number;
@@ -52,7 +55,7 @@ export class UserComponent implements OnInit {
     ],
     showMore: false
   };
-  public data: Array<PeriodicElement> = [];
+  public data: Array<UserModel> = [];
 
   public searchConfig: IConfigSearch = {
     title: 'User Search',
@@ -60,7 +63,8 @@ export class UserComponent implements OnInit {
       new InputSearch('id1', 'ID', '顧客ID'),
       new InputSearch('id2', 'ID', '顧客ID'),
       new InputSearch('id3', 'ID', '顧客ID'),
-      new DateTimeSearch('start', '会場名（グループ）', new Date().toISOString(), false, 'YYYY/MM/DD')
+      new DateTimeSearch('from', '会場名（グループ）', new Date().toISOString(), false, 'YYYY/MM/DD'),
+      new DateTimeSearch('to', '会場名（グループ）', new Date().toISOString(), false, 'YYYY/MM/DD')
     ]
   };
 
@@ -74,26 +78,28 @@ export class UserComponent implements OnInit {
   public isShowDetail: boolean = false;
   public dataItem: PeriodicElement | null = null;
 
+  public isLogin = false;
+  public formGroup: FormGroup = new FormGroup({});
+
   constructor(
     private router: Router,
-    private httpService: HttpClient
-  ) { }
+    private fb: FormBuilder,
+    private http: ManageHttpService
+  ) {
+    const userLogin = localStorage.getItem('id_token');
+    if (userLogin) {
+      this.isLogin = true;
+      this.getUser();
+    }
+  }
 
   ngOnInit(): void {
-    this.httpService.get('https://mocki.io/v1/18135f90-86c5-4529-9d50-926cc4cc6e02').subscribe((res) => {
-      if (res) {
-        this.data = (res as PeriodicElement[]).map((el) => {
-          return {
-            ...el,
-            existingDebt: el.basicCreditLimit - el.existingDebt
-          };
-        });
-        if (this.data.length > environment.pageSize) {
-          this.tableConfig.showMore = true;
-        }
-      }
+    this.formGroup = this.fb.group({
+      username: new FormControl('000056'),
+      password: new FormControl('Nham123456'),
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'grant_type': new FormControl('password')
     });
-
     const dataDrop: IDropList[] = [
       {
         value: '-1', label: 'All'
@@ -111,8 +117,9 @@ export class UserComponent implements OnInit {
   }
 
   handleClick(event: PeriodicElement): void {
-    this.dataItem = event;
-    this.isShowDetail = true;
+    // this.dataItem = event;
+    // this.isShowDetail = true;
+    console.log(event);
   }
 
   handleSort(event: Sort): void {
@@ -135,6 +142,31 @@ export class UserComponent implements OnInit {
   }
 
   goToSample(): void {
-    this.router.navigate(['/assets']);
+    const request = new HttpParams()
+      .set('username', this.formGroup.value.username)
+      .set('password', this.formGroup.value.password)
+      .set('grant_type', 'password');
+    this.http.login(request).subscribe((res) => {
+      if (res && res.access_token) {
+        localStorage.setItem('id_token', res.access_token);
+        this.isLogin = true;
+        this.getUser();
+      }
+    });
+  }
+
+  private getUser(): void {
+    const payload: RequestUser = {
+      customerName: '',
+      flgAccountLock: null,
+      flgAuction: null,
+      page: environment.pageIndex,
+      size: environment.pageSize
+    };
+    this.http.getUser(payload).subscribe((res) => {
+      if (res && res.data) {
+        this.data = res.data.results as UserModel[];
+      }
+    });
   }
 }

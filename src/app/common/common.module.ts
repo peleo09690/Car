@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
@@ -37,7 +36,6 @@ const CustomPipes = [
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    HttpClientModule,
     TranslateModule
   ],
   exports: [

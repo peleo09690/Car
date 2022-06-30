@@ -12,7 +12,8 @@ export const environment = {
     defaultLanguage: 'ja'
   },
   pageSize: 20,
-  API_SERVICE: 'http://localhost:8081'
+  pageIndex: 1,
+  apiService: 'https://staging.jc-auction.vi-mash.com'
 };
 
 /*

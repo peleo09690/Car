@@ -17,7 +17,7 @@ import { Utils } from '../../utils/utils';
 export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
   // #region Decorator
   @Input() tableConfig!: ITableConfig;
-  @Input() dataSource: Array<any> = [];
+  @Input() dataSource: Array<object> = [];
   @Input() selectionModel: SelectionModel<any> = new SelectionModel<any>();
   @Output() tableClick: EventEmitter<any> = new EventEmitter<any>();
   @Output() hanldeSort: EventEmitter<any> = new EventEmitter<any>();
@@ -27,7 +27,7 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
   }) matTable!: MatTable<any>;
   // #endregion
 
-  Utils = Utils;
+  utils = Utils;
   public columnDefinition: Array<IDisplayColumn> = [];
   public displayColumns: Array<string> = [];
   public rowData = Array<any>();

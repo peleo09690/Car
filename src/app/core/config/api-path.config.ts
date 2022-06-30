@@ -1,5 +1,8 @@
 export const ApiPathConfig = {
   auth: {
-    login: '/api/login'
+    login: '/oauth/token'
+  },
+  user: {
+    listUser: '/api/admin/customers'
   }
 };

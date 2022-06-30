@@ -4,6 +4,7 @@ import { CommonAppModule } from './../../common/common.module';
 import { AddEditUserComponent, UserComponent } from './components';
 import { ManageRoutingModule } from './manage-routing.module';
 import { ManageComponent } from './manage.component';
+import { ManageHttpService } from './services/manage-http.service';
 
 
 
@@ -18,6 +19,9 @@ import { ManageComponent } from './manage.component';
     ManageRoutingModule,
 
     CommonAppModule.forRoot()
+  ],
+  providers: [
+    ManageHttpService
   ]
 })
 export class ManageModule { }

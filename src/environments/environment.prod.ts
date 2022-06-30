@@ -8,5 +8,6 @@ export const environment = {
     defaultLanguage: 'en'
   },
   pageSize: 20,
-  API_SERVICE: 'http://localhost:8081'
+  pageIndex: 1,
+  apiService: 'https://xxxxx.com'
 };
