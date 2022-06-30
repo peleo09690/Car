@@ -94,29 +94,36 @@ h6 {
 /*---------------- GLOBAL SHARED CLASSES ----------------*/
 
 ::-webkit-scrollbar-track {
-  background-color: #e7e7e7;
+  background-color: #f9f9f9;
 }
 
 ::-webkit-scrollbar {
   width: 5px;
-  height: 4px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: #050519;
+  background-color: $primary;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
-  background: #000;
-  border-radius: 10px;
+  border-radius: 4px;
   width: 1px;
+  height: 6px;
 }
 
 .overflow {
   white-space: pre;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+/*-----------------------------------------------------------------------------------*/
+
+/*---------------- BUTTON MATERIAL CLASSES ----------------*/
+.mat-stroked-button {
+  color: $font-primary;
 }
 
 /*-----------------------------------------------------------------------------------*/

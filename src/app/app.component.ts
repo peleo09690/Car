@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IconService } from './core/services/icon/icon.service';
+import { LocalizationService } from './core/services/localization/localization.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,14 @@ import { IconService } from './core/services/icon/icon.service';
 })
 export class AppComponent implements OnInit {
   title = 'Common-FE';
+
   constructor(
-    private icon: IconService
+    private icon: IconService,
+    private localizationService: LocalizationService
   ) { }
+
   ngOnInit(): void {
     this.icon.init();
+    this.localizationService.init();
   }
 }

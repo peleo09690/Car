@@ -29,9 +29,8 @@ doc/                         project coding guides
 src/                         project source code
 |- app/                      
 |  |- core/                  include all elements as root module
-|  |- commmon/               include all components implemented as use to shared
+|  |- commmon/               include all components implemented as use to shared (common components, directives, services, validator, pipes...)
 |  |- layout/                layout module (header, footer, breadcrumb, side-nav...)
-|  |- shared/                shared module (common components, directives, services, validator, pipes...)
 |  |- pages/
 |  |  |- [feature]/             additional feature (business module) ex: dashboard, admin, setting ... including
 |  |  |  |- components/         each component has grouped in seperated folder with name

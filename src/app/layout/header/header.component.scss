@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+
+  .parent {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0.014em;
+    color: #9F9F9F;
+  }
+  mat-icon{
+    width: 7px;
+    height: 16px;
+    margin: 0 16px;
+  }
+  .chilren {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0.014em;
+    color: #4392BB;
+  }
+}

@@ -43,8 +43,17 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password')?.value
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this.loginService.userLogin(data).subscribe((x:any) => {
-      sessionStorage.setItem('id_token',x?.access_token);
+    this.loginService.userLogin(data).subscribe((x: any) => {
+      sessionStorage.setItem('id_token', x?.access_token);
+      console.log(x);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // this.loginService.getDetailUserLogin().subscribe((x: any) => {
+      //   console.log(x);
+      //   let userDetail = {
+
+      //   };
+      //   localStorage.setItem('user');
+      // });
       this.router.navigate(['user']);
     });
   }

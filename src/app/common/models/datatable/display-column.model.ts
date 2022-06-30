@@ -25,6 +25,7 @@ export interface IDisplayColumn {
   stickyEnd?: boolean;
   localizedTextList?: string;
   format?: string | number;
+  showSelectAll?: boolean;
 }
 
 export class TextColumn implements IDisplayColumn {
@@ -60,7 +61,8 @@ export class SelectColumn implements IDisplayColumn {
     public clickable?: boolean,
     public disabled?: boolean,
     public sticky?: boolean,
-    public stickyEnd?: boolean
+    public stickyEnd?: boolean,
+    public showSelectAll: boolean = false
   ) { }
 }
 

@@ -10,14 +10,14 @@ import { HttpService } from '@core/services/http/http.service';
 })
 export class UserComponent implements OnInit {
   public config: ITableConfig = {
+    showMore: true,
     columnDefinition: [
-      new TextColumn('branch_code', 'Code', 20),
-      new TextColumn('customer_first_name', 'Name', 30),
-      new TextColumn('existing_debt', 'Existing Debt', 30),
-      new TextColumn('phone_number', 'Phone Number', 30),
-      new TextColumn('representative_address', 'Representative Address', 30),
-      new TextColumn('representative_post_code', 'Representative Post Code', 30),
-      new TextColumn('supplier_name_kana', 'Supplier Name Kana', 30)
+      new TextColumn('customer_id_format', 'Customer Id Format', 20, true, 'center', false, false, true),
+      new TextColumn('customer_first_name', 'Fist Name', 20, true, 'center', false, false, true),
+      new TextColumn('customer_last_name', 'Last Name', 20, true, 'center', false, false, true),
+      new TextColumn('customer_name', 'Customer Name', 20, true, 'center', false, false, true),
+      new TextColumn('mail', 'Mail', 20, true, 'center', false, false, true),
+      new TextColumn('phone_number', 'Phone', 20, true, 'center', false, false, true)
     ]
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

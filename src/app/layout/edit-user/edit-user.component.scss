@@ -2,13 +2,13 @@ $color-header : #4392BB;
 $color-tile: #485764;
 
 .detail-user {
-  height: 400px;
   background: #FFFFFF;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
   padding: 12px;
 }
-.icon-close{
+
+.icon-close {
   width: 15px;
   height: 15px;
 }
@@ -30,7 +30,17 @@ $color-tile: #485764;
     letter-spacing: 0.014em;
   }
 }
-.body{
-  display: grid;
-  grid-template-columns: auto auto auto;
+
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  grid-column: 1;
+  grid-row-start: auto;
+}
+
+.detail-user {
+  input.mail {
+    width: 400px !important;
+  }
 }

@@ -9,10 +9,13 @@ export const environment = {
       { code: 'en', name: 'EN', culture: 'en-EN' },
       { code: 'ja', name: 'JP', culture: 'ja-JP' }
     ],
-    defaultLanguage: 'en'
+    defaultLanguage: 'ja'
   },
   API_SERVICE: 'http://localhost:8081/',
-  API_AUTH: 'http://localhost:8080/'
+  API_AUTH: 'http://localhost:8080/',
+  pageSize: 20,
+  pageIndex: 1,
+  apiService: 'https://staging.jc-auction.vi-mash.com'
 };
 
 /*

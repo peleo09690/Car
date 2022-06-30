@@ -11,20 +11,35 @@
   </div>
   <div class="body">
     <div class="input-wrapper">
-      <label class="input-label"> Label </label>
+      <label class="input-label"> Fist Name </label>
       <div class="input-normal">
         <input type="text" [value]="data?.customer_first_name" />
       </div>
     </div>
     <div class="input-wrapper">
-      <label class="input-label"> Label </label>
-      <div class="input-normal input-calendar">
-        <input matInput [matDatepicker]="picker" placeholder="____/__/__" />
-        <mat-datepicker-toggle matSuffix [for]="picker">
-          <mat-icon matDatepickerToggleIcon svgIcon="inconCalendar"></mat-icon>
-        </mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+      <label class="input-label"> Last Name </label>
+      <div class="input-normal">
+        <input type="text" [value]="data?.customer_last_name" />
       </div>
     </div>
+    <div class="input-wrapper">
+      <label class="input-label"> Customer Name </label>
+      <div class="input-normal">
+        <input type="text" [value]="data?.customer_name" />
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label class="input-label"> Mail </label>
+      <div class="input-normal">
+        <input class="mail" type="text" [value]="data?.mail" />
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label class="input-label"> Phone </label>
+      <div class="input-normal">
+        <input type="text" [value]="data?.phone_number" />
+      </div>
+    </div>
+
   </div>
 </div>

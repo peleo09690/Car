@@ -6,5 +6,8 @@ export const environment = {
       { code: 'ja', name: 'JP', culture: 'ja-JP' }
     ],
     defaultLanguage: 'en'
-  }
+  },
+  pageSize: 20,
+  pageIndex: 1,
+  apiService: 'https://xxxxx.com'
 };

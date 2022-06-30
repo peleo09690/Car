@@ -13,8 +13,11 @@ const routes: Routes = [
     path: '',
     canActivate : [AuthGuard],
     loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
+  },
+  {
+    path: 'manage',
+    loadChildren: () => import('./manage/manage.module').then((m) => m.ManageModule)
   }
-
 ];
 
 @NgModule({

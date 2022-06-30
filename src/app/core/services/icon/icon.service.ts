@@ -16,6 +16,7 @@ export class IconService {
 
   public init(): void {
     const domain = (isPlatformServer(this.platformId)) ? 'http://localhost:4200/' : '';
+    this.iconRegistry.addSvgIcon('plus', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/icon-svg/plus.svg'));
     this.iconRegistry.addSvgIcon('iconBntPlus', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-bnt-plus.svg'));
     this.iconRegistry.addSvgIcon('iconDeleteRed', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-delete-red.svg'));
     this.iconRegistry.addSvgIcon('iconPlusBlue', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-plus-blue.svg'));
@@ -29,5 +30,9 @@ export class IconService {
     this.iconRegistry.addSvgIcon('iconShowPasswordIp', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/eye.svg'));
     this.iconRegistry.addSvgIcon('iconHiddenPasswordIp', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/eye-slash.svg'));
     this.iconRegistry.addSvgIcon('iconClose', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-close.svg'));
+    this.iconRegistry.addSvgIcon('iconAngleRight', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-angle-right.svg'));
+    this.iconRegistry.addSvgIcon('iconLogomenu', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/logo-menu.svg'));
+    this.iconRegistry.addSvgIcon('iconUser', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-user.svg'));
+    this.iconRegistry.addSvgIcon('iconLogout', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-logout.svg'));
   }
 }

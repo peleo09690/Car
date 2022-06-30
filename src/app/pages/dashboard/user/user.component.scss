@@ -1,20 +1,28 @@
-.container-background{
+.container-background {
   display: flex;
 }
-.content{
+
+.content {
   height: 100%;
 }
-.content-right{
+.content-right {
   transition: width .3s ease-in-out;
   position: relative;
   width: 30%;
 }
-.content-left{
+
+.content-left {
   width: 70%;
 }
-.content-full{
+
+.content-full {
   width: 100%;
 }
-.content-none{
+
+.content-none {
   width: 0;
+}
+
+.edit-user {
+  height: 100%;
 }

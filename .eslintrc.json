@@ -76,9 +76,21 @@
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/prefer-for-of": "error",
         "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "property",
+            "format": [
+              "camelCase",
+              "PascalCase",
+              "UPPER_CASE"
+            ]
+          }
+        ],
         "eqeqeq": "error",
         "strict": "error",
-        "no-undef": "off"
+        "no-undef": "off",
+        "camelcase": "error"
       }
     },
     {

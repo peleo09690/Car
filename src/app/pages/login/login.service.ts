@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiPath } from '@core/config';
+import { HttpService } from '@core/services';
+import { Observable } from 'rxjs/internal/Observable';
 import { UserLogin } from './login.component';
 
 @Injectable({
@@ -9,7 +11,8 @@ import { UserLogin } from './login.component';
 export class LoginService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private httpService: HttpService
   ) { }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   userLogin(data: UserLogin): any {
@@ -19,9 +22,15 @@ export class LoginService {
       .set('grant_type', 'password');
     const headers = {
       'Authorization': 'Basic SlBDX1BBQ0tBR0U6SlBDX1BBQ0tBR0VfU0VDUkVU',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-type': 'application/x-www-form-urlencoded'
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this.http.post<any>(ApiPath.LOGIN, body.toString(), { headers });
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getDetailUserLogin():  Observable<any> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return this.httpService.get(ApiPath.USERLOGIN) as Observable<any>;
   }
 }
