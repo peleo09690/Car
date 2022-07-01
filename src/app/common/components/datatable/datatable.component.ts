@@ -4,9 +4,10 @@ import {
   AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild
 } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { each, find, isEqual } from 'lodash';
+import { DataModel } from '@core/models';
+import { find, isEqual } from 'lodash';
 import { IDisplayColumn } from '../../models/datatable/display-column.model';
-import { ITableConfig } from '../../models/datatable/table-config.model';
+import { BtnAction, ITableConfig } from '../../models/datatable/table-config.model';
 import { Utils } from '../../utils/utils';
 
 @Component({
@@ -17,10 +18,10 @@ import { Utils } from '../../utils/utils';
 export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
   // #region Decorator
   @Input() tableConfig!: ITableConfig;
-  @Input() dataSource: Array<object> = [];
-  @Input() selectionModel: SelectionModel<any> = new SelectionModel<any>();
+  @Input() dataSource!: DataModel;
   @Output() tableClick: EventEmitter<any> = new EventEmitter<any>();
-  @Output() hanldeSort: EventEmitter<any> = new EventEmitter<any>();
+  @Output() handleSort: EventEmitter<any> = new EventEmitter<any>();
+  @Output() handleBtnAction: EventEmitter<BtnAction> = new EventEmitter<BtnAction>();
 
   @ViewChild('matTable', {
     static: false
@@ -36,6 +37,9 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
   public fixSecondColumnLeftPos = false;
   public data = new MatTableDataSource();
   public toolTipText: boolean = false;
+  public selectedRow: any;
+
+  public selectionModel: SelectionModel<any> = new SelectionModel<any>(true, []);
 
   ngAfterViewInit(): void {
     if (this.matTable) {
@@ -48,8 +52,10 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['dataSource'].currentValue) {
-      this.data = new MatTableDataSource(changes['dataSource'].currentValue);
+    if (changes['dataSource'] && changes['dataSource'].currentValue) {
+      const data: unknown[] = changes['dataSource'].currentValue.results;
+
+      this.data = new MatTableDataSource(data);
     }
     if (changes['tableConfig'] && changes['tableConfig'].currentValue) {
       this.columnDefinition = this.tableConfig.columnDefinition;
@@ -64,8 +70,8 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
     return typeof format === 'string';
   }
 
-  public onRowClick(event: any): void {
-    console.log(event);
+  public onBtnClick(action: string, event: object): void {
+    this.handleBtnAction.emit({ action, rowItem: event });
   }
 
   public onClickable(event: any): void {
@@ -76,28 +82,18 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
     console.log(event);
   }
   public onCheckBoxAllChange(event: any): void {
-    if (this.selectionModel) {
-      if (event.checked) {
-        if (this.selectionModel.isMultipleSelection()) {
-          this.selectionModel.clear();
-          each(this.rowData, (v, idx) => {
-            this.selectionModel.select(v);
-          });
-        }
-      } else {
-        this.selectionModel.clear();
-      }
-      this.tableClick.emit('clicked');
+    if (this.isCheckedAll()) {
+      this.selectionModel.clear();
+      return;
     }
+    this.selectionModel.select(...this.dataSource.results);
+    this.tableClick.emit('clicked');
   }
 
   public isCheckedAll(): boolean {
-    if (this.selectionModel) {
-      const numSelected = this.selectionModel.selected.length;
-      const numRows = this.rowData.length;
-      return numSelected === numRows;
-    }
-    return false;
+    const numSelected = this.selectionModel.selected.length;
+    const numRows = this.dataSource.results.length;
+    return numSelected === numRows;
   }
 
   public onCheckBoxItemChange(row: any): void {

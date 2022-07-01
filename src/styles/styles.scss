@@ -1,41 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "styles-variables.scss";
 
-/** Font Definition - Open Sans */
-@font-face {
-  font-family: "Open Sans";
-  src: url("../assets/fonts/Open_Sans/OpenSans-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Open Sans";
-  src: url("../assets/fonts/Open_Sans/OpenSans-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Open Sans";
-  src: url("../assets/fonts/Open_Sans/OpenSans-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Open Sans";
-  src: url("../assets/fonts/Open_Sans/OpenSans-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-}
-
-
 /**
  Material Theming ref: https://medium.com/@bogac/customization-of-an-angular-material-2-theme-typography-components-3ca5584f36ca
 */
-$general-typography: mat-typography-config($font-family: "Arial, Open Sans, sans-serif"
-  );
+$general-typography: mat-typography-config($font-family: "Noto Sans JP");
 
 @include mat-core($general-typography);
 
@@ -45,7 +14,7 @@ $tc3s-app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 body {
   margin: 0;
-  font-family: "Open Sans";
+  font-family: 'Noto Sans JP', sans-serif;
   font-size: 14px;
   color: $black3s;
 }
@@ -62,7 +31,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Open Sans";
+  font-family: 'NotoSans JP', sans-serif;
   font-weight: 600;
 }
 

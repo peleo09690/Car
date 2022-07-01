@@ -3,8 +3,6 @@ export interface IOption {
   name: string;
   icon?: string;
   color?: string;
-  // condition?: { id: string; match: any; result?: boolean; result2?: boolean };
-  // conditions?: { id: string; match: any; result?: boolean; result2?: boolean }[];
 }
 
 export interface IDisplayColumn {
@@ -53,6 +51,7 @@ export class SelectColumn implements IDisplayColumn {
     public name: string,
     public weight?: number,
     public orderable: boolean = true,
+    public showSelectAll: boolean = false,
 
     public alignCenter?: boolean,
     public alignRight?: boolean,
@@ -61,8 +60,7 @@ export class SelectColumn implements IDisplayColumn {
     public clickable?: boolean,
     public disabled?: boolean,
     public sticky?: boolean,
-    public stickyEnd?: boolean,
-    public showSelectAll: boolean = false
+    public stickyEnd?: boolean
   ) { }
 }
 

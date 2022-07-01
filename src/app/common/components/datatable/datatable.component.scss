@@ -1,10 +1,15 @@
 @import 'src/styles/styles-variables.scss';
 
 .container {
+  margin: 0 15px;
+
   .table-container {
     width: 100%;
     overflow-y: hidden;
     overflow-x: scroll;
+    border-left: 1px solid rgba(0, 0, 0, .1);
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
   }
 
   .mat-row .mat-cell {
@@ -14,13 +19,16 @@
   }
 
   .mat-row:nth-child(2n):hover {
+    color: #000;
+
     .mat-table-sticky {
-      background-color: #afa;
+      background-color: #afa !important;
     }
   }
 
   .mat-row:hover .mat-cell {
-    background-color: #afa;
+    background-color: #afa !important;
+    color: #000;
   }
 
   .mat-table-sticky {
@@ -40,15 +48,21 @@
   }
 
   ::ng-deep .table-container tr.mat-header-row {
-    height: 40px;
+    height: 30px;
+
+    th {
+      padding: 5px;
+      background-color: #f0f3f5;
+    }
   }
 
   ::ng-deep .table-container tr.mat-row {
-    height: 50px;
-  }
-
-  ::ng-deep .table-container tr.mat-row {
+    height: 29px;
     border-bottom: none;
+
+    td {
+      padding: 5px;
+    }
   }
 
   .cell-align-right {
@@ -59,12 +73,28 @@
     text-align: center;
   }
 
+  .selected-row {
+    background-color: $color-primary  !important;
 
-  .mat-row:nth-child(2n) {
-    background-color: #FAFEFF;
+    td {
+      color: #FFF;
+
+      mat-icon svg {
+        fill: #fff;
+
+      }
+    }
 
     .mat-table-sticky {
-      background-color: #FAFEFF;
+      background-color: $color-primary  !important;
+    }
+  }
+
+  .mat-row:nth-child(2n) {
+    background-color: #f7f7f7;
+
+    .mat-table-sticky {
+      background-color: #f7f7f7;
     }
   }
 
@@ -83,7 +113,7 @@
   }
 
   .mat-header-cell.mat-table-sticky {
-    background-color: #fff !important;
+    background-color: #f0f3f5;
     font-style: normal;
     font-weight: 700;
   }
@@ -115,6 +145,8 @@
 
   table {
     width: 100%;
+    border-top: 1px solid $color-primary;
+    border-radius: 5px;
   }
 
   .row {
@@ -159,7 +191,7 @@
     font-size: 14px;
   }
 
-  .show-more {
+  .btn-show-more {
     display: flex;
     justify-content: center;
     margin: 16px auto 18px;
@@ -173,7 +205,28 @@
       mat-icon {
         width: 9px;
         margin-right: 12px;
+        margin-top: -10px;
       }
+    }
+  }
+
+  mat-icon {
+    height: 18px;
+    width: 18px;
+  }
+
+  .table-footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 5px 6px;
+    padding: 10px 0;
+
+    span {
+      margin-right: 10px;
+      font-size: 13px;
     }
   }
 }

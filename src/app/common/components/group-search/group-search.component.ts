@@ -4,11 +4,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ButtonConfig, IConfigSearch } from '../../models';
 
 @Component({
-  selector: 'app-group-button',
-  templateUrl: './group-button.component.html',
-  styleUrls: ['./group-button.component.scss']
+  selector: 'app-group-search',
+  templateUrl: './group-search.component.html',
+  styleUrls: ['./group-search.component.scss']
 })
-export class GroupButtonComponent implements OnChanges {
+export class GroupSearchComponent implements OnChanges {
   // #region Decorator
   @Input() searchConfig!: IConfigSearch;
   @Input() btnConfig!: ButtonConfig;

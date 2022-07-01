@@ -7,7 +7,7 @@ export interface ISearchCommon {
   id: string;
   type: string;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   disabled?: boolean;
   format?: number | string;
   defaultValue?: string | Date;
@@ -53,11 +53,20 @@ export class DateTimeSearch implements ISearchCommon {
 }
 
 
-export interface ButtonConfig {
+export interface IButtonConfig {
   btnSearchIcon: boolean;
   btnSearchLabel?: boolean;
   btnExportCsv?: boolean;
   btnAddMore?: boolean;
+}
+
+export class ButtonConfig implements IButtonConfig {
+  constructor(
+    public btnSearchIcon: boolean = true,
+    public btnAddMore: boolean = false,
+    public btnSearchLabel: boolean = false,
+    public btnExportCsv: boolean = false
+  ) { }
 }
 
 
