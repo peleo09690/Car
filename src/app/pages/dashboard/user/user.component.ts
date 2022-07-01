@@ -44,14 +44,12 @@ export class UserComponent implements OnInit {
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   eventHandlerClose(event: any): void {
-    console.log(event);
     this.isOpen = false;
 
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handelDbClick(event: any): void {
     this.isOpen = true;
-    console.log(event);
     this.dataPopup = { ...event };
   }
 }

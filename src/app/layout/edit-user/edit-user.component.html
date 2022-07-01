@@ -1,7 +1,7 @@
 <div class="detail-user">
   <div class="backgournd-header">
     <div class="header">
-      <span>{{headerContent}}</span>
+      <span>{{ headerContent }}</span>
     </div>
     <mat-icon
       svgIcon="iconClose"
@@ -9,37 +9,55 @@
       (click)="handelClose()"
     ></mat-icon>
   </div>
-  <div class="body">
-    <div class="input-wrapper">
-      <label class="input-label"> Fist Name </label>
-      <div class="input-normal">
-        <input type="text" [value]="data?.customer_first_name" />
+  <form [formGroup]="formSeach">
+    <div class="body">
+      <div class="input-wrapper">
+        <label class="input-label"> Fist Name </label>
+        <div class="input-normal">
+          <input type="text" formControlName="fistName" />
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label class="input-label"> Last Name </label>
+        <div class="input-normal">
+          <input type="text" formControlName="lastName" />
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label class="input-label"> Customer Name </label>
+        <div class="input-normal">
+          <input type="text" formControlName="customerName" />
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label class="input-label"> Mail </label>
+        <div class="input-normal">
+          <input
+            class="mail"
+            type="text"
+            id="mail"
+            formControlName="mail"
+            (focusout)="validMail($event)"
+          />
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label class="input-label"> Phone </label>
+        <div class="input-normal">
+          <input type="text" formControlName="phone" />
+        </div>
       </div>
     </div>
-    <div class="input-wrapper">
-      <label class="input-label"> Last Name </label>
-      <div class="input-normal">
-        <input type="text" [value]="data?.customer_last_name" />
-      </div>
-    </div>
-    <div class="input-wrapper">
-      <label class="input-label"> Customer Name </label>
-      <div class="input-normal">
-        <input type="text" [value]="data?.customer_name" />
-      </div>
-    </div>
-    <div class="input-wrapper">
-      <label class="input-label"> Mail </label>
-      <div class="input-normal">
-        <input class="mail" type="text" [value]="data?.mail" />
-      </div>
-    </div>
-    <div class="input-wrapper">
-      <label class="input-label"> Phone </label>
-      <div class="input-normal">
-        <input type="text" [value]="data?.phone_number" />
-      </div>
-    </div>
-
+  </form>
+  <div class="button">
+    <button
+      mat-flat-button
+      color="primary"
+      class="btn btn-primary"
+      (click)="handelSubmit()"
+    >
+      <mat-icon class="btn-icon" svgIcon="iconPlusWhite"></mat-icon>
+      <span class="btn-title"> Create </span>
+    </button>
   </div>
 </div>

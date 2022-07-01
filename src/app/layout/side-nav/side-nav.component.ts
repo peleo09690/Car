@@ -22,7 +22,7 @@ export class SideNavComponent implements OnInit {
   dataMenu = MenuData;
   listSubmenu = [];
   constructor() { }
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 }

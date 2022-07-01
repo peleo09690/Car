@@ -322,4 +322,7 @@ export class Utils {
   public static getFutureYear(): string {
     return new Date(new Date().setFullYear(new Date().getFullYear() + 100)).toISOString();
   }
+  public static validPhoneNumber(value: string):boolean {
+    return /^([0-9/-]*)$/g.test(value);
+  }
 }

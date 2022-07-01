@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  header: 'FE COMMON',
   localization: {
     languages: [
       { code: 'en', name: 'EN', culture: 'en-EN' },

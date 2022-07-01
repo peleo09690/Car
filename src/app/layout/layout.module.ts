@@ -9,8 +9,9 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     AngularMaterialModule,
+    ReactiveFormsModule,
     FormsModule,
     NzLayoutModule,
     NzMenuModule,

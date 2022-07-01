@@ -1,3 +1,22 @@
+$width-nav-bar: 80px;
+
+.main {
+  display: flex;
+  overflow: hidden;
+  margin-top: 45px;
+  width: 100%;
+}
+
+.nav-bar {
+  width: $width-nav-bar;
+  height: 100%;
+}
+
+.children {
+  width: calc(100% - $width-nav-bar);
+  height: 100%;
+  margin: 0 5px 5px 5px;
+}
 
 nz-header {
   background: #fff;
@@ -9,17 +28,22 @@ nz-content {
   min-height: 84vh;
 }
 
-.inner-content {
-  padding: 24px;
-  background: #fff;
-  min-height: 360px;
-}
-
-nz-footer {
-  text-align: center;
-}
-
-.container{
+.dashboard {
   display: flex;
   flex-direction: row;
+}
+
+.app-header {
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  z-index: 1020;
+}
+
+.header-top {
+  border-bottom: 1px solid #009cc3;
+  background-color: #f0f3f5;
+  position: fixed;
+  z-index: 1020;
+  width: 100%;
 }

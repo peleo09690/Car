@@ -6,12 +6,14 @@ import { DashboardComponent } from './dashboard.component';
 import { UserComponent } from './user/user.component';
 import { CommonAppModule } from '@common/common.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
+import { DefaultLayoutComponent } from './default-layout/default-layout.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    UserComponent
+    UserComponent,
+    DefaultLayoutComponent
   ],
   imports: [
     CommonModule,

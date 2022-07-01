@@ -1,7 +1,9 @@
-<nz-layout class="dashboard container">
-  <app-side-nav class="nav-bar"></app-side-nav>
-  <div class="children">
-    <app-header></app-header>
-    <router-outlet></router-outlet>
+<nz-layout class="dashboard">
+  <app-header class="app-header"></app-header>
+  <div class="main">
+    <app-side-nav class="nav-bar"></app-side-nav>
+    <div class="children">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </nz-layout>

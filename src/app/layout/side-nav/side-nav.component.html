@@ -4,9 +4,9 @@
   nzWidth="90px"
   [nzTheme]="'light'"
 >
-  <div class="logo">
+  <!-- <div class="logo">
     <mat-icon svgIcon="iconLogomenu"></mat-icon>
-  </div>
+  </div> -->
   <ul nz-menu nzTheme="light" nzMode="inline">
     <ng-container class="flex-class" *ngFor="let node of dataMenu ; let index= index">
       <li *ngIf="node.children.length > 0" nz-submenu  [nzTitle]="node.name || ''"  [ngClass]="{'mrg-300':(index===6)}">
@@ -29,16 +29,15 @@
           </ul>
         </ng-container>
       </li>
-      <li [ngStyle]="{'mrg-300':(index===6)}"
+      <!-- <li [ngStyle]="{'mrg-300':(index===6)}"
         *ngIf="node.children.length === 0"
         nz-menu-item
-
         [routerLink]="node.route"
       >
         <span>
           {{node.name }}
         </span>
-      </li>
+      </li> -->
     </ng-container>
   </ul>
 </nz-sider>

@@ -4,6 +4,14 @@
 
 .content {
   height: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-top: 1px solid #009cc3;
+}
+.detail{
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-top: 1px solid #009cc3;
 }
 .content-right {
   transition: width .3s ease-in-out;
@@ -13,6 +21,7 @@
 
 .content-left {
   width: 70%;
+  margin-right: 2px;
 }
 
 .content-full {
@@ -21,6 +30,7 @@
 
 .content-none {
   width: 0;
+  display: none;
 }
 
 .edit-user {

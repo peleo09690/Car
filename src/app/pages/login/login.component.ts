@@ -47,13 +47,13 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('id_token', x?.access_token);
       console.log(x);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      // this.loginService.getDetailUserLogin().subscribe((x: any) => {
-      //   console.log(x);
-      //   let userDetail = {
+      this.loginService.getDetailUserLogin().subscribe((x: any) => {
+        console.log(x);
+        // let userDetail = {
 
-      //   };
-      //   localStorage.setItem('user');
-      // });
+        // };
+        // localStorage.setItem('user');
+      });
       this.router.navigate(['user']);
     });
   }

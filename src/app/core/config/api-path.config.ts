@@ -5,6 +5,7 @@ export const ApiPathConfig = {
   },
   service:{
     getUserInfor: 'api/user/customers',
+    createAndUpdateUser: '/api/admin/customer',
     login: '/oauth/token'
   },
   user: {
