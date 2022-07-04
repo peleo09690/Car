@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ButtonConfig, IConfigSearch } from '../../models';
+import { DialogOption, DialogSeachComponent } from '../dialog-seach/dialog-seach.component';
 
 @Component({
-  selector: 'app-group-button',
-  templateUrl: './group-button.component.html',
-  styleUrls: ['./group-button.component.scss']
+  selector: 'app-group-search',
+  templateUrl: './group-search.component.html',
+  styleUrls: ['./group-search.component.scss']
 })
-export class GroupButtonComponent implements OnChanges {
+export class GroupSearchComponent implements OnChanges {
   // #region Decorator
   @Input() searchConfig!: IConfigSearch;
   @Input() btnConfig!: ButtonConfig;
@@ -20,6 +22,9 @@ export class GroupButtonComponent implements OnChanges {
   public searchGroup: FormGroup = new FormGroup({});
 
   public icon: string = 'keyboard_arrow_up';
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['searchConfig'].currentValue) {
@@ -48,5 +53,15 @@ export class GroupButtonComponent implements OnChanges {
     this.handleBtnDetailClicked.emit({ addNew: true });
   }
   onBtnExportClick(): void {
+  }
+  handleGetDataDialog(data: any,id:string): void {
+    let dialog = this.dialog.open(DialogSeachComponent, {
+      width:'450px',
+      data: data?.dataDialogSeach
+    });
+    dialog.afterClosed().subscribe((x:any)=>{
+      console.log(x);
+      this.searchGroup.get(id)?.setValue(x.user_name);
+    });
   }
 }

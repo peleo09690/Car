@@ -25,6 +25,6 @@ export class ManageHttpService extends HttpService {
 
   public getUser(payload: RequestUser): Observable<UsersResponse> {
     const request = queryString.stringify(payload);
-    return this.get(`${ApiPath.USER_LIST}?${request}`) as Observable<UsersResponse>;
+    return this.get(`${ApiPath.GET_CUSTOMER_INFO}?${request}`) as Observable<UsersResponse>;
   }
 }

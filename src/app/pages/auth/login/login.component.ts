@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.loginService.userLogin(data).subscribe((x: any) => {
-      sessionStorage.setItem('id_token', x?.access_token);
+      localStorage.setItem('id_token', x?.access_token);
       console.log(x);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.loginService.getDetailUserLogin().subscribe((x: any) => {

@@ -1,0 +1,240 @@
+$color-border : #D6D6D6;
+
+.dialogcommon .disable-btn-search {
+  cursor: default;
+  background-color: #bfbfbf !important;
+  border-color: $color-border;
+  color: #fff;
+}
+
+.avtive {
+  .grid-body-col {
+    background-color: #aaffaa !important;
+  }
+}
+
+.dialogcommon .enable-btn-search {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #3692de;
+  border-radius: 4px;
+  color: #fff;
+}
+.dialogcommon .btn-oke{
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #3692de;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.panelHeading {
+  background: linear-gradient(90.56deg,
+      #004896 0%,
+      #3692de 37.8%,
+      #47adca 72.52%,
+      #57bfdc 105.8%);
+  padding: 0 10px;
+  // border-top-left-radius: 8px;
+  // border-top-right-radius: 8px;
+  color: #ffffff;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px;
+}
+.search input {
+  font-size: 16px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid $color-border;
+  width: 85%;
+  color: rgba(0, 0, 0, 0.87);
+  min-width: 150px;
+}
+::ng-deep .search input[type=text]:focus{
+  outline: none;
+  border: 1px solid #4392BB
+}
+
+.opacity {
+  opacity: 0;
+}
+
+.text-overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+::ng-deep .dialogcommon .form-row {
+  margin: 0;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+::ng-deep .dialogcommon ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  margin-top: 40px;
+}
+
+::ng-deep .dialogcommon ::-webkit-scrollbar-thumb {
+  background: #4392BB;
+  border-radius: 10px;
+}
+
+::ng-deep .dialogcommon .form-row ::-webkit-scrollbar-track {
+  border: 1px solid #4392BB;
+  border-radius: 8px 8px 8px 8px;
+  margin-top: 40px;
+}
+
+::ng-deep .dialogcommon .mat-select-arrow-wrapper {
+  transform: none;
+}
+
+.dialogcommon .table-grid {
+  flex: auto 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-collapse: collapse;
+  overflow: auto;
+  border-radius: 5px;
+  height: 355px;
+  margin: 0 20px;
+}
+
+.dialogcommon .grid-header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogcommon .grid-row .grid-row-role {
+  display: inline-flex;
+  height: 29px;
+}
+
+.dialogcommon .grid-row .grid-row-role:last-child {
+  border-bottom: 1px solid $color-border;
+}
+
+.dialogcommon .table-th {
+  text-align: center;
+}
+
+.grid-header-col {
+  background-color: #f0f3f5;
+  height: 29px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    width: 100%;
+    height: 100%;
+    // border-top: 1px solid $color-border;
+    border-right: 1px solid $color-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.dialogcommon .grid-body .grid-col {
+  height: 29px;
+  span {
+    border-top: 1px solid $color-border;
+    border-right: 1px solid $color-border;
+    padding: 0 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.dialogcommon .grid-body .grid-col:last-child {
+  span {
+    border-top: 1px solid $color-border;
+    border-right: none;
+  }
+}
+
+.dialogcommon .grid-header .grid-col {
+
+  // border-right: 1px solid $color-border;
+}
+
+.dialogcommon .grid-header .grid-col:last-child {
+  border-right: none;
+}
+
+.place-w56 {
+  width: 56px;
+  min-width: 56px;
+}
+
+.dialogcommon .grid-body {
+  overflow: visible;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  z-index: 3;
+  font-size: 12px;
+
+}
+
+.dialogcommon .grid-body .grid-row {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 29px;
+}
+
+.dialogcommon .col-first {
+  left: 0;
+  position: sticky;
+  z-index: 4;
+}
+
+.dialogcommon .col-sticky {
+  position: sticky;
+  z-index: 1;
+}
+
+.dialogcommon .grid-body-col {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  // padding: 0 5px;
+}
+
+::ng-deep .app-full-bleed-dialog .mat-dialog-container {
+  padding: 0;
+  overflow: hidden !important;
+}
+
+::ng-deep .app-full-bleed-dialog {
+  border-radius: 8px;
+}

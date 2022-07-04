@@ -7,9 +7,10 @@ export interface MetaModel {
 }
 
 export interface DataModel {
+  length: number;
   currentPage: number,
   noRecordInPage: number,
-  results: object[],
+  results: any,
   totalPage: number,
   totalRecords: number,
 }

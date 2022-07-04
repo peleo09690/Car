@@ -1,32 +1,16 @@
+import { BtnAction } from './../../../../common/models/datatable/table-config.model';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpParams } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Sort } from "@angular/material/sort";
 import { Router } from "@angular/router";
 import { ButtonConfig, DateTimeSearch, DropListSearch, IConfigSearch, IDropList, InputSearch, ITableConfig, TextColumn } from "@common/models";
+import { DataModel } from "@core/models";
 import { environment } from '@env/environment';
-import { RequestUser, UserModel } from "../../models/user.model";
-import { SelectColumn } from './../../../../common/models/datatable/display-column.model';
+import { RequestUser } from "../../models/user.model";
+import { IndexColumn, IOption, OptionButtonColumn } from './../../../../common/models/datatable/display-column.model';
 import { ManageHttpService } from './../../services/manage-http.service';
-
-export interface PeriodicElement {
-  index: number;
-  id: string;
-  name: string;
-  representativePostCode: string;
-  representativeAddress: string;
-  mail: string;
-  phoneNumber: string;
-  basicCreditLimit: number;
-  existingDebt: number;
-  joinDate: string;
-  customerMembership: string;
-  payments?: string,
-  payments1?: string,
-  payments2?: string,
-  payments3?: string,
-  payments4?: string,
-}
 
 @Component({
   selector: 'app-user',
@@ -34,28 +18,22 @@ export interface PeriodicElement {
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  public options: Array<IOption> = [
+    { id: 'delete', name: 'Delete', icon: 'iconDeleteRed' }
+  ];
+
   public tableConfig: ITableConfig = {
     columnDefinition: [
-      new SelectColumn('select', ' ', 2),
-      new TextColumn('index', '#', 2, false, undefined, true, false, undefined, '', false, '', false),
-      new TextColumn('id', 'ID', 10, false, undefined, true),
-      new TextColumn('name', 'Name', 10, true, 'above', true),
-      new TextColumn('representativePostCode', 'Post Code', 20, false, undefined, undefined, true),
-      new TextColumn('representativeAddress', 'Address', 20, true, 'below', undefined, false, true),
-      new TextColumn('mail', 'E-mail', 20),
-      new TextColumn('phoneNumber', 'Phone Number', 20, true, 'below'),
-      new TextColumn('basicCreditLimit', 'Credit Limit', 20, false, undefined, false, true, true, undefined, undefined, 3),
-      new TextColumn('existingDebt', 'Existing Debt', 10, false, undefined, false, true, undefined, undefined, undefined, 3),
-      new TextColumn('joinDate', 'Join Date', 20, false, undefined, false, true, undefined, undefined, undefined, 'DD-MMM-YYYY'),
-      new TextColumn('payments', 'Payments', 20),
-      new TextColumn('payments1', 'Payments1', 20),
-      new TextColumn('payments2', 'Payments2', 20),
-      new TextColumn('payments3', 'Payments3', 20),
-      new TextColumn('payments4', 'Payments4', 10, false, undefined, false, false, true, undefined, true)
-    ],
-    showMore: false
+      new IndexColumn('index', '#', 5, false,false,true),
+      new TextColumn('customer_id_format', 'ID', 100, false, undefined, true),
+      new TextColumn('customer_name', 'Name', 100, true, 'above', true),
+      new TextColumn('representative_post_code', 'Post Code', 100, false, undefined, undefined, true),
+      new TextColumn('mail', 'E-mail', 200),
+      new TextColumn('phone_number', 'Phone Number', 200, true, 'below'),
+      new OptionButtonColumn(this.options, 5,true,true)
+    ]
   };
-  public data: Array<UserModel> = [];
+  public data!: DataModel;
 
   public searchConfig: IConfigSearch = {
     title: 'User Search',
@@ -68,15 +46,10 @@ export class UserComponent implements OnInit {
     ]
   };
 
-  public btnConfig: ButtonConfig = {
-    btnSearchIcon: true,
-    btnSearchLabel: false,
-    btnExportCsv: true,
-    btnAddMore: true
-  };
+  public btnConfig = new ButtonConfig();
 
   public isShowDetail: boolean = false;
-  public dataItem: PeriodicElement | null = null;
+  public dataItem: any | null = null;
 
   public isLogin = false;
   public formGroup: FormGroup = new FormGroup({});
@@ -116,13 +89,16 @@ export class UserComponent implements OnInit {
     );
   }
 
-  handleClick(event: PeriodicElement): void {
-    // this.dataItem = event;
-    // this.isShowDetail = true;
-    console.log(event);
+  handleClick(event: any): void {
+    this.dataItem = event;
+    this.isShowDetail = true;
   }
 
   handleSort(event: Sort): void {
+    console.log(event);
+  }
+
+  handleActionBtn(event: BtnAction): void {
     console.log(event);
   }
 
@@ -157,7 +133,7 @@ export class UserComponent implements OnInit {
 
   private getUser(): void {
     const payload: RequestUser = {
-      customerName: '',
+      userName: '',
       flgAccountLock: null,
       flgAuction: null,
       page: environment.pageIndex,
@@ -165,7 +141,7 @@ export class UserComponent implements OnInit {
     };
     this.http.getUser(payload).subscribe((res) => {
       if (res && res.data) {
-        this.data = res.data.results as UserModel[];
+        this.data = res.data as DataModel;
       }
     });
   }

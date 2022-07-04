@@ -5,6 +5,10 @@
 mat-form-field.date-time {
   width: 200px;
 }
+.add-new{
+  background: #009cc3;
+  border-radius: 5px;
+}
 
 .group-search-container {
   display: flex;
@@ -16,7 +20,7 @@ mat-form-field.date-time {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #f0f3f5;
+    background-color: #fff;
     padding: 5px;
     align-items: center;
 
@@ -42,6 +46,7 @@ mat-form-field.date-time {
     -webkit-transition: height .5s ease-in-out;
     transition: height .5s;
     display: flex;
+    background-color: #fff;
 
     .search-group {
       width: 80%;
@@ -77,7 +82,7 @@ mat-form-field.date-time {
 }
 
 ::ng-deep .control .mat-form-field-appearance-outline .mat-form-field-infix {
-  padding: 4px 0 10px;
+  padding: 0 0 8px;
 }
 
 ::ng-deep .control .mat-form-field-wrapper {

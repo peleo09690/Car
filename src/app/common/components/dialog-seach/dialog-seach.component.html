@@ -1,0 +1,136 @@
+<div>
+  <div class="dialogcommon">
+    <div id="panelHeading" class="panelHeading">
+      <span style="font-size: 20px">
+        {{ dataOption.title }}
+      </span>
+      <mat-icon (click)="handelCancel()">close</mat-icon>
+      <!-- <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="handelCancel()"
+      >
+        <span aria-hidden="true" style="font-size: 30px">&times;</span>
+      </button> -->
+    </div>
+    <div class="search">
+      <input
+        cdkFocusInitial
+        autocomplete="off"
+        [(ngModel)]="dataSeach"
+        class="input"
+        type="text"
+      />
+      <div
+        class="enable-btn-search"
+        style="
+          font-size: 16px;
+          height: 30px;
+          width: 10%;
+          min-width: 60px;
+          margin-left: 10px;
+        "
+        (click)="handelSeach()"
+      >
+        検索
+      </div>
+    </div>
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 355px;
+      "
+    >
+      <div class="table-grid">
+        <div class="grid-header" [ngStyle]="{ 'width.px': widthTable }">
+          <div class="grid-row">
+            <div class="grid-row-role">
+              <div
+                class="table-th grid-header-col grid-col col-first place-w56"
+              >
+                <span> # </span>
+              </div>
+              <div
+                *ngFor="
+                  let head of dataOption.listHeader;
+                  let j = index;
+                  let last = last
+                "
+                class="table-th grid-header-col grid-col {{
+                  head.sticky ? 'col-sticky' : ''
+                }} "
+                [ngStyle]="{
+                  'left.px': head.sticky ? totalLenhthSticky(j) : 'none',
+                  'width.px': head.width,
+                  'min-width.px': head.width
+                }"
+              >
+                <span>
+                  {{ head.titleHeader }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-body" [ngStyle]="{ 'width.px': widthTable }">
+          <div class="grid-row">
+            <div
+              *ngFor="let data of listData; let j = index; let last = last"
+              class="grid-row-role"
+              (click)="clickChoose(data)"
+              (dblclick)="handelDblclick()"
+              [class.avtive]="dataChoosse === coverObjectToString(data)"
+            >
+              <div class="table-th grid-body-col grid-col col-first place-w56">
+                <span style="justify-content: center">
+                  {{ j + 1 }}
+                </span>
+              </div>
+              <div
+                *ngFor="
+                  let header of dataOption.listHeader;
+                  let i = index;
+                  let last = last
+                "
+                class="grid-body-col grid-col  {{
+                  header.sticky ? 'col-sticky' : ''
+                }} "
+                [ngStyle]="{
+                  'left.px': header.sticky ? totalLenhthSticky(i) : 'none',
+                  'min-width.px': header.width,
+                  'width.px': header.width
+                }"
+              >
+                <span [ngStyle]="{ 'justify-content': header.align }">
+                  {{ coverFormat(data[i], header.format) }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        padding-bottom: 10px;
+      "
+    >
+      <div
+        class="btn-oke"
+        style="font-size: 16px; height: 30px; width: 60px; min-width: 60px"
+        (click)="handelButtonOk()"
+      >
+        OK
+      </div>
+    </div>
+  </div>
+</div>

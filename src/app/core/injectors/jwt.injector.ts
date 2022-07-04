@@ -26,7 +26,7 @@ export class JsonTokenWebInterceptor implements HttpInterceptor {
    * Method to add the Authorization token in header. Returns the new request
    */
   addToHeader(request: HttpRequest<any>): HttpRequest<any> {
-    const token = sessionStorage.getItem('id_token');
+    const token = localStorage.getItem('id_token');
     if (token) {
       request = request.clone({
         setHeaders: {

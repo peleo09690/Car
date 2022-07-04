@@ -81,7 +81,7 @@ export interface LoginRequest {
 
 
 export interface RequestUser extends ISearchRequest {
-  customerName: string;
+  userName: string;
   flgAccountLock: boolean | null;
   flgAuction: boolean | null;
 }

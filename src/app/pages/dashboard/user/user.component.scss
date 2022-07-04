@@ -1,17 +1,17 @@
 .container-background {
   display: flex;
+  margin-right: 10px;
 }
 
 .content {
   height: 100%;
-  border-radius: 5px;
-  border: 1px solid rgba(0,0,0,.1);
-  border-top: 1px solid #009cc3;
 }
 .detail{
   border-radius: 5px;
   border: 1px solid rgba(0,0,0,.1);
   border-top: 1px solid #009cc3;
+  background-color: #FFFFFF;
+  overflow: auto;
 }
 .content-right {
   transition: width .3s ease-in-out;

@@ -1,77 +1,173 @@
 <div class="container">
-  <div *ngIf="(displayColumns.length > 0)"
-       class="table-container">
-    <table mat-table
-           #matTable
-           [dataSource]="dataSource"
-           matSort
-           (matSortChange)="hanldeSort.emit($event)">
-      <ng-container *ngFor="let column of columnDefinition"
-                    [matColumnDef]="column.id"
-                    [sticky]="column.sticky !== undefined && column.sticky ? true : false"
-                    [stickyEnd]="column.stickyEnd !== undefined && column.stickyEnd ? true : false">
+  <div *ngIf="displayColumns.length > 0 && dataSource" class="table-container">
+    <table
+      mat-table
+      matSort
+      #matTable
+      [dataSource]="dataSource.results"
+      (matSortChange)="handleSort.emit($event)"
+    >
+      <ng-container
+        *ngFor="let column of columnDefinition; let i = index"
+        [matColumnDef]="column.id"
+        [sticky]="column.sticky !== undefined && column.sticky ? true : false"
+        [stickyEnd]="
+          column.stickyEnd !== undefined && column.stickyEnd ? true : false
+        "
+      >
         <ng-container [ngSwitch]="column.type">
+          <!-- ::::::::::::::::::::::::::::::::::INDEX:::::::::::::::::::::::::::::::::::::::: -->
+          <div *ngSwitchCase="'index'">
+            <th
+              *matHeaderCellDef
+              mat-header-cell
+              mat-sort-header
+              disabled="{{ !column.orderable }}"
+              [class.header-align-center]="column.alignCenter"
+              [ngStyle]="{ width: '50px' }"
+            >
+              <div class="cell-overflow table-header">
+                {{ column.name | translate }}
+              </div>
+            </th>
+            <td
+              *matCellDef="let row; let j = index"
+              mat-cell
+              [class.cell-align-center]="column.alignCenter"
+              [ngStyle]="{ width: '50px' }"
+            >
+              <div class="cell-overflow">
+                {{ j + 1 }}
+              </div>
+            </td>
+          </div>
           <!-- ::::::::::::::::::::::::::::::::::TEXT:::::::::::::::::::::::::::::::::::::::: -->
           <div *ngSwitchCase="'text'">
-            <th mat-header-cell
-                mat-sort-header
-                disabled="{{ !column.orderable }}"
-                *matHeaderCellDef
-                [ngStyle]="{ 'min-width': (column.weight || 0) * 10 + 'px', 'max-width':(column.weight || 0) * 10 + 'px' }">
+            <th
+              mat-header-cell
+              mat-sort-header
+              disabled="{{ !column.orderable }}"
+              *matHeaderCellDef
+              [ngStyle]="{
+                'max-width': (column.weight || 0) * 10 + 'px',
+                'min-width': (column.weight || 0) * 10 + 'px'}"
+            >
               {{ column.name }}
             </th>
-            <td *matCellDef="let element"
-                mat-cell
-                class="overflow"
-                [ngStyle]="{ 'min-width': (column.weight || 0) * 10 + 'px', 'max-width':(column.weight || 0) * 10 + 'px' }"
-                [class.cell-align-right]="column.alignRight"
-                [class.cell-align-center]="column.alignCenter">
+            <td
+              *matCellDef="let element"
+              mat-cell
+              class="overflow"
+              [ngStyle]="{
+                'max-width': (column.weight || 0) * 10 + 'px',
+                'min-width': (column.weight || 0) * 10 + 'px',
+                width: isLastChildNotSticky(i)
+              }"
+              [class.cell-align-right]="column.alignRight"
+              (click)="tableClick.emit(element)"
+              [class.cell-align-center]="column.alignCenter"
+            >
               <span *ngIf="!column.format">
                 {{ utils.getValueByKey(element, column.id) }}
               </span>
               <span *ngIf="column && column.format && isNumber(column.format)">
-                {{ utils.getValueByKey(element, column.id)| currencyFormatPipe: pipeNumber(column.format) }}
+                {{
+                  utils.getValueByKey(element, column.id)
+                    | currencyFormatPipe: pipeNumber(column.format)
+                }}
               </span>
-              <span *ngIf="column && column.format && isDateTime(column.format)">
-                {{ utils.getValueByKey(element, column.id)| datetimeformat2: pipeDateTime(column.format) }}
+              <span
+                *ngIf="column && column.format && isDateTime(column.format)"
+              >
+                {{
+                  utils.getValueByKey(element, column.id)
+                    | datetimeformat2: pipeDateTime(column.format)
+                }}
               </span>
             </td>
           </div>
           <!-- ::::::::::::::::::::::::::::::::::SELECT CHECKBOX:::::::::::::::::::::::::::::::::::::::: -->
           <div *ngSwitchCase="'select'">
-            <th mat-header-cell
-                *matHeaderCellDef
-                class="checkbox">
-              <mat-checkbox *ngIf="column.showSelectAll"
-                            (change)="$event ? onCheckBoxAllChange($event) : null"
-                            [checked]="selectionModel.hasValue() && isCheckedAll()"
-                            [indeterminate]="selectionModel.hasValue() && !isCheckedAll()">
+            <th mat-header-cell *matHeaderCellDef class="checkbox">
+              <mat-checkbox
+                *ngIf="column.showSelectAll"
+                (change)="$event ? onCheckBoxAllChange($event) : null"
+                [checked]="selectionModel.hasValue() && isCheckedAll()"
+                [indeterminate]="selectionModel.hasValue() && !isCheckedAll()"
+              >
               </mat-checkbox>
             </th>
-            <td mat-cell
-                *matCellDef="let row"
-                class="checkbox">
-              <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? onCheckBoxItemChange(row) : null"
-                            [checked]="selectionModel.hasValue() && isCheckedAll() ? true : isCheckedItem(row)">
+            <td mat-cell *matCellDef="let row" class="checkbox">
+              <mat-checkbox
+                (click)="$event.stopPropagation()"
+                (change)="$event ? onCheckBoxItemChange(row) : null"
+                [checked]="
+                  selectionModel.hasValue() && isCheckedAll()
+                    ? true
+                    : isCheckedItem(row)
+                "
+              >
               </mat-checkbox>
+            </td>
+          </div>
+          <!-- :::::::::::::::::::::::::::::::::::::OPTIONS::::::::::::::::::::::::::::::::::::: -->
+          <div *ngSwitchCase="'button'">
+            <th
+              *matHeaderCellDef
+              mat-header-cell
+              mat-sort-header
+              disabled="{{ !column.orderable }}"
+              [class.header-align-right]="column.alignRight"
+              [ngStyle]="{ width: '50px' }"
+            >
+              <div class="cell-overflow"></div>
+            </th>
+            <td
+              *matCellDef="let element"
+              mat-cell
+              [class.cell-align-right]="column.alignRight"
+              [class.cell-align-center]="column.alignCenter"
+            >
+              <ng-container *ngFor="let option of column.options">
+                <mat-icon
+                  [svgIcon]="option.icon || ''"
+                  (click)="onBtnClick(option.id, element)"
+                ></mat-icon>
+              </ng-container>
             </td>
           </div>
         </ng-container>
       </ng-container>
-      <tr mat-header-row
-          *matHeaderRowDef="displayColumns"></tr>
-      <tr mat-row
-          (dblclick)="tableClick.emit(row)"
-          *matRowDef="let row; columns: displayColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+      <tr
+        mat-row
+        (click)="selectedRow = selectedRow === row ? null : row"
+        [class.selected-row]="selectedRow === row"
+        *matRowDef="let row; columns: displayColumns"
+      ></tr>
     </table>
   </div>
-  <div class="show-more"
-       *ngIf="tableConfig.showMore">
-    <button mat-stroked-button
-            color="default">
-      <mat-icon svgIcon="plus"></mat-icon>
-      {{ 'common.button.show-more' | translate }}
-    </button>
+  <div
+    class="table-footer"
+    [ngStyle]="{
+      padding:
+        dataSource.totalRecords > dataSource.noRecordInPage ? '10px 0' : ''
+    }"
+    *ngIf="dataSource"
+  >
+    <div
+      class="btn-show-more"
+      *ngIf="dataSource.totalRecords > dataSource.noRecordInPage"
+    >
+      <button mat-stroked-button color="default">
+        <mat-icon svgIcon="plus"></mat-icon>
+        {{ "common.button.show-more" | translate }}
+      </button>
+    </div>
+    <span
+      >{{ "common.paging.total" | translate }} {{ dataSource.totalRecords }}
+      {{ "common.paging.size" | translate }} {{ dataSource.noRecordInPage }}
+      {{ "common.paging.show" | translate }}</span
+    >
   </div>
 </div>

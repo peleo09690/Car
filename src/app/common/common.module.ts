@@ -1,18 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
 import { AngularMaterialModule } from './angular-material.module';
 import { DatatableComponent } from './components/datatable/datatable.component';
-import { GroupButtonComponent } from './components/group-button/group-button.component';
+import { DialogSeachComponent } from './components/dialog-seach/dialog-seach.component';
+import { GroupSearchComponent } from './components/group-search/group-search.component';
 import { DateTimeformat2Pipe, DateTimeformat3Pipe, DateTimeformatPipe, DateTimeUtc2LocalFormat, DateTimeUtcFormat } from './pipe/date-time-format.pipe';
 import { CurrencyFormatPipe, DecimalFormatPipe, TooltipListPipe } from './pipe/string-format.pipe';
 
 const CommonComponents = [
   DatatableComponent,
-  GroupButtonComponent
+  GroupSearchComponent,
+  DialogSeachComponent
 ];
 
 const CustomPipes = [
@@ -36,7 +38,8 @@ const CustomPipes = [
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule
   ],
   exports: [
     ...CommonComponents,

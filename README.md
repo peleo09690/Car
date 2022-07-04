@@ -132,6 +132,7 @@ Development, build and quality processes are based on [angular-cli](https://gith
 - [Sass](doc/sass.md)
 - [HTML](doc/html.md)
 - [Unit tests](doc/unit-tests.md)
+- [Apply Common Module](doc/common-module.md)
 
 #### Other documentation
 

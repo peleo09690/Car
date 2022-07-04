@@ -2,15 +2,24 @@ $color-header : #4392BB;
 $color-tile: #485764;
 
 .detail-user {
-  background: #FFFFFF;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  padding-bottom: 10px;
   .button {
-    margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
+
+    button {
+      width: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .check-box{
+    width: 50px;
+    border: 1px solid #c8ced3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -20,22 +29,24 @@ $color-tile: #485764;
 }
 
 .backgournd-header {
+  height: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #c8ced3;
-  margin: 0 5px;
+  padding: 0 5px;
+  background-color: #f0f3f5;
 }
 
 .header {
-  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   span {
     color: $color-header;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 150%;
     /* identical to box height, or 24px */
 
@@ -49,15 +60,37 @@ $color-tile: #485764;
   gap: 20px;
   grid-column: 1;
   grid-row-start: auto;
-  margin: 0 5px;
+  margin: 10px 5px;
 }
 
 .detail-user {
   input.mail {
-    width: 400px !important;
+    width: 250px;
   }
 }
 
 input.input-error {
   border: 1px solid red;
+}
+
+.detail-user .input-label {
+  display: flex;
+  -webkit-box-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0.375rem 0.25rem;
+  margin-bottom: 0;
+  font-size: .75rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #009cc3;
+  border-radius: 0.25rem 0 0 0.25rem;
+  min-width: 100px;
+}
+
+.detail-user .input-normal {
+  display: flex;
 }

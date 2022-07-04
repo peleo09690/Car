@@ -7,7 +7,7 @@
               matTooltipClass="tooltip-orange"
               (click)="onBtnAddClick()"
               *ngIf="btnConfig.btnAddMore">
-        <mat-icon>add</mat-icon>
+        <mat-icon class="add-new">add</mat-icon>
       </button>
     </div>
     <div class="expansion-panel">
@@ -39,6 +39,7 @@
               <input matInput
                      [formControlName]="item.id"
                      placeholder="{{item.placeholder}}"
+                     (keydown.Space)="handleGetDataDialog(item,item.id)"
                      autocomplete="off">
             </mat-form-field>
           </div>

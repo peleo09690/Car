@@ -4,11 +4,12 @@ export const ApiPathConfig = {
     detailUser: 'oauth/user_login'
   },
   service:{
-    getUserInfor: 'api/user/customers',
-    createAndUpdateUser: '/api/admin/customer',
-    login: '/oauth/token'
+    login: '/oauth/token',
+    dialogCommon: 'api/common/dialog-common'
   },
   user: {
-    listUser: '/api/admin/customers'
+    listUser: 'api/users',
+    updateAndCreate: 'api/user',
+    delete: 'api/end-user/'
   }
 };

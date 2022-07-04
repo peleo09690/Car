@@ -39,4 +39,11 @@ export abstract class HttpService {
       catchError((err) => of(err))
     );
   }
+
+  // deleteAction(url: string, payload: string): Observable<HttpResponse> {
+  //   return this.http.delete<HttpResponse>(url, payload).pipe(
+  //     tap((response) => response),
+  //     catchError((err) => of(err))
+  //   );
+  // }
 }

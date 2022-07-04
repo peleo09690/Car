@@ -24,15 +24,16 @@
   </form>
 </ng-container>
 <ng-template #elseTemplate>
-  <app-group-button [searchConfig]="searchConfig"
+  <app-group-search [searchConfig]="searchConfig"
                     [btnConfig]="btnConfig"
                     (handleBtnSubmitClicked)="handleGroupSearchClk($event)"
-                    (handleBtnDetailClicked)="handleAddNew()"></app-group-button>
+                    (handleBtnDetailClicked)="handleAddNew()"></app-group-search>
   <div class="user-container">
     <app-datatable [tableConfig]="tableConfig"
                    [dataSource]="data"
                    (tableClick)="handleClick($event)"
-                   (hanldeSort)="handleSort($event)"
+                   (handleSort)="handleSort($event)"
+                   (handleBtnAction)="handleActionBtn($event)"
                    [ngStyle]="{width: isShowDetail ? '50%' : '100%'}"></app-datatable>
     <app-add-edit-user (handleClose)="closeDetail()"
                        [dataHandle]="dataItem"

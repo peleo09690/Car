@@ -2,7 +2,6 @@ import { isPlatformServer } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { environment } from './../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +33,6 @@ export class IconService {
     this.iconRegistry.addSvgIcon('iconLogomenu', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/logo-menu.svg'));
     this.iconRegistry.addSvgIcon('iconUser', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-user.svg'));
     this.iconRegistry.addSvgIcon('iconLogout', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-logout.svg'));
+    this.iconRegistry.addSvgIcon('buttonSeach', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/button-seach.svg'));
   }
 }

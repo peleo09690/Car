@@ -21,7 +21,7 @@ export class LoginService {
       .set('password', data.password)
       .set('grant_type', 'password');
     const headers = {
-      'Authorization': 'Basic SlBDX1BBQ0tBR0U6SlBDX1BBQ0tBR0VfU0VDUkVU',
+      'Authorization': 'Basic SUQ6SlBDX09BVVRI',
       // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-type': 'application/x-www-form-urlencoded'
     };

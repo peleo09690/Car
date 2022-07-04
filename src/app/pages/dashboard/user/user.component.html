@@ -1,15 +1,23 @@
-<div>seach</div>
+<div>
+  <app-group-search
+    [searchConfig]="searchConfig"
+    [btnConfig]="btnConfig"
+    (handleBtnSubmitClicked)="handleGroupSearchClk($event)"
+    (handleBtnDetailClicked)="handleBtnDetailClicked($event)"
+  ></app-group-search>
+</div>
 <div class="container-background">
   <app-datatable
     [tableConfig]="config"
-    [dataSource]="datasource"
+    [dataSource]="data"
     class=" content {{ isOpen ? 'content-left' : 'content-full' }}"
     (tableClick)="handelDbClick($event)"
+    (handleBtnAction)="handleActionBtn($event)"
   ></app-datatable>
   <app-edit-user
-    [headerContent]="headerContent"
     [data]="dataPopup"
     class="detail {{ isOpen ? 'content-right' : 'content-none' }}"
     (eventHandlerClose)="eventHandlerClose($event)"
+    (eventHandlerBtnOke)="eventHandlerBtn($event)"
   ></app-edit-user>
 </div>
