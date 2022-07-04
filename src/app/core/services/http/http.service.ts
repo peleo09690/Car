@@ -40,10 +40,10 @@ export abstract class HttpService {
     );
   }
 
-  // deleteAction(url: string, payload: string): Observable<HttpResponse> {
-  //   return this.http.delete<HttpResponse>(url, payload).pipe(
-  //     tap((response) => response),
-  //     catchError((err) => of(err))
-  //   );
-  // }
+  deleteAction(url: string): Observable<HttpResponse> {
+    return this.http.delete<HttpResponse>(url).pipe(
+      tap((response) => response),
+      catchError((err) => of(err))
+    );
+  }
 }

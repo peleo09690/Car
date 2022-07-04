@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { DialogOption } from '@common/components/dialog-seach/dialog-seach.component';
 import { BtnAction, ButtonConfig, DateTimeSearch, IConfigSearch, IndexColumn, InputSearch, IOption, ITableConfig, OptionButtonColumn, TextColumn } from '@common/models';
 import { DataModel } from '@core/models/http-response.model';
+import { environment } from '@env/environment';
 import { DataEditUser } from 'src/app/layout/edit-user/edit-user.component';
+import { RequestUser } from './user.model';
 import { UserService } from './user.service';
 
 @Component({
@@ -18,10 +20,10 @@ export class UserComponent implements OnInit {
   public config: ITableConfig = {
     columnDefinition: [
       new IndexColumn('index', '#', 5, false, true, true),
-      new TextColumn('user_id_format', 'Id Format', 15, true, 'center', true, false, true),
-      new TextColumn('user_name', 'User Name', 10, true, 'center', false, false, true),
+      new TextColumn('userIdFormat', 'Id Format', 15, true, 'center', true, false, true),
+      new TextColumn('userName', 'User Name', 10, true, 'center', false, false, true),
       new TextColumn('mail', 'Mail', 20, true, 'center', false, false, true, '', false, '', true),
-      new TextColumn('phone_number', 'Phone Number', 10, true, 'center', false, false, true, '', false, undefined, true),
+      new TextColumn('phoneNumber', 'Phone Number', 10, true, 'center', false, false, true, '', false, undefined, true),
       new TextColumn('address', 'Address', 20, true, 'center', false, false, true, '', false, undefined, true),
       new OptionButtonColumn(this.options, 5, true, false)
     ]
@@ -49,7 +51,7 @@ export class UserComponent implements OnInit {
       {
         titleHeader: 'Mail',
         nameColum: 'mail',
-        width: 200
+        width: 500
       }
     ]
   };
@@ -77,25 +79,14 @@ export class UserComponent implements OnInit {
     this.callTestApi();
   }
   callTestApi(): void {
-    // const payload: RequestUser = {
-    //   userName: '',
-    //   flgAccountLock: null,
-    //   flgAuction: null,
-    //   page: environment.pageIndex,
-    //   size: environment.pageSize
-    // };
-    this.userService.getUser().subscribe((res) => {
-      let dataClone: DataModel;
+    const payload: RequestUser = {
+      userName : null,
+      page: environment.pageIndex,
+      size: environment.pageSize
+    };
+    this.userService.getUser(payload).subscribe((res) => {
       if (res) {
-        dataClone = {
-          length: res.data.length,
-          currentPage: 1,
-          noRecordInPage: 10,
-          results: res.data,
-          totalPage: 1,
-          totalRecords: res.data.length
-        };
-        this.data = { ...dataClone };
+        this.data = res.data as DataModel;
       }
     });
   }
@@ -110,11 +101,12 @@ export class UserComponent implements OnInit {
     if (event.type === 'Create') {
       let payload = { ...event.data };
       // eslint-disable-next-line camelcase
-      payload.url_redirect = 'http://domo';
+      payload.urlRedirect = 'http://domo';
       // eslint-disable-next-line camelcase
-      payload.flag_admin = '1';
       // eslint-disable-next-line camelcase
-      payload.flg_account_lock = event.flg_account_lock ? 0 : 1;
+      payload.flagAdmin = event.flagAdmin ? '1' : '0';
+      delete payload.userId;
+      delete payload.exKey;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.userService.createUser(payload).subscribe((x: any) => {
         this.callTestApi();
@@ -122,9 +114,10 @@ export class UserComponent implements OnInit {
     } else {
       let payload = { ...event.data };
       // eslint-disable-next-line camelcase
-      payload.flg_account_lock = 1;
+      payload.flagAdmin = payload.flagAdmin ? '1' : '0';
+
       // eslint-disable-next-line camelcase
-      payload.url_redirect = 'http://domo';
+      // payload.url_redirect = 'http://domo';
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.userService.updateUser(payload).subscribe((x: any) => {
         this.callTestApi();
@@ -147,12 +140,14 @@ export class UserComponent implements OnInit {
   handleActionBtn(event: BtnAction): void {
     console.log(event);
     if (event.action === 'delete') {
-      const request = new HttpParams()
-        .set('exKey', event.rowItem.ex_key);
+      // let payload = {
+      //   userIdFormat: event.rowItem.userIdFormat,
+      //   exKey: event.rowItem.exKey
+      // };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      // this.userService.deleteUser(event.rowItem.user_id_format,request).subscribe((x: any) => {
-      //   this.callTestApi();
-      // });
+      this.userService.deleteUser(event.rowItem.userIdFormat).subscribe((x: any) => {
+        this.callTestApi();
+      });
     }
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

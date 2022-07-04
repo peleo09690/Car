@@ -8,8 +8,6 @@ export const ApiPathConfig = {
     dialogCommon: 'api/common/dialog-common'
   },
   user: {
-    listUser: 'api/users',
-    updateAndCreate: 'api/user',
-    delete: 'api/end-user/'
+    user: 'api/user'
   }
 };

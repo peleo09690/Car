@@ -56,11 +56,9 @@ export class GroupSearchComponent implements OnChanges {
   }
   handleGetDataDialog(data: any,id:string): void {
     let dialog = this.dialog.open(DialogSeachComponent, {
-      width:'450px',
       data: data?.dataDialogSeach
     });
     dialog.afterClosed().subscribe((x:any)=>{
-      console.log(x);
       this.searchGroup.get(id)?.setValue(x.user_name);
     });
   }

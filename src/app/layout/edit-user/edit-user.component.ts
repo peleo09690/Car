@@ -38,13 +38,13 @@ export class EditUserComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     this.formSeach = this.fb.group({
       // eslint-disable-next-line camelcase
-      user_id: [this.data.data ? this.data.data?.user_id : ''],
-      user_name: [this.data.data ? this.data.data?.user_name : ''],
+      userId: [this.data.data ? this.data.data?.userId : ''],
+      userName: [this.data.data ? this.data.data?.userName : ''],
       mail: [this.data.data ? this.data.data?.mail : ''],
       address: [this.data.data ? this.data.data?.address : ''],
-      phone_number: [this.data.data ? this.data.data?.phone_number : ''],
-      flg_account_lock: [this.data.data.flg_account_lock === 1 ? false : true],
-      ex_key: [this.data.data.ex_key]
+      phoneNumber: [this.data.data ? this.data.data?.phoneNumber : ''],
+      flagAdmin: [this.data.data.flagAdmin ==='1'  ? true : false],
+      exKey: [this.data.data.exKey]
     });
   }
   handelClose(): void {
