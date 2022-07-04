@@ -4,7 +4,19 @@
   <p class="chilren">{{ data.chilren }}</p> -->
   <div class="flex-center">
     <mat-icon svgIcon="iconLogomenu"></mat-icon>
-    <span style="margin-left: 50px;">{{ titelHeader }}</span>
+    <span style="margin-left: 50px">{{ titelHeader }}</span>
   </div>
-  <mat-icon svgIcon="iconUser"></mat-icon>
+  <div class="menu-center"></div>
+  <div class="menu-user" (mouseenter)="mouseoverDropdown()"
+  (mouseleave)="mouseoutDropdown()">
+    <mat-icon
+      svgIcon="iconUser"
+    ></mat-icon>
+    <div class="show-menu" *ngIf="isShow">
+      <ul>
+        <li><mat-icon class="icon-dropdown-user" svgIcon="iconAngleRight"></mat-icon><span>change password</span></li>
+        <li><mat-icon class="icon-dropdown-user" svgIcon="iconAngleRight"></mat-icon><span>logout</span></li>
+      </ul>
+    </div>
+  </div>
 </div>
