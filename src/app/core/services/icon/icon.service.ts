@@ -34,6 +34,7 @@ export class IconService {
     this.iconRegistry.addSvgIcon('iconUser', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-user.svg'));
     this.iconRegistry.addSvgIcon('iconLogout', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-logout.svg'));
     this.iconRegistry.addSvgIcon('buttonSeach', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/button-seach.svg'));
+    this.iconRegistry.addSvgIcon('iconChangePassword', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-change-password.svg'));
     this.iconRegistry.addSvgIcon('iconMail', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-mail.svg'));
     this.iconRegistry.addSvgIcon('iconBack', this.sanitizer.bypassSecurityTrustResourceUrl(domain + '/assets/images/icon/icon-back.svg'));
   }
