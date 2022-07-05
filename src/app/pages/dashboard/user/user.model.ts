@@ -2,7 +2,7 @@ import { DataModel, HttpResponse, MetaModel } from "@core/models";
 import { ISearchRequest } from "@core/models/http-request.model";
 
 export class UsersResponse implements HttpResponse {
-  constructor(
+  public constructor(
     public data: DataModel,
     public errors: object[],
     public meta: MetaModel

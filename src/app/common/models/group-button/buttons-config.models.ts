@@ -18,8 +18,8 @@ export interface ISearchCommon {
 }
 
 export class InputSearch implements ISearchCommon {
-  type = 'input';
-  constructor(
+  public type = 'input';
+  public constructor(
     public id: string,
     public name: string,
     public placeholder: string = '',
@@ -31,8 +31,8 @@ export class InputSearch implements ISearchCommon {
 }
 
 export class DropListSearch implements ISearchCommon {
-  type = 'select';
-  constructor(
+  public type = 'select';
+  public constructor(
     public id: string,
     public name: string,
     public data: IDropList[],
@@ -44,8 +44,8 @@ export class DropListSearch implements ISearchCommon {
 }
 
 export class DateTimeSearch implements ISearchCommon {
-  type = 'date';
-  constructor(
+  public type = 'date';
+  public constructor(
     public id: string,
     public name: string,
     public placeholder: string = '',
@@ -64,7 +64,7 @@ export interface IButtonConfig {
 }
 
 export class ButtonConfig implements IButtonConfig {
-  constructor(
+  public constructor(
     public btnSearchIcon: boolean = true,
     public btnAddMore: boolean = false,
     public btnSearchLabel: boolean = false,

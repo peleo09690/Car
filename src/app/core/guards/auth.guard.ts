@@ -5,14 +5,14 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterSt
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(
+  public constructor(
     private router: Router
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const currentUser = localStorage.getItem('id_token');
-    if(!currentUser){
-      this.router.navigate(['login']);
+    if (!currentUser) {
+      this.router.navigate(['auth/login']);
       return false;
     }
     // if (!currentUser) {
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return true;
   }
 
-  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     return this.canActivate(route, state);
   }
 }

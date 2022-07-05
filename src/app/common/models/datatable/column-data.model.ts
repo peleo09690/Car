@@ -5,7 +5,7 @@ export interface IOrder {
 }
 
 export class ColumnOrder implements IOrder {
-  constructor(public columnName: string, public direction: string) { }
+  public constructor(public columnName: string, public direction: string) { }
 }
 
 export interface IColumnData {
@@ -16,7 +16,7 @@ export interface IColumnData {
 }
 
 export class ColumnData implements IColumnData {
-  constructor(
+  public constructor(
     public page: number,
     public limit: number,
     public order: IOrder,

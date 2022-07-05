@@ -1,43 +1,18 @@
 <h3>Sample 1</h3>
-<ng-container *ngIf="!isLogin; else elseTemplate">
-  <form class="example-form"
-        [formGroup]="formGroup">
-    <mat-form-field class="example-full-width"
-                    appearance="fill">
-      <mat-label>Email</mat-label>
-      <input type="text"
-             matInput
-             formControlName="username"
-             placeholder="Ex. pat@example.com">
-    </mat-form-field>
-    <mat-form-field class="example-full-width"
-                    appearance="fill">
-      <mat-label>Password</mat-label>
-      <input type="password"
-             matInput
-             formControlName="password"
-             placeholder="Ex. pat@example.com">
-    </mat-form-field>
-    <button mat-raised-button
-            color="primary"
-            (click)="goToSample()">Go to Sample 2</button>
-  </form>
-</ng-container>
-<ng-template #elseTemplate>
-  <app-group-search [searchConfig]="searchConfig"
-                    [btnConfig]="btnConfig"
-                    (handleBtnSubmitClicked)="handleGroupSearchClk($event)"
-                    (handleBtnDetailClicked)="handleAddNew()"></app-group-search>
-  <div class="user-container">
-    <app-datatable [tableConfig]="tableConfig"
-                   [dataSource]="data"
-                   (tableClick)="handleClick($event)"
-                   (handleSort)="handleSort($event)"
-                   (handleBtnAction)="handleActionBtn($event)"
-                   [ngStyle]="{width: isShowDetail ? '50%' : '100%'}"></app-datatable>
-    <app-add-edit-user (handleClose)="closeDetail()"
-                       [dataHandle]="dataItem"
-                       class="hidden-add"
-                       [ngClass]="{'show-detail': isShowDetail}"></app-add-edit-user>
-  </div>
-</ng-template>
+
+<app-group-search [searchConfig]="searchConfig"
+                  [btnConfig]="btnConfig"
+                  (handleBtnSubmitClicked)="handleGroupSearchClk($event)"
+                  (handleBtnDetailClicked)="handleAddNew()"></app-group-search>
+<div class="user-container">
+  <app-datatable [tableConfig]="tableConfig"
+                 [dataSource]="data"
+                 (tableClick)="handleClick($event)"
+                 (handleSort)="handleSort($event)"
+                 (handleBtnAction)="handleActionBtn($event)"
+                 [ngStyle]="{width: isShowDetail ? '50%' : '100%'}"></app-datatable>
+  <app-add-edit-user (handleClose)="closeDetail()"
+                     [dataHandle]="dataItem"
+                     class="hidden-add"
+                     [ngClass]="{'show-detail': isShowDetail}"></app-add-edit-user>
+</div>

@@ -10,38 +10,31 @@ import { catchError, tap } from 'rxjs/operators';
 })
 
 export abstract class HttpService {
-  constructor(protected http: HttpClient) { }
+  public constructor(protected http: HttpClient) { }
 
-  get(url: string): Observable<any> {
+  public get(url: string): Observable<any> {
     return this.http.get<any>(url).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );
   }
 
-  post(url: string, payload: object, header?: HttpHeaders): Observable<HttpResponse> {
+  public post(url: string, payload: object, header?: HttpHeaders): Observable<HttpResponse> {
     return this.http.post<HttpResponse>(url, payload, { headers: header }).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );
   }
 
-  put(url: string, payload: object): Observable<HttpResponse> {
+  public put(url: string, payload: object): Observable<HttpResponse> {
     return this.http.put<HttpResponse>(url, payload).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );
   }
 
-  delete(url: string, payload: object): Observable<HttpResponse> {
-    return this.http.post<HttpResponse>(url, payload).pipe(
-      tap((response) => response),
-      catchError((err) => of(err))
-    );
-  }
-
-  deleteAction(url: string): Observable<HttpResponse> {
-    return this.http.delete<HttpResponse>(url).pipe(
+  public delete(url: string, payload: object): Observable<HttpResponse> {
+    return this.http.delete<HttpResponse>(url, payload).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );

@@ -8,18 +8,18 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./add-edit-user.component.scss']
 })
 export class AddEditUserComponent implements OnInit, OnChanges {
-  @Input() dataHandle!: any;
-  @Output() handleClose: EventEmitter<any> = new EventEmitter<any>();
+  @Input() public dataHandle!: any;
+  @Output() public handleClose: EventEmitter<any> = new EventEmitter<any>();
 
   public formGroup: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder) { }
+  public constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes['dataHandle'].currentValue && changes['dataHandle'].currentValue !== changes['dataHandle'].previousValue) {
       this.initForm(changes['dataHandle'].currentValue);
     } else {

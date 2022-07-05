@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuData } from './menu.config';
 
 export interface SubMenu {
@@ -16,13 +16,10 @@ export interface ListMenu {
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss']
 })
-export class SideNavComponent implements OnInit {
+export class SideNavComponent {
 
-  click = false;
-  dataMenu = MenuData;
-  listSubmenu = [];
-  constructor() { }
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {
-  }
+  public click = false;
+  public dataMenu = MenuData;
+  public listSubmenu = [];
+  public constructor() { }
 }

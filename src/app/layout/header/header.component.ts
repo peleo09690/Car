@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuData } from '../side-nav/menu.config';
 import { environment } from '@env/environment';
+import { MenuData } from '../side-nav/menu.config';
 
 export interface DataHeader {
   parent: string;
@@ -14,20 +14,20 @@ export interface DataHeader {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  dataMenu = MenuData;
-  isShow:boolean = false;
-  titelHeader: string = '';
-  data: DataHeader = {
+  public dataMenu = MenuData;
+  public isShow: boolean = false;
+  public titelHeader: string = '';
+  public data: DataHeader = {
     parent: '',
     chilren: ''
   };
-  constructor(
+  public constructor(
     private router: Router
   ) {
     this.seachDataMenu(this.router.url);
   }
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {
+  public ngOnInit(): void {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.router.events.subscribe((x: any) => {
       this.seachDataMenu(x?.url);
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     this.titelHeader = environment.header;
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  seachDataMenu(url: string): any {
+  public seachDataMenu(url: string): any {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let a: any;
     a = this.dataMenu.filter(x => x.children.filter(i => i.route === url).length > 0);
@@ -44,11 +44,11 @@ export class HeaderComponent implements OnInit {
     this.data.chilren = a[0]?.children.filter((i: any) => i.route === url)[0].name;
   }
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  mouseoverDropdown() {
+  public mouseoverDropdown() {
     this.isShow = !this.isShow;
   }
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  mouseoutDropdown() {
+  public mouseoutDropdown() {
     this.isShow = !this.isShow;
   }
 }

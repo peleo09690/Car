@@ -6,12 +6,12 @@ import { ApiPath } from '@core/config/api-path';
   providedIn: 'root'
 })
 export class DialogSeachService {
-  constructor(
+  public constructor(
     private http: HttpClient
   ) {
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getDataDialogCommon(data: string):any {
+  public getDataDialogCommon(data: string): any {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this.http.post<any>(ApiPath.GET_DATA_DIALOG_COMMON, data);
   }

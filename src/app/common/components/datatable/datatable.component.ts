@@ -17,18 +17,18 @@ import { Utils } from '../../utils/utils';
 })
 export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
   // #region Decorator
-  @Input() tableConfig!: ITableConfig;
-  @Input() dataSource!: DataModel;
-  @Output() tableClick: EventEmitter<any> = new EventEmitter<any>();
-  @Output() handleSort: EventEmitter<any> = new EventEmitter<any>();
-  @Output() handleBtnAction: EventEmitter<BtnAction> = new EventEmitter<BtnAction>();
+  @Input() public tableConfig!: ITableConfig;
+  @Input() public dataSource!: DataModel;
+  @Output() public tableClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public handleSort: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public handleBtnAction: EventEmitter<BtnAction> = new EventEmitter<BtnAction>();
 
   @ViewChild('matTable', {
     static: false
-  }) matTable!: MatTable<any>;
+  }) public matTable!: MatTable<any>;
   // #endregion
 
-  utils = Utils;
+  public utils = Utils;
   public columnDefinition: Array<IDisplayColumn> = [];
   public displayColumns: Array<string> = [];
   public rowData = Array<any>();
@@ -41,17 +41,17 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
 
   public selectionModel: SelectionModel<any> = new SelectionModel<any>(true, []);
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     if (this.matTable) {
       this.matTable.updateStickyColumnStyles();
     }
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initData();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes['dataSource'] && changes['dataSource'].currentValue) {
       const data: unknown[] = changes['dataSource'].currentValue.results;
 

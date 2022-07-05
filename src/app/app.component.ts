@@ -8,14 +8,14 @@ import { LocalizationService } from './core/services/localization/localization.s
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Common-FE';
+  public title = 'Common-FE';
 
-  constructor(
+  public constructor(
     private icon: IconService,
     private localizationService: LocalizationService
   ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.icon.init();
     this.localizationService.init();
   }

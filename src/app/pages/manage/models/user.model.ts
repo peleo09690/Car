@@ -65,7 +65,7 @@ export interface IUsersResponse {
 }
 
 export class UsersLoginResponse implements IUsersResponse {
-  constructor(
+  public constructor(
     public access_token: string,
     public expires_in: number,
     public refresh_token: string,
@@ -87,7 +87,7 @@ export interface RequestUser extends ISearchRequest {
 }
 
 export class UsersResponse implements HttpResponse {
-  constructor(
+  public constructor(
     public data: DataModel,
     public errors: object[],
     public meta: MetaModel

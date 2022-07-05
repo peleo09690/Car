@@ -7,10 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class LocalizationService {
-  defaultLanguage: string = environment.localization.defaultLanguage;
-  supportedLanguages: Array<string> = [];
+  public defaultLanguage: string = environment.localization.defaultLanguage;
+  public supportedLanguages: Array<string> = [];
 
-  constructor(
+  public constructor(
     private translateService: TranslateService
   ) { }
 
@@ -31,7 +31,7 @@ export class LocalizationService {
    * Gets the current language.
    * @return string The current language code.
    */
-  get language(): string {
+  public get language(): string {
     return this.translateService.currentLang;
   }
 
@@ -39,7 +39,7 @@ export class LocalizationService {
    * Set the current language.
    * Note: The current language is saved to the local storage.
    */
-  set language(language: string) {
+  public set language(language: string) {
     const isSupportedLanguage: boolean = this.supportedLanguages.find((lang) => lang === language) !== null;
 
     if (!isSupportedLanguage) {

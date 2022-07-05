@@ -54,10 +54,6 @@
           }
         ],
         "new-cap": "off",
-        "indent": [
-          "error",
-          2
-        ],
         "semi": "error",
         "comma-dangle": [
           "error",
@@ -86,6 +82,9 @@
               "UPPER_CASE"
             ]
           }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error"
         ],
         "eqeqeq": "error",
         "strict": "error",

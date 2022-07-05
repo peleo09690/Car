@@ -49,7 +49,7 @@ const CustomPipes = [
   ]
 })
 export class CommonAppModule {
-  static forRoot(): ModuleWithProviders<CommonAppModule> {
+  public static forRoot(): ModuleWithProviders<CommonAppModule> {
     return {
       ngModule: CommonAppModule,
       providers: [

@@ -17,13 +17,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   imports: [CommonModule]
 })
 export class CoreModule {
-  constructor(@Optional() @SkipSelf() core: CoreModule) {
+  public constructor(@Optional() @SkipSelf() core: CoreModule) {
     if (core) {
       throw new Error('The CoreModule has been already created');
     }
   }
 
-  static forRoot(): ModuleWithProviders<CoreModule> {
+  public static forRoot(): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
       providers: [

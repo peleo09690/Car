@@ -6,9 +6,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LanguageService {
   private cache = new Map<string, string>();
-  constructor(public translate: TranslateService) { }
+  public constructor(public translate: TranslateService) { }
 
-  get(key: string): string {
+  public get(key: string): string {
     const value = this.cache.get(key);
     if (value) {
       return value;

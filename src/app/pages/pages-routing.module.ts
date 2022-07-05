@@ -1,21 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@core/guards/auth.guard';
 
 const routes: Routes = [
 
-  {path: '', pathMatch: 'full', redirectTo: ''},
-  {
-    path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then((m) => m.LoginModule)
-  },
-  {
-    path: 'forgot-password',
-    loadChildren: () => import('./auth/forgot-password-mail/forgot-passwrod-mail.module').then((m) => m.ForgotPasswrodMailModule)
-  },
+  { path: '', pathMatch: 'full', redirectTo: '' },
   {
     path: '',
-    canActivate : [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
   },
   {

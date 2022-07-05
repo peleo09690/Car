@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'tooltipList' })
 export class TooltipListPipe implements PipeTransform {
-  transform(lines: string[] | string): string {
+  public transform(lines: string[] | string): string {
     let list = '';
     if (Array.isArray(lines)) {
       lines.forEach((line) => {
@@ -17,7 +17,7 @@ export class TooltipListPipe implements PipeTransform {
 
 @Pipe({ name: 'decimalFormatPipe' })
 export class DecimalFormatPipe implements PipeTransform {
-  transform(lines: string[] | string, decimals: number): string {
+  public transform(lines: string[] | string, decimals: number): string {
     let list = '';
     if (Array.isArray(lines)) {
       lines.forEach((line) => {
@@ -44,7 +44,7 @@ export class DecimalFormatPipe implements PipeTransform {
   name: 'currencyFormatPipe'
 })
 export class CurrencyFormatPipe implements PipeTransform {
-  transform(value: number, decimals: number): string {
+  public transform(value: number, decimals: number): string {
     if (value && decimals) {
       let valueString = value.toString();
       return valueString = this.formatNumber(value, '').toString();
@@ -52,7 +52,7 @@ export class CurrencyFormatPipe implements PipeTransform {
     return value ? value.toString() : '';
   }
 
-  formatNumber(number: number, prefix: string): string {
+  private formatNumber(number: number, prefix: string): string {
     const thousandSeparator = ',';
     const decimalSeparator = '.';
     const regex = new RegExp('[^' + decimalSeparator + '\\d]', 'g');

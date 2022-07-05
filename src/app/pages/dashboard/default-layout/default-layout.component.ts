@@ -28,21 +28,16 @@ interface Food {
 })
 export class DefaultLayoutComponent implements OnInit {
 
-  constructor() { }
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {
-  }
-
-  foods: Food[] = [
+  public foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
     { value: 'pizza-1', viewValue: 'Pizza' },
     { value: 'tacos-2', viewValue: 'Tacos' }
   ];
-  currentOption: string = '';
-  options: string[] = ['option1', 'option2', 'option3', 'option4'];
+  public currentOption: string = '';
+  public options: string[] = ['option1', 'option2', 'option3', 'option4'];
 
 
-  task: Task = {
+  public task: Task = {
     name: 'Indeterminate',
     completed: false,
     color: undefined,
@@ -52,18 +47,24 @@ export class DefaultLayoutComponent implements OnInit {
       { name: 'check3', completed: false, color: undefined }
     ]
   };
-  allComplete: boolean = false;
-  updateAllComplete(): void {
+  public allComplete: boolean = false;
+
+  public constructor() { }
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
+  public ngOnInit(): void {
+  }
+
+  public updateAllComplete(): void {
     this.allComplete = (this.task.subtasks !== null && this.task?.subtasks?.every(t => t.completed)) || false;
   }
-  someComplete(): boolean {
+  public someComplete(): boolean {
     if (this.task.subtasks === null) {
       return false;
     }
     return false;
     // return (this.task?.subtasks?.filter(t => t.completed === true).length > 0 && !this.allComplete) || false;
   }
-  setAll(completed: boolean): void {
+  public setAll(completed: boolean): void {
     this.allComplete = completed;
     if (this.task.subtasks === null) {
       return;

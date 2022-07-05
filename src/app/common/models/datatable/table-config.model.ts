@@ -17,7 +17,7 @@ export interface ITableConfig {
 }
 
 export class TableConfig implements ITableConfig {
-  constructor(
+  public constructor(
     public columnDefinition: Array<IDisplayColumn>,
     public pagination: IColumnData,
     public stickyHeader?: boolean,

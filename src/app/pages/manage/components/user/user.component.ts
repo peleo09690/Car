@@ -4,7 +4,6 @@ import { HttpParams } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Sort } from "@angular/material/sort";
-import { Router } from "@angular/router";
 import { ButtonConfig, DateTimeSearch, DropListSearch, IConfigSearch, IDropList, InputSearch, ITableConfig, TextColumn } from "@common/models";
 import { DataModel } from "@core/models";
 import { environment } from '@env/environment';
@@ -24,13 +23,13 @@ export class UserComponent implements OnInit {
 
   public tableConfig: ITableConfig = {
     columnDefinition: [
-      new IndexColumn('index', '#', 5, false,false,true),
+      new IndexColumn('index', '#', 5, false, false, true),
       new TextColumn('customer_id_format', 'ID', 100, false, undefined, true),
       new TextColumn('customer_name', 'Name', 100, true, 'above', true),
       new TextColumn('representative_post_code', 'Post Code', 100, false, undefined, undefined, true),
       new TextColumn('mail', 'E-mail', 200),
       new TextColumn('phone_number', 'Phone Number', 200, true, 'below'),
-      new OptionButtonColumn(this.options, 5,true,true)
+      new OptionButtonColumn(this.options, 5, true, true)
     ]
   };
   public data!: DataModel;
@@ -54,8 +53,7 @@ export class UserComponent implements OnInit {
   public isLogin = false;
   public formGroup: FormGroup = new FormGroup({});
 
-  constructor(
-    private router: Router,
+  public constructor(
     private fb: FormBuilder,
     private http: ManageHttpService
   ) {
@@ -66,7 +64,7 @@ export class UserComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.formGroup = this.fb.group({
       username: new FormControl('000056'),
       password: new FormControl('Nham123456'),
@@ -89,46 +87,38 @@ export class UserComponent implements OnInit {
     );
   }
 
-  handleClick(event: any): void {
+  public handleClick(event: any): void {
     this.dataItem = event;
     this.isShowDetail = true;
   }
 
-  handleSort(event: Sort): void {
+  public handleSort(event: Sort): void {
     console.log(event);
   }
 
-  handleActionBtn(event: BtnAction): void {
+  public handleActionBtn(event: BtnAction): void {
     console.log(event);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleGroupSearchClk(event: any): void {
+  public handleGroupSearchClk(event: any): void {
     console.log(event);
   }
 
-  handleAddNew(): void {
+  public handleAddNew(): void {
     this.isShowDetail = true;
     this.dataItem = null;
   }
 
-  closeDetail(): void {
+  public closeDetail(): void {
     this.isShowDetail = false;
     this.dataItem = null;
   }
 
-  goToSample(): void {
+  public goToSample(): void {
     const request = new HttpParams()
       .set('username', this.formGroup.value.username)
       .set('password', this.formGroup.value.password)
       .set('grant_type', 'password');
-    this.http.login(request).subscribe((res) => {
-      if (res && res.access_token) {
-        localStorage.setItem('id_token', res.access_token);
-        this.isLogin = true;
-        this.getUser();
-      }
-    });
   }
 
   private getUser(): void {

@@ -4,7 +4,7 @@ import * as moment from 'moment';
 
 @Pipe({ name: 'datetimeformat' })
 export class DateTimeformatPipe implements PipeTransform {
-  transform(value: number, dtFormat: string): string {
+  public transform(value: number, dtFormat: string): string {
     let result = '';
     if (value && value !== undefined && value !== null) {
       let timeVal: number = value;
@@ -21,7 +21,7 @@ export class DateTimeformatPipe implements PipeTransform {
 
 @Pipe({ name: 'datetimeformat2' })
 export class DateTimeformat2Pipe implements PipeTransform {
-  formates: Array<string> = [
+  private formates: Array<string> = [
     'MM-DD-YYYY',
     'DD-MM-YYYY',
     'hmmss',
@@ -32,7 +32,7 @@ export class DateTimeformat2Pipe implements PipeTransform {
     'YYYY-MM-DDTHH:mm:ss',
     'HH:mm', 'HH:mm:ss'
   ];
-  transform(value: string, dtFormat: string): string {
+  public transform(value: string, dtFormat: string): string {
     let result = '';
     if (value && value !== undefined && value !== null) {
       if (dtFormat && dtFormat.length > 0) {
@@ -45,7 +45,7 @@ export class DateTimeformat2Pipe implements PipeTransform {
 
 @Pipe({ name: 'datetimeformat3' })
 export class DateTimeformat3Pipe implements PipeTransform {
-  transform(value: string, dtFormat: string): string {
+  public transform(value: string, dtFormat: string): string {
     let result = '';
     if (value && value !== undefined && value !== null) {
       if (dtFormat && dtFormat.length > 0) {
@@ -58,7 +58,7 @@ export class DateTimeformat3Pipe implements PipeTransform {
 
 @Pipe({ name: 'datetimeUtcFormat' })
 export class DateTimeUtcFormat implements PipeTransform {
-  transform(value: string, dtFormat: string): string {
+  public transform(value: string, dtFormat: string): string {
     let result = '';
     if (value && value !== undefined && value !== null) {
       if (dtFormat && dtFormat.length > 0) {
@@ -71,7 +71,7 @@ export class DateTimeUtcFormat implements PipeTransform {
 
 @Pipe({ name: 'datetimeUtc2LocalFormat' })
 export class DateTimeUtc2LocalFormat implements PipeTransform {
-  transform(value: string, dtFormat: string): string {
+  public transform(value: string, dtFormat: string): string {
     let result = '';
     if (value && value !== undefined && value !== null) {
       if (dtFormat && dtFormat.length > 0) {

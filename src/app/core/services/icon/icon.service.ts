@@ -7,7 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   providedIn: 'root'
 })
 export class IconService {
-  constructor(
+  public constructor(
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) private platformId: string

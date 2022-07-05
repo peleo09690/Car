@@ -1,7 +1,6 @@
-import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DialogOption } from '@common/components/dialog-seach/dialog-seach.component';
-import { BtnAction, ButtonConfig, DateTimeSearch, IConfigSearch, IndexColumn, InputSearch, IOption, ITableConfig, OptionButtonColumn, TextColumn } from '@common/models';
+import { BtnAction, ButtonConfig, IConfigSearch, IndexColumn, InputSearch, IOption, ITableConfig, OptionButtonColumn, TextColumn } from '@common/models';
 import { DataModel } from '@core/models/http-response.model';
 import { environment } from '@env/environment';
 import { DataEditUser } from 'src/app/layout/edit-user/edit-user.component';
@@ -28,7 +27,7 @@ export class UserComponent implements OnInit {
       new OptionButtonColumn(this.options, 5, true, false)
     ]
   };
-  dataDialog: DialogOption = {
+  public dataDialog: DialogOption = {
     title: 'User Infor',
     table: 't_user_info',
     listHeader: [
@@ -64,23 +63,23 @@ export class UserComponent implements OnInit {
   public btnConfig = new ButtonConfig(true, true, false, false);
 
   public data!: DataModel;
-  isOpen: boolean = false;
-  dataPopup: DataEditUser = {
+  public isOpen: boolean = false;
+  public dataPopup: DataEditUser = {
     headerContent: 'Add New',
     titleButton: 'Create',
     data: {}
   };
-  constructor(
+  public constructor(
     private userService: UserService
   ) { }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.callTestApi();
   }
-  callTestApi(): void {
+  public callTestApi(): void {
     const payload: RequestUser = {
-      userName : null,
+      userName: null,
       page: environment.pageIndex,
       size: environment.pageSize
     };
@@ -91,12 +90,12 @@ export class UserComponent implements OnInit {
     });
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  eventHandlerClose(event: any): void {
+  public eventHandlerClose(event: any): void {
     this.isOpen = false;
 
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  eventHandlerBtn(event: any): void {
+  public eventHandlerBtn(event: any): void {
     console.log(event);
     if (event.type === 'Create') {
       let payload = { ...event.data };
@@ -125,7 +124,7 @@ export class UserComponent implements OnInit {
     }
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handelDbClick(event: any): void {
+  public handelDbClick(event: any): void {
     this.isOpen = true;
     this.dataPopup = {
       headerContent: 'Edit User',
@@ -134,10 +133,10 @@ export class UserComponent implements OnInit {
     };
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleGroupSearchClk(event: any): void {
+  public handleGroupSearchClk(event: any): void {
     console.log(event);
   }
-  handleActionBtn(event: BtnAction): void {
+  public handleActionBtn(event: BtnAction): void {
     console.log(event);
     if (event.action === 'delete') {
       // let payload = {
@@ -145,13 +144,13 @@ export class UserComponent implements OnInit {
       //   exKey: event.rowItem.exKey
       // };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this.userService.deleteUser(event.rowItem.userIdFormat).subscribe((x: any) => {
-        this.callTestApi();
-      });
+      // this.userService.deleteUser(event.rowItem.userIdFormat).subscribe((x: any) => {
+      //   this.callTestApi();
+      // });
     }
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleBtnDetailClicked(event: any): void {
+  public handleBtnDetailClicked(event: any): void {
     this.isOpen = true;
     this.dataPopup = {
       headerContent: 'Add New User',

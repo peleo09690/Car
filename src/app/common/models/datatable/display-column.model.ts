@@ -27,8 +27,8 @@ export interface IDisplayColumn {
 }
 
 export class TextColumn implements IDisplayColumn {
-  type = 'text';
-  constructor(
+  public type = 'text';
+  public constructor(
     public id: string,
     public name: string,
     public weight?: number,
@@ -45,8 +45,8 @@ export class TextColumn implements IDisplayColumn {
 }
 
 export class SelectColumn implements IDisplayColumn {
-  type = 'select';
-  constructor(
+  public type = 'select';
+  public constructor(
     public id: string,
     public name: string,
     public weight?: number,
@@ -65,8 +65,8 @@ export class SelectColumn implements IDisplayColumn {
 }
 
 export class NumberColumn implements IDisplayColumn {
-  type = 'number';
-  constructor(
+  public type = 'number';
+  public constructor(
     public id: string,
     public name: string,
     public weight: number,
@@ -81,8 +81,8 @@ export class NumberColumn implements IDisplayColumn {
 }
 
 export class StatusColumn implements IDisplayColumn {
-  type = 'status';
-  constructor(
+  public type = 'status';
+  public constructor(
     public id: string,
     public name: string,
     public weight: number,
@@ -98,13 +98,13 @@ export class StatusColumn implements IDisplayColumn {
 }
 
 export class OptionColumn implements IDisplayColumn {
-  type = 'options';
-  id = 'options';
-  name = 'Options';
-  alignRight = false;
-  showSelectAll = false;
+  public type = 'options';
+  public id = 'options';
+  public name = 'Options';
+  public alignRight = false;
+  public showSelectAll = false;
 
-  constructor(
+  public constructor(
     public options: Array<IOption>,
     public weight: number,
     public sticky?: boolean,
@@ -113,13 +113,13 @@ export class OptionColumn implements IDisplayColumn {
 }
 
 export class OptionMenuColumn implements IDisplayColumn {
-  type = 'menu';
-  id = 'menu';
-  name = 'Options';
-  alignRight = false;
-  showSelectAll = false;
+  public type = 'menu';
+  public id = 'menu';
+  public name = 'Options';
+  public alignRight = false;
+  public showSelectAll = false;
 
-  constructor(
+  public constructor(
     public options: Array<IOption>,
     public weight: number,
     public sticky?: boolean,
@@ -128,13 +128,13 @@ export class OptionMenuColumn implements IDisplayColumn {
 }
 
 export class OptionButtonColumn implements IDisplayColumn {
-  type = 'button';
-  id = 'button';
-  name = 'Options';
-  alignRight = false;
-  showSelectAll = false;
+  public type = 'button';
+  public id = 'button';
+  public name = 'Options';
+  public alignRight = false;
+  public showSelectAll = false;
 
-  constructor(
+  public constructor(
     public options: Array<IOption>,
     public weight: number,
     public sticky?: boolean,
@@ -143,12 +143,12 @@ export class OptionButtonColumn implements IDisplayColumn {
 }
 
 export class CheckboxColumn implements IDisplayColumn {
-  type = 'selection';
-  id = 'selection';
-  name = 'common-names.select';
-  alignRight = false;
+  public type = 'selection';
+  public id = 'selection';
+  public name = 'common-names.select';
+  public alignRight = false;
 
-  constructor(
+  public constructor(
     public weight: number,
     public showSelectAll: boolean,
     public sticky?: boolean,
@@ -157,9 +157,9 @@ export class CheckboxColumn implements IDisplayColumn {
 }
 
 export class IndexColumn implements IDisplayColumn {
-  type = 'index';
+  public type = 'index';
 
-  constructor(
+  public constructor(
     public id: string,
     public name: string,
     public weight: number,
@@ -170,9 +170,9 @@ export class IndexColumn implements IDisplayColumn {
 }
 
 export class DateTimeColumn implements IDisplayColumn {
-  type = 'date';
+  public type = 'date';
 
-  constructor(
+  public constructor(
     public id: string,
     public name: string,
     public weight: number,
