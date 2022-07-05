@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-forgot-password-mail',
@@ -10,30 +10,32 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ForgotPasswordMailComponent implements OnInit {
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private location: Location
   ) { }
-  showConfirmPassword : boolean = false;
-  showNewPassword : boolean = false;
+  showConfirmPassword: boolean = false;
+  showNewPassword: boolean = false;
   invalidEmail: boolean = false;;
   public forgotPasswordByEmailForm!: FormGroup;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  user:any;
+  user: any;
   ngOnInit(): void {
     this.initialForm();
   }
-  initialForm():void {
+  initialForm(): void {
     this.forgotPasswordByEmailForm = this.fb.group({
       username: [''],
       email: ['']
     });
   }
-  toggleNewPassWord():void {
+  toggleNewPassWord(): void {
     this.showNewPassword = !this.showNewPassword;
   }
-  toggleConfirmPassWord():void {
+  toggleConfirmPassWord(): void {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
-  checkEmail(e : any):void {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  checkEmail(e: any): void {
     this.forgotPasswordByEmailForm.get('email')?.setValue(e.target.value);
     if (!this.forgotPasswordByEmailForm.get('email')?.value) {
       this.invalidEmail = false;
@@ -47,11 +49,15 @@ export class ForgotPasswordMailComponent implements OnInit {
       }
     }
   }
-  submitFormByEmail():void{
-    if(!this.forgotPasswordByEmailForm.get('username')?.value || !this.forgotPasswordByEmailForm.get('email')?.value){
+  submitFormByEmail(): void {
+    if (!this.forgotPasswordByEmailForm.get('username')?.value || !this.forgotPasswordByEmailForm.get('email')?.value) {
       alert("username or email not null");
       return;
     }
     console.log(this.forgotPasswordByEmailForm.value);
+  }
+  goBack(): void {
+    // window.history.back();
+    this.location.back();
   }
 }
