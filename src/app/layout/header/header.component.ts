@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuData } from '../side-nav/menu.config';
 import { environment } from '@env/environment';
+import { HeaderService } from './header.service';
 
 export interface DataHeader {
   parent: string;
@@ -15,14 +16,15 @@ export interface DataHeader {
 })
 export class HeaderComponent implements OnInit {
   dataMenu = MenuData;
-  isShow:boolean = false;
+  isShow: boolean = false;
   titelHeader: string = '';
   data: DataHeader = {
     parent: '',
     chilren: ''
   };
   constructor(
-    private router: Router
+    private router: Router,
+    private headerService: HeaderService
   ) {
     this.seachDataMenu(this.router.url);
   }
@@ -50,5 +52,13 @@ export class HeaderComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   mouseoutDropdown() {
     this.isShow = !this.isShow;
+  }
+  btnLogOut(): void {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this.headerService.logOut().subscribe((x: any) => {
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('user');
+      this.router.navigateByUrl('login');
+    });
   }
 }
