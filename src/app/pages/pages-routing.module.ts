@@ -10,6 +10,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/login/login.module').then((m) => m.LoginModule)
   },
   {
+    path: 'forgot-password',
+    loadChildren: () => import('./auth/forgot-password-mail/forgot-passwrod-mail.module').then((m) => m.ForgotPasswrodMailModule)
+  },
+  {
     path: '',
     canActivate : [AuthGuard],
     loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
