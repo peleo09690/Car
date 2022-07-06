@@ -16,7 +16,7 @@ export interface DataModel {
 }
 
 export interface HttpResponse {
-  data: DataModel;
+  data: DataModel | object;
   errors: object[];
   meta: MetaModel;
 }

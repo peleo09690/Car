@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { environment } from '@env/environment';
+import { LoginService } from '@auth/services/login.service';
+import { UserModelResponse } from '@layout/models/user.model';
 import { HeaderService } from '../../services';
 import { MenuData } from '../side-nav/menu.config';
 
@@ -17,23 +17,23 @@ export interface DataHeader {
 export class HeaderComponent implements OnInit {
   public dataMenu = MenuData;
   public titelHeader: string = '';
-  public data: DataHeader = {
-    parent: '',
-    chilren: ''
-  };
+
+
   public constructor(
+    private loginService: LoginService,
     private headerService: HeaderService
   ) {
   }
   public ngOnInit(): void {
-    this.headerService.getCurrentUser();
+    this.loginService.isLoginAsync$.subscribe((value) => {
+      if (value) {
+        this.headerService.getCurrentUser().subscribe((res: UserModelResponse) => {
+          if (res) {
+            sessionStorage.setItem('current_user', JSON.stringify(res.data));
+          }
+        });
+      }
+    });
   }
-  public btnLogOut(): void {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // this.headerService.logOut().subscribe((x: any) => {
-    //   localStorage.removeItem('id_token');
-    //   localStorage.removeItem('user');
-    //   this.router.navigateByUrl('login');
-    // });
-  }
+  public btnLogOut(): void { }
 }

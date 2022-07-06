@@ -38,3 +38,4 @@ Only use inline templates sparingly in very simple components with less than 3 l
 
 Coding rules enforcement and basic sanity checks are done in this project by [vscode-angular-html](https://github.com/ghaschel/vscode-angular-html).
  
+[Back to README](../README.md)

@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginModelResponse } from '@auth/models';
+import { LoginModelResponse, UserLogin } from '@auth/models';
 import { LoginService } from '@auth/services/login.service';
-
-export interface UserLogin {
-  username: string;
-  password: string;
-}
 
 @Component({
   selector: 'app-loggin',
@@ -16,46 +11,42 @@ export interface UserLogin {
 })
 export class LoginComponent implements OnInit {
   public showPassword: boolean = false;
-  public loginForm!: FormGroup;
-  public user: object | undefined;
+  public loginForm: FormGroup = new FormGroup({});
+  public user!: LoginModelResponse;
+
   public constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router
   ) { }
+
   public ngOnInit(): void {
     this.initialForm();
   }
-  private initialForm(): void {
-    this.loginForm = this.fb.group({
-      username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required])
-    });
-  }
+
+
   public togglePassWord(): void {
     this.showPassword = !this.showPassword;
   }
   public submitForm(): void {
     const data: UserLogin = this.loginForm.value;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+    if (this.loginForm.invalid) {
+      return;
+    }
     this.loginService.userLogin(data).subscribe((res: LoginModelResponse) => {
       if (res) {
         sessionStorage.setItem('id_token', res.access_token);
+        this.loginService.isLoginAsync$.next(true);
         this.router.navigate(['/user']);
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      // this.loginService.getDetailUserLogin().subscribe((x: any) => {
-      //   console.log(x);
-      //   let user = {
-      //     userName: x.data.userName,
-      //     userIdFormat: x.data.userIdFormat,
-      //     mail: x.data.mail,
-      //     phoneNumber: x.data.phoneNumber,
-      //     role: x.data.roles['role']
-      //   };
-      //   localStorage.setItem('user',JSON.stringify(user));
-      //   this.router.navigate(['user']);
-      // });
+    });
+  }
+
+  private initialForm(): void {
+    this.loginForm = this.fb.group({
+      username: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required])
     });
   }
 }

@@ -194,3 +194,5 @@ Run the serve command and navigate to `localhost:4200` in your browser.
 And that's it! If it's totally *borked*, file an issue and let us know.
 
 For more detail, see at https://github.com/angular/angularfire2
+
+[Back to README](../README.md)
