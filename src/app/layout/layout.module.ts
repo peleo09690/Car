@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HeaderService } from './services';
+import { ChangePasswordComponent } from './components/header/change-password/change-password.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HeaderService } from './services';
     HeaderComponent,
     FooterComponent,
     EditUserComponent,
-    SideNavComponent
+    SideNavComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,

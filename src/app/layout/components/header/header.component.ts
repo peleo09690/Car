@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { HeaderService } from '../../services';
 import { MenuData } from '../side-nav/menu.config';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 export interface DataHeader {
   parent: string;
@@ -22,7 +24,8 @@ export class HeaderComponent implements OnInit {
     chilren: ''
   };
   public constructor(
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    public dialog: MatDialog
   ) {
   }
   public ngOnInit(): void {
@@ -35,5 +38,11 @@ export class HeaderComponent implements OnInit {
     //   localStorage.removeItem('user');
     //   this.router.navigateByUrl('login');
     // });
+  }
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  public changePassword():void{
+    let dialog = this.dialog.open(ChangePasswordComponent, {
+      width:"520px"
+    });
   }
 }
