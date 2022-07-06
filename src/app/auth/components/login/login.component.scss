@@ -1,6 +1,5 @@
 $color-text: #9f9f9f;
 $letter-spacing: 0.014em;
-
 .login-page {
   margin: 150px auto;
   padding-top: 40px;
@@ -10,94 +9,24 @@ $letter-spacing: 0.014em;
   border-radius: 8px;
   text-align: center;
 }
-
 .title {
   margin-top: 16px;
+  font-weight: 700;
 }
-
 .form-login {
   width: 448px;
   margin: 0 auto;
 }
-
 .image-login .mat-icon {
   height: 48px;
   width: 48px;
 }
-
 .group-ip-user {
   margin-top: 40px;
 }
-
-.username,
-.password {
-  position: relative;
-  align-items: center;
-  display: flex;
-  width: 100%;
-}
-
-.ip-username,
-.ip-password {
-  padding: 10px 0;
-  padding-left: 45px;
-  width: 100%;
-  border: 1px solid #d6d6d6;
-  border-radius: 3px;
-}
-
-.username .icon-username {
-  position: absolute;
-  left: 16px;
-  width: 13px;
-  height: 21px;
-}
-
-.password {
-  margin-top: 16px;
-}
-
-.password .icon-password {
-  position: absolute;
-  left: 16px;
-  width: 13px;
-  height: 21px;
-}
-
-.password .icon-hidden-password {
-  position: absolute;
-  right: 16px;
-  width: 13px;
-  height: 21px;
-}
-
-.login-page .ip-username::-webkit-input-placeholder,
-.ip-password::-webkit-input-placeholder {
-  /* Edge */
-  color: $color-text;
-  font-size: 13px;
-  letter-spacing: $letter-spacing;
-}
-
-.login-page .ip-username:-ms-input-placeholder,
-.ip-password:-ms-input-placeholder {
-  /* Internet Explorer */
-  color: $color-text;
-  font-size: 13px;
-  letter-spacing: $letter-spacing;
-}
-
-.login-page .ip-username::placeholder,
-.ip-password::placeholder {
-  color: $color-text;
-  font-size: 13px;
-  letter-spacing: $letter-spacing;
-}
-
 .forgot-password {
-  margin: 12px 0 19px 0px;
+  margin: 23px 0 19px 0px;
 }
-
 .forgot-password .forgot-pwd {
   text-align: right;
   color: $color-text;
@@ -105,40 +34,56 @@ $letter-spacing: 0.014em;
   letter-spacing: $letter-spacing;
   margin: 0;
 }
-
-.btn-login {
-  padding: 10px 20px;
-  color: white;
-  width: 100%;
-  background: #4392bb;
-  border-radius: 3px;
-  border: none;
-  // margin-bottom: 32px;
-  margin-bottom: 55px;
+.group-password {
+  margin-top: 27px;
 }
-
-.register .register-text {
-  color: $color-text;
-  font-size: 10px;
-  letter-spacing: $letter-spacing;
-  margin: 0;
-}
-
-.btn-register {
-  margin-top: 8px;
-  padding: 10px 20px;
-  color: #4392BB;
-  width: 100%;
-  background: white;
-  border: 1px solid #D6D6D6;
-  border-radius: 3px;
-  margin-bottom: 55px;
-}
-
-button {
-  cursor: pointer;
-}
-
 .login-page input:-webkit-autofill {
   box-shadow: 0 0 0 1000px white inset !important;
+}
+::ng-deep .login-page .mat-raised-button {
+  line-height: 1.5;
+}
+::ng-deep .group-ip-user .mat-form-field {
+  width: 100%;
+}
+::ng-deep .group-ip-user
+  .mat-form-field-appearance-outline
+  .mat-form-field-infix {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border-top: 0;
+}
+::ng-deep .group-ip-user
+  .mat-form-field-appearance-outline
+  .mat-form-field-subscript-wrapper {
+  top: 40px;
+  padding: 0;
+}
+::ng-deep .group-ip-user .mat-form-field-suffix .mat-icon {
+  line-height: 0;
+}
+::ng-deep .group-ip-user
+  .mat-form-field-appearance-outline
+  .mat-form-field-wrapper {
+  margin: 0;
+  padding: 0;
+}
+::ng-deep .group-ip-user
+  .mat-form-field-appearance-outline
+  .mat-form-field-flex {
+  padding: 12px 16px;
+}
+::ng-deep .group-ip-user .mat-icon {
+  height: 18px;
+  width: 15px;
+}
+.btn-login {
+  padding: 10px 20px;
+  width: 100%;
+  margin-bottom: 55px;
+}
+.ip-username,
+.ip-password {
+  padding-left: 16px;
 }
