@@ -3,13 +3,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiPath } from '@core/config';
 import { HttpService } from '@core/services';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginModelRequest, LoginModelResponse } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService extends HttpService {
+  public isLoginAsync$ = new BehaviorSubject<boolean>(false);
+
   public constructor(
     protected override http: HttpClient
   ) {

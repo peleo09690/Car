@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AngularMaterialModule } from '@common/angular-material.module';
+import { AuthModule } from './../auth/auth.module';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonAppModule } from '@common/common.module';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
@@ -29,7 +29,8 @@ import { ChangePasswordComponent } from './components/header/change-password/cha
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    CommonAppModule.forRoot()
+    CommonAppModule.forRoot(),
+    AuthModule
   ],
   exports: [
     HeaderComponent,

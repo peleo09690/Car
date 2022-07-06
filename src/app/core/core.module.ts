@@ -3,6 +3,7 @@ import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AuthModule } from './../auth/auth.module';
 import { AuthGuard } from './guards';
 import { JsonTokenWebInterceptor } from './injectors';
 import { LanguageService } from './services/cache/languague.service';
@@ -14,7 +15,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  imports: [CommonModule]
+  imports: [CommonModule, AuthModule]
 })
 export class CoreModule {
   public constructor(@Optional() @SkipSelf() core: CoreModule) {

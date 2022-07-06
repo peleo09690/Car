@@ -44,3 +44,5 @@ A good starting point for learning is the official
 But as you will most likely want to go bit further in real world apps, these
 [example test snippets](https://gist.github.com/wkwiatek/e8a4a9d92abc4739f04f5abddd3de8a7) are also very helpful to
 learn how to cover most common testing use cases.
+
+[Back to README](../README.md)

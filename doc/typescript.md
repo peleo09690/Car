@@ -61,3 +61,5 @@ Angular-specific rules are also enforced via the [Codelyzer](https://github.com/
 
 The read of [TypeScript Deep Dive](https://basarat.gitbooks.io/typescript) is recommended, this is a very good
 reference book for TypeScript (and also open-source).
+
+[Back to README](../README.md)

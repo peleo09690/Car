@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogOption } from '@common/components/dialog-seach/dialog-seach.component';
 
@@ -31,8 +31,8 @@ export class ChangePasswordComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-member-accessibility
   initialForm() {
     this.changePasswordForm = this.fb.group({
-      newPassword: [''],
-      confirmPassword: ['']
+      newPassword: new FormControl(null, [Validators.required]),
+      confirmPassword: new FormControl(null, [Validators.required])
     });
   }
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-member-accessibility

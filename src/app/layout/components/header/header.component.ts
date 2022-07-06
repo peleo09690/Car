@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { environment } from '@env/environment';
+import { LoginService } from '@auth/services/login.service';
+import { UserModelResponse } from '../../models/user.model';
 import { HeaderService } from '../../services';
 import { MenuData } from '../side-nav/menu.config';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -19,27 +19,27 @@ export interface DataHeader {
 export class HeaderComponent implements OnInit {
   public dataMenu = MenuData;
   public titelHeader: string = '';
-  public data: DataHeader = {
-    parent: '',
-    chilren: ''
-  };
+  public userName: string = '';
+
   public constructor(
+    private loginService: LoginService,
     private headerService: HeaderService,
     public dialog: MatDialog
   ) {
   }
   public ngOnInit(): void {
-    this.headerService.getCurrentUser();
+    this.loginService.isLoginAsync$.subscribe((value) => {
+      if (value) {
+        this.headerService.getCurrentUser().subscribe((res: UserModelResponse) => {
+          if (res) {
+            this.userName = res.data.userName;
+            sessionStorage.setItem('current_user', JSON.stringify(res.data));
+          }
+        });
+      }
+    });
   }
-  public btnLogOut(): void {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // this.headerService.logOut().subscribe((x: any) => {
-    //   localStorage.removeItem('id_token');
-    //   localStorage.removeItem('user');
-    //   this.router.navigateByUrl('login');
-    // });
-  }
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  public btnLogOut(): void { }
   public changePassword():void{
     let dialog = this.dialog.open(ChangePasswordComponent, {
       width:"520px"

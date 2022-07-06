@@ -93,3 +93,5 @@ You just need to declare which browsers you target in the [`browserslist`](https
 Coding rules are enforced in this project with [stylelint](https://stylelint.io).
 This tool also checks the compatibility of the rules used against the browsers you are targeting (specified in the
 [`browserslist`](https://github.com/ai/browserslist) file), via [doiuse](https://github.com/anandthakker/doiuse).
+
+[Back to README](../README.md)

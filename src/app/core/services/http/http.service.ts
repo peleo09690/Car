@@ -12,8 +12,8 @@ import { catchError, tap } from 'rxjs/operators';
 export abstract class HttpService {
   public constructor(protected http: HttpClient) { }
 
-  public get(url: string): Observable<any> {
-    return this.http.get<any>(url).pipe(
+  public get(url: string): Observable<HttpResponse> {
+    return this.http.get<HttpResponse>(url).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );

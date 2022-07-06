@@ -169,3 +169,5 @@ make sure you deliver the best experience to your customers.
 After going through the checklist, make sure to also run an audit of your page through
 [**Lighthouse**](https://developers.google.com/web/tools/lighthouse/), the latest Google tool that gives you meaningful
 insight about your app performance, accessibility, mobile compatibility and more.
+
+[Back to README](../README.md)
