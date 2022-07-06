@@ -3,7 +3,7 @@ import { DialogOption } from '@common/components/dialog-seach/dialog-seach.compo
 import { BtnAction, ButtonConfig, IConfigSearch, IndexColumn, InputSearch, IOption, ITableConfig, OptionButtonColumn, TextColumn } from '@common/models';
 import { DataModel } from '@core/models/http-response.model';
 import { environment } from '@env/environment';
-import { DataEditUser } from 'src/app/layout/edit-user/edit-user.component';
+import { DataEditUser } from 'src/app/layout/components/edit-user/edit-user.component';
 import { RequestUser } from './user.model';
 import { UserService } from './user.service';
 

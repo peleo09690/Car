@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AngularMaterialModule } from '@common/angular-material.module';
-import { SideNavComponent } from './side-nav/side-nav.component';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonAppModule } from '@common/common.module';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { HeaderService } from './services';
 
 
 @NgModule({
@@ -26,9 +26,8 @@ import { BrowserModule } from '@angular/platform-browser';
     AngularMaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    NzLayoutModule,
-    NzMenuModule,
-    RouterModule
+    RouterModule,
+    CommonAppModule.forRoot()
   ],
   exports: [
     HeaderComponent,
@@ -37,6 +36,9 @@ import { BrowserModule } from '@angular/platform-browser';
     SideNavComponent,
     NzLayoutModule,
     FormsModule
+  ],
+  providers: [
+    HeaderService
   ]
 })
 export class LayoutModule { }

@@ -8,6 +8,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { DialogSeachComponent } from './components/dialog-seach/dialog-seach.component';
 import { GroupSearchComponent } from './components/group-search/group-search.component';
+import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { DateTimeformat2Pipe, DateTimeformat3Pipe, DateTimeformatPipe, DateTimeUtc2LocalFormat, DateTimeUtcFormat } from './pipe/date-time-format.pipe';
 import { CurrencyFormatPipe, DecimalFormatPipe, TooltipListPipe } from './pipe/string-format.pipe';
 
@@ -45,6 +46,7 @@ const CustomPipes = [
     ...CommonComponents,
     ...CustomPipes,
     AngularMaterialModule,
+    NgZorroAntdModule,
     ReactiveFormsModule
   ]
 })

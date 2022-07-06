@@ -10,21 +10,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ) { }
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const currentUser = localStorage.getItem('id_token');
+    const currentUser = sessionStorage.getItem('id_token');
     if (!currentUser) {
       this.router.navigate(['auth/login']);
       return false;
     }
-    // if (!currentUser) {
-    //   // const accessToken = JSON.parse(currentUser).access_token;
-    //   this.router.navigate(['login']);
-    //   // if (!currentUser) {
-    //   //   return false;
-    //   // }
-    // } else {
-    //   this.router.navigate(['']);
-    //   return false;
-    // }
     return true;
   }
 
