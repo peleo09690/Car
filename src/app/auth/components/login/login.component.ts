@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { LoginModelResponse } from '@auth/models';
+import { LoginService } from '@auth/services/login.service';
 
 export interface UserLogin {
   username: string;
@@ -36,10 +37,12 @@ export class LoginComponent implements OnInit {
   }
   public submitForm(): void {
     const data: UserLogin = this.loginForm.value;
-    console.log(data);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this.loginService.userLogin(data).subscribe((x: any) => {
-      localStorage.setItem('id_token', x?.access_token);
+    this.loginService.userLogin(data).subscribe((res: LoginModelResponse) => {
+      if (res) {
+        sessionStorage.setItem('id_token', `${res.token_type} ${res.access_token}`);
+        this.router.navigate(['']);
+      }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       // this.loginService.getDetailUserLogin().subscribe((x: any) => {
       //   console.log(x);

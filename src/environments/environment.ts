@@ -12,13 +12,10 @@ export const environment = {
     ],
     defaultLanguage: 'ja'
   },
-  // API_SERVICE: 'https://staging.jc-auction.vi-mash.com/',
-  // API_AUTH: 'https://staging.jc-auction.vi-mash.com/',
-  API_SERVICE: 'http://localhost:8081/',
-  API_AUTH: 'http://localhost:8080/',
+  API_SERVICE: 'http://localhost:8085',
+  API_AUTH: 'http://localhost:8086',
   pageSize: 20,
-  pageIndex: 1,
-  apiService: 'https://staging.jc-auction.vi-mash.com/'
+  pageIndex: 1
 };
 
 /*
