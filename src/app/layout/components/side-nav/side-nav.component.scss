@@ -1,0 +1,68 @@
+
+.logo {
+  height: 32px;
+  margin: 26px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+::ng-deep .ant-layout-sider-children {
+  background-color: #fff;
+}
+
+::ng-deep .ant-layout-sider-children .ant-menu.ant-menu-inline-collapsed {
+  width: 80px;
+}
+
+.flex-grid {
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  columns: 2;
+}
+
+.flex-grid li {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 10px;
+  align-items: center;
+}
+.flex-columns li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.flex-columns {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+::ng-deep .ant-menu.ant-menu-inline-collapsed>.ant-menu-item,
+::ng-deep .ant-menu.ant-menu-inline-collapsed>.ant-menu-submenu>.ant-menu-submenu-title {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+
+}
+
+.ant-menu-submenu-selected,
+.ant-menu-item-selected {
+  background-color: #4392BB !important;
+  color: #fff !important;
+}
+.mrg-300 {
+  margin-bottom: 280px;
+}
+.flex-class{
+  display: flex;
+  gap: 0 14px;
+}
+::ng-deep .ant-menu-vertical .ant-menu-item{
+  margin-top: 0;
+}
+.ng-star-inserted{
+  color: #4392BB;
+}

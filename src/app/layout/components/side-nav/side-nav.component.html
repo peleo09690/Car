@@ -1,0 +1,43 @@
+<nz-sider
+  [nzCollapsible]="false"
+  [nzCollapsed]="true"
+  nzWidth="90px"
+  [nzTheme]="'light'"
+>
+  <!-- <div class="logo">
+    <mat-icon svgIcon="iconLogomenu"></mat-icon>
+  </div> -->
+  <ul nz-menu nzTheme="light" nzMode="inline">
+    <ng-container class="flex-class" *ngFor="let node of dataMenu ; let index= index">
+      <li *ngIf="node.children.length > 0" nz-submenu  [nzTitle]="node.name || ''"  [ngClass]="{'mrg-300':(index===6)}">
+        <ng-container *ngIf="node.children.length > 0">
+          <ul
+            [ngClass]="{
+              'flex-grid': node.children.length > 8,
+              'flex-columns': node.children.length < 9
+            }"
+          >
+            <li
+              nz-menu-item
+              [nzMatchRouter]="item.route"
+              [routerLink]="item.route"
+              *ngFor="let item of node.children"
+            >
+              <mat-icon [svgIcon]="item.icon || ''"></mat-icon>
+              {{ item.name }}
+            </li>
+          </ul>
+        </ng-container>
+      </li>
+      <!-- <li [ngStyle]="{'mrg-300':(index===6)}"
+        *ngIf="node.children.length === 0"
+        nz-menu-item
+        [routerLink]="node.route"
+      >
+        <span>
+          {{node.name }}
+        </span>
+      </li> -->
+    </ng-container>
+  </ul>
+</nz-sider>

@@ -1,0 +1,73 @@
+@import "~@angular/material/theming";
+
+
+$md-primary: (
+  50: #ecebf5,
+  100: #cfcee5,
+  200: #b0aed4,
+  300: #908dc2,
+  400: #7874b5,
+  500: #605ca8,
+  600: #5854a0,
+  700: #4e4a97,
+  800: #44418d,
+  900: #33307d,
+  A100: #c8c6ff,
+  A200: #9793ff,
+  A400: #4392BB,
+  A700: #4e47ff,
+  contrast: (50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff)
+);
+
+// Copy the palettes from your selected theme (usually theme.scss).
+$app-primary: mat-palette($md-primary, A400);
+$app-accent: mat-palette($mat-deep-purple, 900, A100, A400);
+$app-warn: mat-palette($mat-red);
+
+// Create your Sass color vars (will be available in all the project)
+// $primary: mat-color($app-primary);
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$warn: #FF0606;
+$color-primary: #4392BB;
+
+$font-primary: #4392BB;
+$font-strong: #252525;
+$font-accent: black;
+$font-warn: red;
+
+$fa-font-path: "../node_modules/@fortawesome/fontawesome-free-webfonts/webfonts";
+
+$borderMargin: 10px;
+$borderRadius: 20px;
+$tableMargin: 8px;
+$mainToolbarHeight: 56px;
+$userIconSize: 32px;
+$sideNavWidth: 260px;
+$sideNavBgColor: rgb(243, 243, 243);
+$searchIconColor: rgb(56, 56, 56);
+$buttonMinWidth: 150px;
+$mainBackground: #F9FAFE;
+
+$blue3s: #26b9f2;
+$black3s: #343a40;
+$white3s: white;
+$grey3s: #e9e9ea; //this is for footer bar and table headers
+$greyBackground: #f3f3f3; // for authentication
+
+$warningOrange: #ffbe4d;
+$successGreen: #59c78d;
+$errorRed: #f3656b;

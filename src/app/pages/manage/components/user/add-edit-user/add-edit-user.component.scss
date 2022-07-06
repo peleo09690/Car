@@ -1,0 +1,20 @@
+.detail-container {
+  width: 100%;
+
+  .header-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    background-color: #f0f3f5;
+
+    span {
+      font-weight: 600;
+      padding-left: 15px;
+    }
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}

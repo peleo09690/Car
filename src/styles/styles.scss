@@ -1,0 +1,98 @@
+/* You can add global styles to this file, and also import other style files */
+@import "styles-variables.scss";
+@import "scss/jpc.scss";
+
+/**
+ Material Theming ref: https://medium.com/@bogac/customization-of-an-angular-material-2-theme-typography-components-3ca5584f36ca
+*/
+$general-typography: mat-typography-config($font-family: "Noto Sans JP");
+
+@include mat-core($general-typography);
+
+$tc3s-app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+@include angular-material-theme($tc3s-app-theme);
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  color: $black3s;
+}
+
+
+main {
+  z-index: 0 !important;
+  padding-top: $mainToolbarHeight;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'NotoSans JP', sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+/*---------------- GLOBAL SHARED CLASSES ----------------*/
+
+::-webkit-scrollbar-track {
+  background-color: #f9f9f9;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: $primary;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 4px;
+  width: 1px;
+  height: 6px;
+}
+
+.overflow {
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/*-----------------------------------------------------------------------------------*/
+
+/*---------------- BUTTON MATERIAL CLASSES ----------------*/
+.mat-stroked-button {
+  color: $font-primary;
+}
+
+/*-----------------------------------------------------------------------------------*/

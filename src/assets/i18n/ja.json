@@ -1,0 +1,12 @@
+{
+  "common": {
+    "paging": {
+      "total": "全",
+      "size": "件中",
+      "show": "件表示"
+    },
+    "button": {
+      "show-more": "更に表示"
+    }
+  }
+}

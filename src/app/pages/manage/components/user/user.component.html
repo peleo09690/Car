@@ -1,0 +1,18 @@
+<h3>Sample 1</h3>
+
+<app-group-search [searchConfig]="searchConfig"
+                  [btnConfig]="btnConfig"
+                  (handleBtnSubmitClicked)="handleGroupSearchClk($event)"
+                  (handleBtnDetailClicked)="handleAddNew()"></app-group-search>
+<div class="user-container">
+  <app-datatable [tableConfig]="tableConfig"
+                 [dataSource]="data"
+                 (tableClick)="handleClick($event)"
+                 (handleSort)="handleSort($event)"
+                 (handleBtnAction)="handleActionBtn($event)"
+                 [ngStyle]="{width: isShowDetail ? '50%' : '100%'}"></app-datatable>
+  <app-add-edit-user (handleClose)="closeDetail()"
+                     [dataHandle]="dataItem"
+                     class="hidden-add"
+                     [ngClass]="{'show-detail': isShowDetail}"></app-add-edit-user>
+</div>
