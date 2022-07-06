@@ -22,13 +22,13 @@ export class UserService extends HttpService {
   public updateUser(payload: any): Observable<any> {
     // const request = queryString.stringify(payload);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return this.put(`${ApiPath.CREATEANDUPDATEUSER}`, payload) as Observable<any>;
+    return this.put(`${ApiPath.CREATE_AND_UPDATE_USER}`, payload) as Observable<any>;
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public createUser(payload: any): Observable<any> {
     // const request = queryString.stringify(payload);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return this.post(`${ApiPath.CREATEANDUPDATEUSER}`, payload) as Observable<any>;
+    return this.post(`${ApiPath.CREATE_AND_UPDATE_USER}`, payload) as Observable<any>;
   }
   // // eslint-disable-next-line @typescript-eslint/no-explicit-any
   // public deleteUser(idFormat: string): Observable<any> {

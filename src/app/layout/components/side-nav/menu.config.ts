@@ -1,4 +1,4 @@
-import { ISideMenuNode } from "../models/menu.model";
+import { ISideMenuNode } from "../../models/menu.model";
 
 export const MenuData: Array<ISideMenuNode> = [
   {

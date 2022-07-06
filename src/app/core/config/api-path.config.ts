@@ -5,10 +5,9 @@ export const ApiPathConfig = {
     logOut: '/oauth/logout'
   },
   service: {
-    login: '/oauth/token',
     dialogCommon: 'api/common/dialog-common'
   },
   user: {
-    user: 'api/user'
+    user: '/api/user'
   }
 };

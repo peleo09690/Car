@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.loginService.userLogin(data).subscribe((res: LoginModelResponse) => {
       if (res) {
-        sessionStorage.setItem('id_token', `${res.token_type} ${res.access_token}`);
-        this.router.navigate(['']);
+        sessionStorage.setItem('id_token', res.access_token);
+        this.router.navigate(['/user']);
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       // this.loginService.getDetailUserLogin().subscribe((x: any) => {

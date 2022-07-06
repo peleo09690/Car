@@ -32,8 +32,8 @@
       "@core/*": [
         "src/app/core/*"
       ],
-      "@shared/*": [
-        "src/app/shared/*"
+      "@layout/*": [
+        "src/app/layout/*"
       ],
       "@env/*": [
         "src/environments/*"
