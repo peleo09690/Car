@@ -4,32 +4,28 @@
     <span style="margin-left: 50px">{{ titelHeader }}</span>
   </div>
   <div class="menu-center"></div>
-  <a nz-dropdown [nzDropdownMenu]="menu">
-    <mat-icon svgIcon="iconUser"></mat-icon>
-  </a>
-  <nz-dropdown-menu #menu="nzDropdownMenu">
-    <ul nz-menu nzSelectable>
-      <li nz-menu-item>
-        <mat-icon
-          class="icon-dropdown-user"
-          svgIcon="iconChangePassword"
-        ></mat-icon
-        ><span>change password</span>
-      </li>
-      <li nz-menu-item (click)="btnLogOut()">
-        <mat-icon class="icon-dropdown-user" svgIcon="iconLogout"></mat-icon
-        ><span>logout</span>
-      </li>
-    </ul>
-  </nz-dropdown-menu>
-  <!-- <div class="menu-user" (mouseenter)="mouseoverDropdown()"
-  (mouseleave)="mouseoutDropdown()">
-
-    <div class="show-menu" *ngIf="isShow">
-      <ul>
-        <li><mat-icon class="icon-dropdown-user" svgIcon="iconChangePassword"></mat-icon><span>change password</span></li>
-        <li (click)="btnLogOut()"><mat-icon class="icon-dropdown-user" svgIcon="iconLogout"></mat-icon><span>logout</span></li>
-      </ul>
-    </div>
-  </div> -->
+  <div class="menu-user">
+    <a nz-dropdown [nzDropdownMenu]="menu">
+      <span class="username">{{userName}}</span>
+      <mat-icon svgIcon="iconUser"></mat-icon>
+    </a>
+  </div>
 </div>
+
+
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu nzSelectable class="list">
+    <li nz-menu-item (click)="changePassword()">
+      <mat-icon
+        class="icon-dropdown-user"
+        svgIcon="iconChangePassword"
+      ></mat-icon
+      ><span>change password</span>
+    </li>
+    <li nz-menu-item (click)="btnLogOut()">
+      <mat-icon class="icon-dropdown-user" svgIcon="iconLogout"></mat-icon
+      ><span>logout</span>
+    </li>
+  </ul>
+</nz-dropdown-menu>

@@ -40,39 +40,24 @@ $font-size-header : 14px;
     align-items: center;
   }
   .menu-user{
-    position: relative;
-    height: 100%;
+    display: flex;
+    height: 75%;
+    border: 1px solid #4392BB;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
+  .menu-user a.ant-dropdown-trigger.ant-dropdown-link{
+    color: black;
     display: flex;
     align-items: center;
+    padding: 0 10px;
+    gap: 10px;
   }
-  .show-menu{
-    position: absolute;
-    right: 0;
-    top: 40px;
-    background-color: white;
-    border: 1px solid gray;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  .show-menu ul{
-    padding: 0;
-    margin: 0;
-  }
-  .show-menu ul li{
-    margin: 0;
-    // width: max-content;
-    width: 180px;
-    padding: 10px 20px;
-    border-bottom: 1px solid #c8ced3;
-    display: flex;
-    align-items: center;
-  }
-  .show-menu ul li:last-child{
-    border-bottom: none;
-  }
-  .icon-dropdown-user{
-    margin-right: 10px;
-  }
+}
+::ng-deep ul.list{
+  padding: 0;
+  border: 1px solid #4392BB;
+}
+::ng-deep .list li.ant-dropdown-menu-item{
+  gap: 10px;
 }
