@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { CommonAppModule } from '@common/common.module';
+import { LoadingSpinnerDialogComponent } from '@layout/components/loading-spinner-dialog/loading-spinner-dialog.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthModule } from './../auth/auth.module';
@@ -15,7 +17,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  imports: [CommonModule, AuthModule]
+  imports: [
+    CommonModule,
+    AuthModule,
+    CommonAppModule.forRoot()
+  ]
 })
 export class CoreModule {
   public constructor(@Optional() @SkipSelf() core: CoreModule) {
@@ -30,6 +36,7 @@ export class CoreModule {
       providers: [
         AuthGuard,
         LocalizationService,
+        LoadingSpinnerDialogComponent,
         LanguageService,
         IconService,
         TranslateModule.forRoot({

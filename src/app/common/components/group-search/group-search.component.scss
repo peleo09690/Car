@@ -1,3 +1,6 @@
+@import "src/styles/styles-variables.scss";
+@import "src/styles/scss/_radio-btn.scss";
+
 .control {
   display: flex;
 }
@@ -5,16 +8,11 @@
 mat-form-field.date-time {
   width: 200px;
 }
-.add-new{
-  background: #009cc3;
-  border-radius: 5px;
-}
 
 .group-search-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  border: 1px solid rgb(0, 0, 0, 0.15);
+  margin-bottom: 4px;
 
   .header-group {
     display: flex;
@@ -23,111 +21,299 @@ mat-form-field.date-time {
     background-color: #fff;
     padding: 5px;
     align-items: center;
+    min-height: 48px;
+    width: calc(100% - 88px);
+    position: fixed;
+    top: 0;
+    z-index: 990;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0px;
+      width: 100%;
+      height: 4px;
+      background: #e5e9f7;
+    }
 
     .title-header {
+      display: flex;
       padding-left: 10px;
+      gap: 12px;
+      align-items: center;
+
+      .title {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.014em;
+      }
+
+      .title.parent {
+        color: $nobel;
+      }
+
+      .title.screen {
+        color: $color-primary;
+      }
+
+      .right {
+        width: 7px;
+        height: 16px;
+      }
     }
+
+    .clear:hover {
+      background-color: $whiteSmoke;
+    }
+
+    mat-icon.icon {
+      color: $color-primary;
+    }
+  }
+
+  button {
+    box-shadow: none !important;
   }
 
   .container.closed-search {
-    transition: height .5s ease-in-out;
+    transition: height 0.5s ease-in-out;
     height: 0;
-    visibility: hidden;
+    display: none;
     overflow: hidden;
   }
 
-
   .container {
     transition: height 0.2s ease-out;
-    -webkit-transition: height .5s ease-in-out;
-    -moz-transition: height .5s ease-in-out;
-    -ms-transition: height .5 ease-in-outs;
-    -o-transition: height .5s ease-in-out;
-    -webkit-transition: height .5s ease-in-out;
-    transition: height .5s;
+    -webkit-transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    -ms-transition: height 0.5 ease-in-outs;
+    -o-transition: height 0.5s ease-in-out;
+    -webkit-transition: height 0.5s ease-in-out;
+    transition: height 0.5s;
     display: flex;
-    background-color: #fff;
+    flex-direction: column;
+    background-color: $aliceBlue;
+    margin-top: 4px;
+    border: 0.5px solid $color-primary;
+    border-radius: 2px;
+    padding: 12px 16px 7px 16px;
+    // margin-top: 52px;
 
     .search-group {
-      width: 80%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 15px;
+      display: flex;
+      // justify-content: space-between;
+      gap: 12px;
+
+      .item-search {
+        display: flex;
+        flex-direction: row;
+        -ms-box-orient: horizontal;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        .lbl-input-search {
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 18px;
+          letter-spacing: 0.014em;
+          color: $fiord;
+        }
+      }
+    }
+
+    .btn-search-inline {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      align-items: center;
+      margin-top: 16px;
+
+      .clear {
+        color: $warn;
+      }
+
+      .clear:hover {
+        background-color: $whiteSmoke  !important;
+      }
     }
 
     .btn-area {
-      width: 20%;
       display: flex;
+      gap: 12px;
+      width: 100%;
       justify-content: flex-end;
-      align-items: center;
-      padding-right: 15px;
+
+      .clear {
+        color: $warn;
+      }
+
+      .clear:hover {
+        background-color: $whiteSmoke  !important;
+      }
+
+      button {
+        width: 80px;
+      }
     }
+
+    .btn-area.search {
+      padding: 12px 0px 0px 12px;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+
+      .from-to-search {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+
+        span {
+          color: $fiord;
+          font-weight: 500;
+          font-size: 13px;
+        }
+      }
+
+      .margin-bottom-5 {
+        margin-bottom: 5px;
+      }
+
+      .raido {
+        mat-radio-group {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding-left: 12px;
+          gap: 32px;
+          height: 29px;
+          border: 1px solid $lightGrey;
+          border-radius: 2px;
+
+          .mat-radio-button {
+            display: flex;
+          }
+        }
+      }
+    }
+
+    .clear-action:hover {
+      background-color: $whiteSmoke;
+    }
+  }
+
+  .input-dialog {
+    position: relative;
+
+    mat-icon {
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      width: 14px;
+      top: 3px;
+    }
+  }
+
+  .mat-stroked-button {
+    height: 32px;
   }
 }
 
-.mat-raised-button.mat-primary {
-  margin-right: 5px;
-  margin-left: 10px;
-  background-color: #0062b2;
-  border-color: #0062b2;
-}
-
 .tooltip-orange {
-  background: #e3953a;
+  background: $fireBush;
 }
 
-::ng-deep .control .mat-form-field-appearance-outline .mat-form-field-wrapper {
-  margin: 0 !important;
+.btn-icon.mat-raised-button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  min-width: 28px;
+  line-height: 28px;
+  box-shadow: none !important;
+
+  mat-icon {
+    width: 12px;
+  }
 }
 
-::ng-deep .control .mat-form-field-appearance-outline .mat-form-field-infix {
-  padding: 0 0 8px;
+::ng-deep .group-search-container .mat-form-field-infix {
+  height: 30px;
+  font-size: 13px;
+  border: unset;
+  padding: unset;
+  margin-top: 3px;
+
+  input {
+    height: 30px;
+    margin-top: -5px;
+  }
+}
+::ng-deep .group-search-container .ip-search {
+  width: 85% !important;
 }
 
-::ng-deep .control .mat-form-field-wrapper {
-  padding-bottom: 0;
-}
-
-::ng-deep .control .mat-form-field-appearance-outline .mat-form-field-outline-start {
-  border-radius: 0 !important;
-}
-
-::ng-deep .control .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-start,
-::ng-deep .control .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
-::ng-deep .control .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
+::ng-deep .group-search-container .mat-form-field-outline-end {
   border-width: 1px !important;
 }
 
-::ng-deep .control .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: rgba(0, 0, 0);
+::ng-deep .group-search-container .mat-form-field-outline-start {
+  border-width: 1px !important;
 }
 
-.mat-raised-button.mat-primary {
-  margin-right: 5px;
-  margin-left: 10px;
-  background-color: #0062b2;
-  border-color: #0062b2;
+::ng-deep .group-search-container .mat-form-field-outline.mat-form-field-outline-thick {
+  height: 30px;
 }
 
-.tooltip-orange {
-  background: #e3953a;
+::ng-deep .group-search-container .mat-form-field-suffix {
+  top: unset;
 }
 
-.label {
+::ng-deep .input-search-group {
+  width: 150px;
+}
+
+::ng-deep .group-search-container input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+::ng-deep .group-search-container input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+.ic-search {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  right: -4px;
+  top: 9px;
+  cursor: pointer;
+}
+
+.box-right {
   display: flex;
-  -webkit-box-align: center;
-  justify-content: center;
   align-items: center;
-  padding: 0.375rem 0.25rem;
-  margin-bottom: 0;
-  font-size: .75rem;
-  font-weight: 300;
-  line-height: 1.5;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  background-color: #009cc3;
-  border-radius: 0.25rem 0 0 0.25rem;
-  min-width: 100px;
+  color: $color-primary;
+  margin-left: 30px;
+}
+
+.expansion-panel-sub {
+  width: 70px;
+}
+
+.title-name {
+  margin-right: 20px;
+}
+
+::ng-deep .group-search-container .mat-form-field-suffix {
+  top:  -4px !important;
+  right: -5px;
 }

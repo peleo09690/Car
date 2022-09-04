@@ -12,12 +12,16 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ) { }
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const currentUser = sessionStorage.getItem('id_token');
+    const currentUser = localStorage.getItem('id_token');
+
     if (!currentUser) {
       this.router.navigate(['auth/login']);
+
       return false;
     }
+
     this.loginService.isLoginAsync$.next(true);
+
     return true;
   }
 

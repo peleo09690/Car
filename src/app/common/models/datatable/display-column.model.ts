@@ -5,6 +5,11 @@ export interface IOption {
   color?: string;
 }
 
+export interface IRadioOption{
+  key:string,
+  value: string,
+}
+
 export interface IDisplayColumn {
   id: string;
   type: string;
@@ -22,8 +27,28 @@ export interface IDisplayColumn {
   sticky?: boolean;
   stickyEnd?: boolean;
   localizedTextList?: string;
-  format?: string | number;
+  format?: string | number | undefined;
   showSelectAll?: boolean;
+  arrayTextValueRadio?: Array<IRadioOption> | undefined;
+  zeroFill?: number | undefined;
+}
+
+export class TextZeroFillColumn implements IDisplayColumn {
+  public type = 'text-zero-fill';
+  public constructor(
+    public id: string,
+    public name: string,
+    public weight?: number,
+    public showTooltip: boolean = false,
+    public tooltipAlign?: string,
+    public sticky?: boolean,
+    public alignCenter: boolean = false,
+    public alignRight: boolean = false,
+    public className?: string,
+    public stickyEnd?: boolean,
+    public orderable: boolean = true,
+    public zeroFill:number = 6
+  ) { }
 }
 
 export class TextColumn implements IDisplayColumn {
@@ -39,7 +64,25 @@ export class TextColumn implements IDisplayColumn {
     public alignRight: boolean = false,
     public className?: string,
     public stickyEnd?: boolean,
-    public format?: string | number,
+    public format?: string | number | undefined,
+    public orderable: boolean = true
+  ) { }
+}
+
+export class TextValueRadiOColumn implements IDisplayColumn {
+  public type = 'text-value-radio';
+  public constructor(
+    public id: string,
+    public name: string,
+    public weight?: number,
+    public showTooltip: boolean = false,
+    public tooltipAlign?: string,
+    public sticky?: boolean,
+    public alignCenter: boolean = false,
+    public alignRight: boolean = false,
+    public className?: string,
+    public stickyEnd?: boolean,
+    public arrayTextValueRadio?: Array<IRadioOption> | undefined,
     public orderable: boolean = true
   ) { }
 }
@@ -146,13 +189,12 @@ export class CheckboxColumn implements IDisplayColumn {
   public type = 'selection';
   public id = 'selection';
   public name = 'common-names.select';
-  public alignRight = false;
 
   public constructor(
     public weight: number,
     public showSelectAll: boolean,
     public sticky?: boolean,
-    public stickyEnd?: boolean
+    public alignCenter?: boolean
   ) { }
 }
 

@@ -1,22 +1,126 @@
-
+@import "src/styles/styles-variables.scss";
+@import "src/styles/scss/breakpoints.scss";
+.nav-bar {
+  background-color: $white;
+}
 .logo {
-  height: 32px;
-  margin: 26px;
+  height: 52px;
   background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  mat-icon {
+    width: 36px;
+  }
 }
 
+.display-none {
+  display: none !important;
+}
+::ng-deep .ant-layout-sider-light {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+::ng-deep .ant-layout-sider-light,
 ::ng-deep .ant-layout-sider-children {
-  background-color: #fff;
+  background-color: $white;
+}
+
+::ng-deep .ant-menu-vertical {
+  border-right: none;
+}
+
+::ng-deep .user-menu.ant-menu-vertical .ant-menu-submenu {
+  background-color: $white;
+  color: $color-primary;
+}
+
+::ng-deep .ant-menu-vertical .ant-menu-submenu {
+  color: $color-primary;
+  background-color: $white;
+  font-size: 13px;
+}
+
+.ant-menu-inline .ant-menu-item-group-list .ant-menu-submenu-title,
+.ant-menu-inline .ant-menu-submenu-title,
+.ant-menu-vertical .ant-menu-item-group-list .ant-menu-submenu-title,
+::ng-deep .ant-menu-vertical .ant-menu-submenu-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin: 0;
+}
+
+::ng-deep .ant-menu-vertical .ant-menu-submenu-title {
+  padding: 0;
 }
 
 ::ng-deep .ant-layout-sider-children .ant-menu.ant-menu-inline-collapsed {
   width: 80px;
 }
 
+$heightItemMenuUser: (40px * 8)+64px;
+
+.reponsive-user {
+  // @include max-desktop-down-1280() {
+  //   margin-top: 160px;
+  // }
+
+  // @include max-desktop-down-1440() {
+  //   margin-top: 280px;
+  // }
+
+  // @include max-desktop-down-1600() {
+  //   margin-top: 230px;
+  // }
+
+  // @include max-desktop-down-1920() {
+  //   margin-top: 480px;
+  // }
+
+  @media (max-height: 1080px) {
+    margin-top: calc(856px - $heightItemMenuUser);
+  }
+
+  @media (max-height: 900px) {
+    margin-top: calc(730px - $heightItemMenuUser);
+  }
+  @media (max-height: 768px) {
+    margin-top: calc(538px - $heightItemMenuUser);
+  }
+  @media (min-height: 1081px) {
+    margin-top: calc(856px - $heightItemMenuUser);
+  }
+}
+$heightItemMenuSystem: 64px+ (40px * 2);
+
+.reponsive-system {
+  margin-top: calc(538px - $heightItemMenuSystem);
+
+  @media (max-height: 1080px) {
+    margin-top: calc(856px - $heightItemMenuSystem);
+  }
+
+  @media (max-height: 900px) {
+    margin-top: calc(730px - $heightItemMenuSystem);
+  }
+  @media (max-height: 768px) {
+    margin-top: calc(538px - $heightItemMenuSystem);
+  }
+  @media (min-height: 1081px) {
+    margin-top: calc(856px - $heightItemMenuSystem);
+  }
+}
+
 .flex-grid {
   -webkit-columns: 2;
   -moz-columns: 2;
   columns: 2;
+  overflow-y: hidden;
+  font-size: 13px;
 }
 
 .flex-grid li {
@@ -24,45 +128,131 @@
   page-break-inside: avoid;
   break-inside: avoid;
   display: flex;
-  justify-content: space-between;
   gap: 10px;
   padding: 0 10px;
   align-items: center;
+  color: $grey;
+  margin: 0;
+  height: 37px;
+
+  mat-icon {
+    width: 16px;
+  }
 }
-.flex-columns li{
+
+::ng-deep .flex-grid li.ant-menu-item-selected {
+  color: $color-primary !important;
+}
+
+.flex-columns li:hover,
+.flex-grid li:hover {
+  background-color: $color-background-hover !important;
+  color: $color-primary;
+
+  ::ng-deep .color svg > path {
+    fill: $color-primary;
+  }
+}
+
+::ng-deep .ant-menu-vertical.ant-menu-sub {
+  min-width: 182px;
+}
+
+.flex-columns li {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  height: 37px;
+  font-size: 13px;
 
+  mat-icon {
+    width: 16px;
+  }
 }
+
 .flex-columns {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
 }
-::ng-deep .ant-menu.ant-menu-inline-collapsed>.ant-menu-item,
-::ng-deep .ant-menu.ant-menu-inline-collapsed>.ant-menu-submenu>.ant-menu-submenu-title {
+
+::ng-deep .ant-menu-submenu-selected {
+  background-color: $color-primary;
+}
+
+::ng-deep
+  .ant-menu.ant-menu-inline-collapsed
+  > .ant-menu-submenu
+  > .ant-menu-submenu-title {
   padding: 0;
   display: flex;
   justify-content: center;
-
+  margin: 0;
 }
 
-.ant-menu-submenu-selected,
-.ant-menu-item-selected {
-  background-color: #4392BB !important;
-  color: #fff !important;
+::ng-deep .user-menu .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  background-color: $white;
+  color: $color-primary;
 }
-.mrg-300 {
-  margin-bottom: 280px;
+
+::ng-deep .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: $white;
+  background-color: $color-primary;
 }
-.flex-class{
-  display: flex;
-  gap: 0 14px;
+
+::ng-deep .ant-menu-submenu-selected.ant-menu-submenu-active {
+  background-color: $color-background-hover;
 }
-::ng-deep .ant-menu-vertical .ant-menu-item{
-  margin-top: 0;
+
+::ng-deep .user-menu.ant-menu-submenu-selected.ant-menu-submenu-active {
+  background-color: $white !important;
+  color: $grey;
 }
-.ng-star-inserted{
-  color: #4392BB;
+
+.flex-columns li.user-menu {
+  background-color: $white;
+  color: $grey;
+}
+
+::ng-deep .user-menu.ant-menu-item-selected {
+  .color svg > path {
+    fill: $grey !important;
+  }
+}
+::ng-deep .user-menu mat-icon {
+  height: 29px;
+}
+
+::ng-deep .ant-menu-submenu-selected:hover {
+  background-color: $color-background-hover;
+
+  .ant-menu-submenu-title {
+    color: $color-primary;
+  }
+}
+
+::ng-deep .color {
+  svg > path {
+    fill: $grey;
+  }
+}
+
+::ng-deep .color.user {
+  svg > path {
+    fill: $color-primary;
+  }
+}
+
+::ng-deep .ant-menu-item-selected {
+  color: $color-primary;
+
+  .color svg > path {
+    fill: $color-primary;
+  }
+}
+
+::ng-deep .ant-menu-submenu-arrow,
+.ant-menu-submenu-expand-icon,
+.ant-menu-submenu > .ant-menu-submenu-title::after {
+  display: none;
 }

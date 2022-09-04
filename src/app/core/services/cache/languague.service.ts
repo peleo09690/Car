@@ -10,6 +10,7 @@ export class LanguageService {
 
   public get(key: string): string {
     const value = this.cache.get(key);
+
     if (value) {
       return value;
     } else {

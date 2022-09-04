@@ -7,16 +7,34 @@ export interface MetaModel {
 }
 
 export interface DataModel {
-  length: number;
+  length: number,
   currentPage: number,
   noRecordInPage: number,
-  results: any,
+  results: object[],
   totalPage: number,
   totalRecords: number,
+  countRecords: number,
 }
 
-export interface HttpResponse {
-  data: DataModel | object;
+export interface HttpClienRequest {
+  page: number;
+  size: number;
+}
+
+export interface HttpClientResponse {
+  data: DataSearchModel | any;
   errors: object[];
   meta: MetaModel;
+}
+
+export class DataSearchModel implements DataModel {
+  public constructor(
+    public length: number = 0,
+    public currentPage: number = 0,
+    public noRecordInPage: number = 0,
+    public results: any[] = [],
+    public totalPage: number = 0,
+    public totalRecords: number = 0,
+    public countRecords: number = 0
+  ) { }
 }

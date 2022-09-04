@@ -45,6 +45,7 @@ export class LocalizationService {
     if (!isSupportedLanguage) {
       language = this.defaultLanguage;
     }
+
     this.translateService.use(language);
   }
 }

@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpResponse } from '@core/models/http-response.model';
+import { HttpClientResponse } from '@core/models/http-response.model';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -12,29 +11,29 @@ import { catchError, tap } from 'rxjs/operators';
 export abstract class HttpService {
   public constructor(protected http: HttpClient) { }
 
-  public get(url: string): Observable<HttpResponse> {
-    return this.http.get<HttpResponse>(url).pipe(
+  public get(url: string): Observable<HttpClientResponse> {
+    return this.http.get<HttpClientResponse>(url).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );
   }
 
-  public post(url: string, payload: object, header?: HttpHeaders): Observable<HttpResponse> {
-    return this.http.post<HttpResponse>(url, payload, { headers: header }).pipe(
+  public post(url: string, payload: object, header?: HttpHeaders): Observable<HttpClientResponse> {
+    return this.http.post<HttpClientResponse>(url, payload, { headers: header }).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );
   }
 
-  public put(url: string, payload: object): Observable<HttpResponse> {
-    return this.http.put<HttpResponse>(url, payload).pipe(
+  public put(url: string, payload: object): Observable<HttpClientResponse> {
+    return this.http.put<HttpClientResponse>(url, payload).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );
   }
 
-  public delete(url: string, payload: object): Observable<HttpResponse> {
-    return this.http.delete<HttpResponse>(url, payload).pipe(
+  public delete(url: string, payload?: object): Observable<HttpClientResponse> {
+    return this.http.delete<HttpClientResponse>(url, payload).pipe(
       tap((response) => response),
       catchError((err) => of(err))
     );

@@ -1,108 +1,126 @@
-$color-text: #9f9f9f;
+@import "../../../../styles/styles-variables.scss";
+
 $letter-spacing: 0.014em;
 
-.forgot-pwd-page {
-  margin: 150px auto;
+.forgot-pwd-mail-page {
   padding-top: 40px;
-  width: 560px;
-  background: #ffffff;
+  width: 530px;
+  background: $white;
   box-shadow: 0px 2px 16px rgba(53, 116, 177, 0.2);
   border-radius: 8px;
   text-align: center;
+
+  .title {
+    margin-top: 16px;
+    font-weight: 700;
+  }
+
+  .note {
+    color: $nobel;
+    margin-top: 20px;
+    font-size: 12px;
+    float: left;
+  }
+
+  .icon-back {
+    float: left;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .form-forgot-pwd {
+    width: 448px;
+    margin: 0 auto;
+  }
+
+  .image-forgot-pwd .mat-icon {
+    height: 48px;
+    width: 48px;
+  }
+
+  .group-ip-password {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .btn-forgot-pwd-mail {
+    padding: 10px 20px;
+    // width: 100%;
+    margin: 20px auto 40px auto;
+    // margin-top: 20px;
+    // margin-bottom: 40px;
+    width: 120px;
+    height: 40px;
+  }
 }
 
-.title {
-  margin-top: 16px;
+.forgot-pwd-mail-page button:disabled {
+  background: $sail;
+
+  .mat-button-wrapper {
+    color: $white;
+  }
+}
+::ng-deep .forgot-pwd-mail-page button:disabled {
+  background: $sail;
+
+  .mat-button-wrapper {
+    color: $white;
+  }
 }
 
-.icon-back {
-  float: left;
-  height: 11px;
-  width: 20px;
-  cursor: pointer;
+::ng-deep .forgot-pwd-mail-page .mat-raised-button {
+  line-height: 1.5;
 }
 
-.form-forgot-pwd {
-  width: 448px;
-  margin: 0 auto;
+::ng-deep .group-ip-password .mat-form-field {
+  width: 100%;
 }
 
-.image-forgot-pwd .mat-icon {
-  height: 48px;
-  width: 48px;
+::ng-deep .forgot-pwd-mail-page .mat-raised-button {
+  line-height: 1.5;
 }
 
-.group-ip-password {
+::ng-deep .group-ip-password .mat-form-field-appearance-outline .mat-form-field-infix {
   display: flex;
-  gap: 16px;
-  flex-direction: column;
-  margin-top: 40px;
-}
-
-.password {
-  position: relative;
   align-items: center;
+  padding: 0 !important;
+  border-top: 0;
+}
+
+::ng-deep .group-ip-password .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+  top: 38px;
+  padding: 0;
+}
+
+::ng-deep .group-ip-password .mat-form-field-suffix .mat-icon {
+  line-height: 0;
+}
+
+::ng-deep .group-ip-password .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0 !important;
+  padding: 0;
+}
+
+::ng-deep .group-ip-password .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon,
+.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon {
   display: flex;
-  width: 100%;
 }
 
-.ip-password {
-  padding: 10px 0;
-  padding-left: 45px;
-  width: 100%;
-  border: 1px solid #d6d6d6;
-  border-radius: 3px;
+::ng-deep .group-ip-password .mat-form-field-appearance-outline .mat-form-field-flex {
+  padding: 12px 16px;
+  margin-top: 0;
 }
 
-.password .icon-password {
-  position: absolute;
-  left: 16px;
-  width: 13px;
-  height: 21px;
+::ng-deep .group-ip-password .mat-icon {
+  height: 16px;
+  width: 20px;
 }
 
-.password .icon-hidden-password {
-  position: absolute;
-  right: 16px;
-  width: 13px;
-  height: 21px;
-}
-
-.forgot-pwd-page .ip-password::-webkit-input-placeholder {
-  /* Edge */
-  color: $color-text;
-  font-size: 13px;
-  letter-spacing: $letter-spacing;
-}
-
-.forgot-pwd-page .ip-password:-ms-input-placeholder {
-  /* Internet Explorer */
-  color: $color-text;
-  font-size: 13px;
-  letter-spacing: $letter-spacing;
-}
-
-.forgot-pwd-page .ip-password::placeholder {
-  color: $color-text;
-  font-size: 13px;
-  letter-spacing: $letter-spacing;
-}
-
-.btn-forgot-pwd {
-  padding: 10px 20px;
-  color: white;
-  width: 100%;
-  background: #4392bb;
-  border-radius: 3px;
-  border: none;
-  margin-top: 20px;
-  margin-bottom: 55px;
-}
-
-button {
-  cursor: pointer;
-}
-
-.forgot-pwd-page input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px white inset !important;
+.ip-username,
+.ip-email {
+  padding-left: 16px;
 }

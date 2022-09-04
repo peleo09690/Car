@@ -1,25 +1,29 @@
-import { HttpResponse } from "@core/models";
+import { DataModel, HttpClientResponse } from '@core/models';
 
-export interface UserModelResponse extends HttpResponse {
-  data: UserDetailModel,
+export interface UserModelResponse extends HttpClientResponse {
+  data: DataModel,
 }
+
 export interface UserDetailModel {
   userId: number;
-  userIdFormat: string;
   userName: string;
   mail: string;
-  phoneNumber: string;
-  requireChangePass: string;
-  createBy: null
+  phonePhone: string;
   delFlg: string;
-  exKey: number;
-  lastChangepassTime?: string
-  lastLoginTime?: string
-  lockUser: string;
-  counter: number;
+  lockUser: string | null;
   roles: UserRole[];
+  companyId: number;
+  createBy:string|null;
+
 }
 
 export interface UserRole {
   role: string;
 }
+
+export interface ChangePasswordRequest {
+  passwordNew: string,
+  passwordConfirm: string
+}
+
+

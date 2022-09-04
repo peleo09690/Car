@@ -1,27 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AngularMaterialModule } from '@common/angular-material.module';
-import { AuthModule } from './../auth/auth.module';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from '@auth/auth.module';
+import { AngularMaterialModule } from '@common/angular-material.module';
 import { CommonAppModule } from '@common/common.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoadingSpinnerDialogComponent } from './components/loading-spinner-dialog/loading-spinner-dialog.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { HeaderService } from './services';
-import { ChangePasswordComponent } from './components/header/change-password/change-password.component';
+import { CommonService } from './services/common.service';
+import { LoadingSpinnerDialogService } from './services/loading-spinner-dialog.service';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    EditUserComponent,
     SideNavComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    LoadingSpinnerDialogComponent
   ],
   imports: [
     CommonModule,
@@ -33,15 +33,14 @@ import { ChangePasswordComponent } from './components/header/change-password/cha
     AuthModule
   ],
   exports: [
-    HeaderComponent,
     FooterComponent,
-    EditUserComponent,
     SideNavComponent,
     NzLayoutModule,
     FormsModule
   ],
   providers: [
-    HeaderService
+    CommonService,
+    LoadingSpinnerDialogService
   ]
 })
 export class LayoutModule { }

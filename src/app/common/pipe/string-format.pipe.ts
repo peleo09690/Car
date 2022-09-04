@@ -4,6 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TooltipListPipe implements PipeTransform {
   public transform(lines: string[] | string): string {
     let list = '';
+
     if (Array.isArray(lines)) {
       lines.forEach((line) => {
         list += '• ' + line + '\n';
@@ -11,6 +12,7 @@ export class TooltipListPipe implements PipeTransform {
     } else {
       list = lines;
     }
+
     return list;
   }
 }
@@ -19,9 +21,11 @@ export class TooltipListPipe implements PipeTransform {
 export class DecimalFormatPipe implements PipeTransform {
   public transform(lines: string[] | string, decimals: number): string {
     let list = '';
+
     if (Array.isArray(lines)) {
       lines.forEach((line) => {
         const num = Number(line);
+
         if (!isNaN(num)) {
           list += '• ' + num.toFixed(decimals) + '\n';
         } else {
@@ -30,12 +34,14 @@ export class DecimalFormatPipe implements PipeTransform {
       });
     } else {
       const num = Number(lines);
+
       if (!isNaN(num)) {
         list = num.toFixed(decimals);
       } else {
         list = lines;
       }
     }
+
     return list;
   }
 }
@@ -47,8 +53,10 @@ export class CurrencyFormatPipe implements PipeTransform {
   public transform(value: number, decimals: number): string {
     if (value && decimals) {
       let valueString = value.toString();
+
       return valueString = this.formatNumber(value, '').toString();
     }
+
     return value ? value.toString() : '';
   }
 
@@ -64,9 +72,12 @@ export class CurrencyFormatPipe implements PipeTransform {
 
     if (thousands) {
       const separator = rest ? thousandSeparator : '';
+
       result += separator + thousands.join(thousandSeparator);
     }
+
     result = split[1] !== undefined ? result + decimalSeparator + split[1] : result;
+
     return prefix === undefined ? result : (result ? prefix + result : '');
   };
 }
