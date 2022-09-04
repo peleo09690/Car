@@ -1,135 +1,104 @@
 <div>
   <div class="dialogcommon">
-    <div id="panelHeading" class="panelHeading">
-      <span style="font-size: 20px">
-        {{ dataOption.title }}
+    <div id="panelHeading"
+         class="panelHeading">
+      <span>
+        {{ dataOption.title  | translate }}
       </span>
-      <mat-icon (click)="handelCancel()">close</mat-icon>
-      <!-- <button
-        type="button"
-        class="close"
-        aria-label="Close"
-        (click)="handelCancel()"
-      >
-        <span aria-hidden="true" style="font-size: 30px">&times;</span>
-      </button> -->
+      <mat-icon class="icon-close" (click)="handelCancel()">close</mat-icon>
     </div>
     <div class="search">
-      <input
-        cdkFocusInitial
-        autocomplete="off"
-        [(ngModel)]="dataSeach"
-        class="input"
-        type="text"
-      />
-      <div
-        class="enable-btn-search"
-        style="
-          font-size: 16px;
-          height: 30px;
-          width: 10%;
-          min-width: 60px;
-          margin-left: 10px;
-        "
-        (click)="handelSeach()"
-      >
-        検索
+      <div class="tbl-title">{{'common.dialog-search.title-input' | translate}}</div>
+      <div class="input-search">
+        <input cdkFocusInitial
+               autocomplete="off"
+               [(ngModel)]="dataSeach"
+               class="input"
+               type="text" 
+               placeholder="{{'common.dialog-search.title-placeholder' | translate }}" />
+        <div class="enable-btn-search"
+             (click)="handelSeach()">
+          {{ "common.button.search" | translate }}
+        </div>
       </div>
+
     </div>
-    <div
-      style="
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 355px;
-      "
-    >
+    <div class="title-search">{{'common.dialog-search.title-search' | translate}}</div>
+    <div class="table-container">
       <div class="table-grid">
-        <div class="grid-header" [ngStyle]="{ 'width.px': widthTable }">
+        <div class="grid-header"
+             [ngStyle]="{ 'width.px': widthTable }">
           <div class="grid-row">
             <div class="grid-row-role">
-              <div
-                class="table-th grid-header-col grid-col col-first place-w56"
-              >
+              <div class="table-th grid-header-col grid-col col-first place-w56">
                 <span> # </span>
               </div>
-              <div
-                *ngFor="
-                  let head of dataOption.listHeader;
-                  let j = index;
-                  let last = last
-                "
-                class="table-th grid-header-col grid-col {{
+              <ng-container *ngFor="
+                                  let head of dataOption.listHeader;
+                                  let j = index;
+                                  let last = last;
+                                ">
+                <div class="table-th grid-header-col grid-col {{
                   head.sticky ? 'col-sticky' : ''
                 }} "
-                [ngStyle]="{
-                  'left.px': head.sticky ? totalLenhthSticky(j) : 'none',
+                     [ngStyle]="{
+                  'left.px': head.sticky ? totalLenghthSticky(j) : 'none',
                   'width.px': head.width,
                   'min-width.px': head.width
                 }"
-              >
-                <span>
-                  {{ head.titleHeader }}
-                </span>
-              </div>
+                     *ngIf="!head.isHidden">
+                  <span [ngStyle]="{ 'justify-content': head.align }">
+                    {{ head.titleHeader | translate}}
+                  </span>
+                </div>
+              </ng-container>
             </div>
           </div>
         </div>
-        <div class="grid-body" [ngStyle]="{ 'width.px': widthTable }">
+        <div class="grid-body"
+             [ngStyle]="{ 'width.px': widthTable }">
           <div class="grid-row">
-            <div
-              *ngFor="let data of listData; let j = index; let last = last"
-              class="grid-row-role"
-              (click)="clickChoose(data)"
-              (dblclick)="handelDblclick()"
-              [class.avtive]="dataChoosse === coverObjectToString(data)"
-            >
-              <div class="table-th grid-body-col grid-col col-first place-w56">
+            <div *ngFor="let data of listData; let j = index; let last = last; let d = even"
+                 class="grid-row-role"
+                 (click)="clickChoose(data)"
+                 (dblclick)="handelDblclick()"
+                 [class.avtive]="dataChoosse === coverObjectToString(data)">
+              <div class="table-th grid-body-col grid-col col-first place-w56"
+                   [class.backgound-even]="d">
                 <span style="justify-content: center">
                   {{ j + 1 }}
                 </span>
               </div>
-              <div
-                *ngFor="
-                  let header of dataOption.listHeader;
-                  let i = index;
-                  let last = last
-                "
-                class="grid-body-col grid-col  {{
-                  header.sticky ? 'col-sticky' : ''
-                }} "
-                [ngStyle]="{
-                  'left.px': header.sticky ? totalLenhthSticky(i) : 'none',
-                  'min-width.px': header.width,
-                  'width.px': header.width
-                }"
-              >
-                <span [ngStyle]="{ 'justify-content': header.align }">
-                  {{ coverFormat(data[i], header.format) }}
-                </span>
-              </div>
+              <ng-container *ngFor="
+                    let header of dataOption.listHeader;
+                    let i = index;
+                    let last = last
+                  ">
+                <div class="grid-body-col grid-col  {{
+                    header.sticky ? 'col-sticky' : ''
+                  }} "
+                     [ngStyle]="{
+                    'left.px': header.sticky ? totalLenghthSticky(i) : 'none',
+                    'min-width.px': header.width,
+                    'width.px': header.width
+                  }"
+                     *ngIf="!header.isHidden "
+                     [class.backgound-even]="d">
+                  <span [ngStyle]="{ 'justify-content': header.align }">
+                    {{ coverFormat(data[i], header.format) }}
+                  </span>
+                </div>
+              </ng-container>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div
-      style="
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-        padding-bottom: 10px;
-      "
-    >
-      <div
-        class="btn-oke"
-        style="font-size: 16px; height: 30px; width: 60px; min-width: 60px"
-        (click)="handelButtonOk()"
-      >
-        OK
+    <div class="action">
+      <div class="btn-oke"
+      [class.disable-oke]="!dataChoosse"
+           (click)="handelButtonOk()">
+        {{ "common.button.ok" | translate }}
       </div>
     </div>
   </div>

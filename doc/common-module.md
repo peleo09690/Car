@@ -144,50 +144,59 @@ kiểu dữ liệu đầu vào:
 export class ListHeader {
   titleHeader: string = '';
   nameColum: string = '';
-  width?: number = 100;
+  width?: number = 100;  // đơn vị px
   align?: 'right' | 'left' | 'center' = 'right';
   format?: 'string' | 'YYYYMMDD' | 'YYYYMMDDHHMM' | 'YYYYMMDDHHMMSS' = 'string';
   sticky?: boolean = false;
 }
 
-export class DialogOption {
-  title: string = '';
-  table: string = '';
-  listHeader: Array<ListHeader> = [];
-  width?: number = 300;
-  height?: number = 540;
-  litmit?: number = 100;
+export class DialogOption implements IDialogOption {
+  public constructor(
+    public title: string = '',
+    public table: string = '',
+    public columreturn: string = '', //value sẽ được trả về trên ô input ở trên input seach 
+    public width: number = 300, // đơn vị px
+    public height: number = 540, // đơn vị px
+    public listHeader: Array<ListHeader> = [],
+    public litmit: number = 100 // giới hạn query khi bật dialog seach
+  ) { }
 }
 ```
 Ví dụ
 ``` typescript
-dataDialog: DialogOption = {
-    title: 'User Infor',
-    table: 't_user_info',
-    listHeader: [
-      {
-        titleHeader: 'User Name',
-        nameColum: 'user_name',
-        width: 150,
-        sticky: true
-      },
-      {
-        titleHeader: 'Id Format',
-        nameColum: 'user_id_format',
-        width: 200
-      },
-      {
-        titleHeader: 'Phone Number',
-        nameColum: 'phone_number',
-        width: 200
-      },
-      {
-        titleHeader: 'Mail',
-        nameColum: 'mail',
-        width: 200
-      }
-    ]
-  };
+public listHeader: Array<ListHeader> = [
+    {
+      titleHeader: 'User Name', // nếu muốn đa ngôn ngữ thì -> titleHeader: string 'common.dialog.user-name'
+      nameColum: 'user_name', 
+      width: 150,
+      sticky: true,
+      format:'string'
+    },
+    {
+      titleHeader: 'Id Format',
+      nameColum: 'user_id_format', 
+      width: 200
+    },
+    {
+      titleHeader: 'Phone Number',
+      nameColum: 'phone_number',
+      width: 200
+    },
+    {
+      titleHeader: 'Mail',
+      nameColum: 'mail',
+      width: 500
+    },
+    {
+      titleHeader: 'Create Date',
+      nameColum: 'create_date',
+      width: 200,
+      format:'YYYYMMDD'
+    }
+  ];
+public dataDialog = new DialogOption('User Info','t_user_info','user_id_format',550,550,this.listHeader,100);
+
+// nếu muốn đa ngôn ngữ thì -> public dataDialog = new DialogOption('common.dialog.title','t_user_info','user_id_format',550,550,this.listHeader,100);
 ```
 
 
@@ -196,10 +205,13 @@ Cấu hình và lấy dữ liệu dialog common
 
 ``` typescript
 let dialog = this.dialog.open(DialogSeachComponent, {
-      data: data?.dataDialogSeach
-    });
-    dialog.afterClosed().subscribe((x:any)=>{
-      this.searchGroup.get(id)?.setValue(x.user_id_format);
-    });
+  data: data?.dataDialogSeach,
+  width: data?.dataDialogSeach.width,
+  height: data?.dataDialogSeach.height
+});
+
+dialog.afterClosed().subscribe((x: Map<string, string>) => {
+  this.searchGroup.get(id)?.setValue(x.get(data.dataDialogSeach.columReturn));
+});
 ```
 [Back to README](../README.md)

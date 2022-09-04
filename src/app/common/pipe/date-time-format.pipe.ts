@@ -6,15 +6,19 @@ import * as moment from 'moment';
 export class DateTimeformatPipe implements PipeTransform {
   public transform(value: number, dtFormat: string): string {
     let result = '';
+
     if (value && value !== undefined && value !== null) {
       let timeVal: number = value;
+
       if (String(value).length > 10) {
         timeVal = value / 1000;
       }
+
       if (dtFormat && dtFormat.length > 0) {
         result = moment.unix(timeVal).format(dtFormat);
       }
     }
+
     return result;
   }
 }
@@ -34,11 +38,13 @@ export class DateTimeformat2Pipe implements PipeTransform {
   ];
   public transform(value: string, dtFormat: string): string {
     let result = '';
+
     if (value && value !== undefined && value !== null) {
       if (dtFormat && dtFormat.length > 0) {
         result = moment(value, this.formates).format(dtFormat);
       }
     }
+
     return result;
   }
 }
@@ -47,11 +53,13 @@ export class DateTimeformat2Pipe implements PipeTransform {
 export class DateTimeformat3Pipe implements PipeTransform {
   public transform(value: string, dtFormat: string): string {
     let result = '';
+
     if (value && value !== undefined && value !== null) {
       if (dtFormat && dtFormat.length > 0) {
         result = moment(value, 'YYYY-MM-DD h:mm A').format(dtFormat);
       }
     }
+
     return result;
   }
 }
@@ -60,11 +68,13 @@ export class DateTimeformat3Pipe implements PipeTransform {
 export class DateTimeUtcFormat implements PipeTransform {
   public transform(value: string, dtFormat: string): string {
     let result = '';
+
     if (value && value !== undefined && value !== null) {
       if (dtFormat && dtFormat.length > 0) {
         result = moment.utc(value).format(dtFormat);
       }
     }
+
     return result;
   }
 }
@@ -73,12 +83,15 @@ export class DateTimeUtcFormat implements PipeTransform {
 export class DateTimeUtc2LocalFormat implements PipeTransform {
   public transform(value: string, dtFormat: string): string {
     let result = '';
+
     if (value && value !== undefined && value !== null) {
       if (dtFormat && dtFormat.length > 0) {
         const utcTime = moment.utc(value).toDate();
+
         result = moment(utcTime).local().format(dtFormat);
       }
     }
+
     return result;
   }
 }

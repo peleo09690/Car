@@ -3,8 +3,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiPath } from '@core/config';
 import { HttpService } from '@core/services';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { LoginModelRequest, LoginModelResponse } from '../models/login.model';
+import { LoadingSpinnerDialogService } from '@layout/services/loading-spinner-dialog.service';
+import { BehaviorSubject, finalize, map, Observable, tap } from 'rxjs';
+import { HttpClienUserLogintResponse, LoginModelRequest, LoginModelResponse } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class LoginService extends HttpService {
   public isLoginAsync$ = new BehaviorSubject<boolean>(false);
 
   public constructor(
-    protected override http: HttpClient
+    protected override http: HttpClient,
+    private loadingDialog: LoadingSpinnerDialogService
   ) {
     super(http);
   }
@@ -27,10 +29,15 @@ export class LoginService extends HttpService {
       'Authorization': 'Basic SUQ6SlBDX09BVVRI',
       'Content-Type': 'application/x-www-form-urlencoded'
     };
+
     return this.http.post<LoginModelResponse>(ApiPath.LOGIN, body.toString(), { headers });
   }
 
-  // getDetailUserLogin(): Observable<any> {
-  //   return this.get(ApiPath.USERLOGIN) as Observable<any>;
-  // }
+  public getDetailUserLogin(): Observable<HttpClienUserLogintResponse> {
+    return this.get(ApiPath.USER_LOGIN).pipe(
+      tap(() => this.loadingDialog.showSpinner(true)),
+      map((response: HttpClienUserLogintResponse) => response),
+      finalize(() => this.loadingDialog.showSpinner(false))
+    ) as Observable<HttpClienUserLogintResponse>;
+  }
 }
