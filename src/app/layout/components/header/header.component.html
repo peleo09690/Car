@@ -1,31 +1,56 @@
-<div class="header">
-  <div class="flex-center">
-    <mat-icon svgIcon="iconLogomenu"></mat-icon>
-    <span style="margin-left: 50px">{{ titelHeader }}</span>
+<div class="main-wrapper">
+  <div class="container-navbar">
+    <div class="navbar">
+      <div class="navbar-logo">
+        <!-- <mat-icon class="navbar-logo-icon"
+                  [svgIcon]="iconLogomenu"
+                  (click)="returnHomePage()"
+                  matPrefix></mat-icon> -->
+        <h2 (click)="returnHomePage()">DANAAUTO</h2>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="header__menu">
+          <div class="header__menu--item"
+               (click)="activeMenuIdx(i)"
+               [ngClass]="{ active: activeMenu === i }"
+               *ngFor="let item of listMenu; index as i">
+            <p>
+              {{ item }}
+              <!-- <mat-icon svgIcon="caret-down-black"
+                        matPrefix></mat-icon> -->
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-icon-menu">
+        <img *ngIf="!checkLogin"
+             src="../../../../assets/icon-svg/icon-menu-mobile.svg"
+             (click)="displayLogin()"
+             alt="">
+        <img *ngIf="checkLogin"
+             src="../../../../assets/icon-svg/icon-close.svg"
+             (click)="displayLogin()"
+             alt="">
+      </div>
+
+    </div>
   </div>
-  <div class="menu-center"></div>
-  <div class="menu-user">
-    <a nz-dropdown [nzDropdownMenu]="menu">
-      <span class="username">{{userName}}</span>
-      <mat-icon svgIcon="iconUser"></mat-icon>
-    </a>
+  <div class="content-side-menu"
+       [ngClass]="{'show-login': checkLogin}">
+    <div class="show-navbar-menu">
+      <div class="header__menu">
+        <div class="header__menu--item"
+             [ngClass]="{ active: activeMenu === i }"
+             *ngFor="let item of listMenu; index as i">
+          <p (click)="activeMenuIdx(i)">
+            {{ item }}
+
+          </p>
+          <hr class="hr-line-menu">
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
-
-
-
-<nz-dropdown-menu #menu="nzDropdownMenu">
-  <ul nz-menu nzSelectable class="list">
-    <li nz-menu-item (click)="changePassword()">
-      <mat-icon
-        class="icon-dropdown-user"
-        svgIcon="iconChangePassword"
-      ></mat-icon
-      ><span>change password</span>
-    </li>
-    <li nz-menu-item (click)="btnLogOut()">
-      <mat-icon class="icon-dropdown-user" svgIcon="iconLogout"></mat-icon
-      ><span>logout</span>
-    </li>
-  </ul>
-</nz-dropdown-menu>

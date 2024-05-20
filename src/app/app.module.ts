@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonAppModule } from '@common/common.module';
@@ -28,6 +28,7 @@ import { AppComponent } from './app.component';
       positionClass: 'toast-top-right'
     })
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], 
   providers: [],
   bootstrap: [AppComponent]
 })

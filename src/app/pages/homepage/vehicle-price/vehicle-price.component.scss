@@ -1,0 +1,288 @@
+.container-vehicle-price {
+    .vehicle-price {
+        width: 90%;
+        margin: auto;
+        margin-top: 85px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+
+        .list-content h1 {
+            float: left;
+            width: 100%;
+            font-size: 22px;
+            margin: 0 0 15px;
+
+
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .group-select-car {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            .title-and-select {
+                width: 23.8%;
+
+                .title {
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    font-weight: 600;
+                    display: block;
+                    margin: 10px 0;
+                    float: left;
+                    width: 100%;
+                }
+
+                .select-type {
+                    select {
+                        width: 100%;
+                        float: left;
+                        position: relative;
+                        display: block;
+                        background: #ffffff;
+                        height: 45px;
+                        border-radius: 3px;
+                        padding: 0 10px;
+                        border: 1px solid #e6dfdf;
+                        color: #000;
+                        font-size: 16px;
+                        font-family: inherit;
+                    }
+                }
+            }
+
+        }
+
+        .group-infor-price {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+
+            .infor-price {
+                width: 49%;
+                display: flex;
+                flex-direction: column;
+
+                .car-name {
+                    margin-top: 10px;
+                    text-align: center;
+                }
+
+                .frm-result li {
+                    float: left;
+                    width: 100%;
+                    margin: 5px -38px;
+
+                }
+
+                .frm-result span {
+                    float: right;
+                    text-align: right;
+                    font-weight: 600;
+                    color: #cc0000;
+                }
+
+            }
+
+            .frm-total {
+                float: left;
+                width: 100%;
+                padding-top: 15px;
+                margin-bottom: 20px;
+                border-top: 1px solid #e6dfdf;
+                span{
+                    float: right;
+                    text-align: right;
+                    font-weight: 600;
+                    color: #cc0000;
+                }
+            }
+
+            .group-btn-input {
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .button-and-input {
+                    width: 100%;
+                    display: flex;
+                    gap: 20px;
+
+                    .ip-btn {
+                        width: 50%;
+
+                        .ip-phone {
+                            float: left;
+                            position: relative;
+                            display: block;
+                            background: #ffffff;
+                            height: 45px;
+                            border-radius: 3px;
+                            padding: 0 10px;
+                            border: 1px solid #e6dfdf;
+                            color: #000;
+                            width: 100%;
+                            font-size: 16px;
+                            font-family: inherit;
+                        }
+                    }
+
+                    .gr-btn {
+                        width: 50%;
+
+                        .btn {
+                            padding: 10px 15px;
+                            background: #e6dfdf;
+                            width: 100%;
+                            height: 45px;
+                            text-transform: uppercase;
+                            display: inline-block;
+                            margin-bottom: 0;
+                            font-weight: 400;
+                            text-align: center;
+                            vertical-align: middle;
+                            touch-action: manipulation;
+                            cursor: pointer;
+                            background-image: none;
+                            border: 1px solid transparent;
+                            white-space: nowrap;
+                            padding: 6px 12px;
+                            font-size: 14px;
+                            line-height: 1.42857;
+                            border-radius: 4px;
+                            font-family: inherit;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .group-infor-more {
+        .title-infor-more {
+            text-align: center;
+            color: #ad193d;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 500;
+            width: 100%;
+            margin: 15px 0;
+            letter-spacing: -0.5px;
+            color: #000;
+            position: relative;
+        }
+
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 2px;
+            width: 100px;
+            background: #ad193d;
+        }
+
+        h3::after {
+            content: '';
+            position: absolute;
+            left: 100px;
+            bottom: -2px;
+            height: 2px;
+            width: 50px;
+            background: #000;
+        }
+    }
+}
+
+.group-fee-use-vehicle {
+    .title-fee-use-vehicle {
+        text-align: center;
+
+        h2 {
+            color: #ad193d;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 40px 0 20px;
+        }
+
+        .font-italic {
+            display: block;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.content-fee-use-vehicle {
+    width: 90%;
+    margin: auto;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 5px 35px 0px rgba(148, 146, 245, 0.15);
+    margin-bottom: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .title-table {
+        margin: 0;
+        padding: 10px 15px;
+        background: #e6dfdf;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table td {
+        padding: 5px 10px;
+        font-size: 14px;
+        border: 1px solid #e6dfdf;
+    }
+
+    .td-price {
+        text-align: right;
+        font-weight: 600;
+        color: #cc0000;
+    }
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.font-12 {
+    font-size: 12px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.font-bold {
+    font-weight: bold;
+    color: #333;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-40 {
+    width: 40%;
+}

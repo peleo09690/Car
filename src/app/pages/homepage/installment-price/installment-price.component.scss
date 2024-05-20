@@ -1,0 +1,158 @@
+.container-installment-price {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+    margin: auto;
+    margin-top: 85px;
+
+    .installment-price {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        h1 {
+            float: left;
+            width: 100%;
+            font-size: 22px;
+            margin: 0 0 15px;
+        }
+
+        .interest-heading {
+            font-size: 20px;
+            text-align: center;
+            position: relative;
+            color: #ad193d;
+            font-weight: 500;
+        }
+
+        .interest-heading:before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 2px;
+            background: #ad193d;
+            left: calc(50% - 75px);
+            bottom: -5px;
+        }
+
+        .frm-half-page {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+
+            .frm-half {
+                width: 50%;
+                display: flex;
+                gap: 20px;
+            }
+        }
+
+        .gr-lb-text {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+           input {
+                background: #ffffff;
+                height: 45px;
+                border-radius: 3px;
+                padding: 0 10px;
+                border: 1px solid #e6dfdf;
+                color: #000;
+                width: 100%;
+                font-size: 16px;
+                font-family: inherit;
+                outline: none;
+            }
+        }
+        .btn-price{
+             button {
+                margin: auto;
+                display: block;
+                padding: 10px 20px;
+                border: none;
+                background: #ad193d;
+                font-size: 16px;
+                text-transform: uppercase;
+                color: #fff;
+                font-weight: bold;
+                border-radius: 5px;
+                cursor: pointer;
+                min-width: 135px;
+                text-align: center;
+            }
+        }
+        .total-installment{
+            display: flex;
+            gap: 30px;
+            p{
+                width: calc(50% - 8px);
+                float: left;
+                margin: 15px 0;
+                box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+                border-radius: 8px;
+                padding: 15px;
+                background: #f4f4f4;
+                line-height: 35px;
+            }
+            p span{
+                float: right;
+                font-size: 30px;
+                color: #ad193d;
+                font-weight: bold;
+            }
+        }
+        .max-height {
+            max-height: 441px;
+            overflow-y: scroll;
+            width: 100%;
+        }
+        table{
+            width: 100%;
+        }
+        .max-height tr.head {
+            position: sticky;
+            top: -1px;
+        }
+         th {
+            padding: 5px;
+            font-weight: 500;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            color: #ad193d;
+        }
+        td{
+            padding: 5px;
+            font-weight: 500;
+            background: #f4f4f4;
+            border: 1px solid #ddd; 
+            text-align: center;
+        }
+    }
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.font-12 {
+    font-size: 12px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.font-bold {
+    font-weight: bold;
+    color: #333;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-40 {
+    width: 40%;
+}

@@ -1,0 +1,53 @@
+.container-showroom {
+  width: 90%;
+  margin: auto;
+  margin-top: 80px;
+
+  .title-page-showroom {
+    text-align: center;
+  }
+
+  .group-show-room-parent {
+    display: flex;
+    gap: 20px;
+
+    .content-left {
+      width: 25%;
+      background-color: #57616a;
+      padding: 10px;
+
+      .control-show-room {
+        font-size: 20px;
+        font-weight: 700;
+        background-color: #ffffff;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .content-right {
+      width: 75%;
+
+      .control-show-room-child {
+        display: flex;
+        margin-bottom: 10px;
+        height: 200px;
+        gap: 25px;
+        .image-show-room{
+          width: 450px;
+          height: 100%;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}

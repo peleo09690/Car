@@ -1,0 +1,63 @@
+<div class="container-installment-price">
+  <div class="installment-price"  [formGroup]="myForm">
+    <h1 class="text-center">Mua ô tô trả góp: điều kiện, thủ tục, lưu ý, lãi suất &amp; ví dụ cụ thể</h1>
+    <p class="font14 text-center">Dưới đây là tiện ích <b>tra cứu lãi suất mua ô tô trả góp, cách tính lãi suất vay mua xe trả
+        góp và ước tính khoản vay</b> tại các ngân hàng ở Việt Nam, kèm theo các thông tin tham khảo về điều kiện, hồ sơ vay
+      mua xe ô tô trả góp dành cho tất cả mọi người.</p>
+    <h2 class="interest-heading">Công cụ ước tính khoản vay mua ô tô trả góp, cách tính trả góp ô tô</h2>
+    <div  class="frm-half-page">
+      <div class="frm-half">
+				<div class="gr-lb-text">
+					<label>Số tiền vay (₫)</label>
+					<input formControlName="sotienvay" type="text" value="500000000" class="price_format" id="price" placeholder="Nhập tổng số tiền vay">
+				</div>
+				<div class="gr-lb-text">
+					<label>Thời hạn vay (năm)</label>
+					<input formControlName="thoihanvay" type="number" min="1" max="8" value="5" id="timeout" placeholder="Nhập thời hạn vay">
+				</div>
+			</div>
+      <div class="frm-half">
+				<div class="gr-lb-text">
+					<label>Lãi suất năm đầu</label>
+					<input formControlName="laisuat1" type="text" id="interestrate-first" value="9" placeholder="Nhập lãi suất năm đầu">
+				</div>
+				<div class="gr-lb-text">
+					<label>Lãi suất năm thứ 2 trở đi</label>
+					<input formControlName="laisuat2" type="text" id="interestrate-second" value="12" placeholder="Nhập lãi suất từ năm thứ 2">
+				</div>
+			</div>
+
+    </div>
+    <div class="btn-price">
+      <button type="submit" (click)="installment()">Ước tính khoản vay</button>
+    </div>
+    <div class="total-installment">
+      <p>Tổng lãi phải trả<span>{{totallai}} ₫</span></p>
+      <p>Tổng số tiền phải trả<span>{{totalgoc}} ₫</span></p>
+    </div>
+    <div class="max-height">
+      <table>
+        <tbody>
+          <tr class="head">
+            <th>Kỳ thanh toán</th>
+            <th>Dư nợ</th>
+            <th>Tiền gốc</th>
+            <th>Tiền lãi</th>
+            <th>Tổng tiền</th>
+          </tr>
+        </tbody>
+        <tbody id="show-installment">
+          <tr *ngFor="let data of this.arrayPrice">
+            <td>{{data.thang}}</td>
+            <td>{{data.duno}}</td>
+            <td>{{data.tiengoc}}</td>
+            <td>{{data.tienlai}}</td>
+            <td>{{data.goclai}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
