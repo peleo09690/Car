@@ -36,7 +36,8 @@ import { LoadingSpinnerDialogService } from './services/loading-spinner-dialog.s
     FooterComponent,
     SideNavComponent,
     NzLayoutModule,
-    FormsModule
+    FormsModule,
+    HeaderComponent
   ],
   providers: [
     CommonService,

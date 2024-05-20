@@ -1,0 +1,30 @@
+<div class="container-showroom">
+  <h1 class="title-page-showroom">Danh sách Show room ô tô chính hãng tại Việt Nam</h1>
+  <div class="group-show-room-parent">
+    <div class="group-show-room content-left">
+      <div class="control-show-room"
+           *ngFor="let item of showRoom; let i = index"
+           (click)="disPlayShowRoomChild(i)">
+        {{item.name}} 
+        <span class="material-icons" *ngIf="i==showRoomActive" >
+          keyboard_arrow_right
+        </span>
+      </div>
+    </div>
+    <div class="group-show-room-child content-right">
+      <div class="control-show-room-child"
+           *ngFor="let item of listShowRoomChild; let i = index">
+        <div class="image-show-room">
+          <img [src]="item.image"
+               alt="">
+        </div>
+        <div class="information">
+          <h3>{{item.name}}</h3>
+          <p>Hotline : {{item.phone}}</p>
+          <p>Địa chỉ : {{item.address}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

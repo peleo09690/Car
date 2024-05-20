@@ -1,0 +1,301 @@
+<div class="container-vehicle-price">
+  <div class="title">
+    <h2>Công cụ tính giá xe lăn bánh và phí đăng ký xe ô tô trên toàn quốc của các hãng xe tại Việt Nam</h2>
+    <h5>Dưới đây là công cụ tính giá ô tô lăn bánh và thông tin các biểu phí đăng ký xe ô tô trên toàn quốc dành cho tất
+      cả mọi người.</h5>
+  </div>
+
+  <div class="group-content-search">
+    <div class="control-search">
+      <div class="title">
+        <span>Thương hiệu</span>
+      </div>
+      <div class="control-input">
+        <select class="col-select"
+                (change)="selectTrademark($event)">
+          <option selected
+                  value>Chọn thương hiệu</option>
+          <option *ngFor="let item of trademark"
+                  [value]="item.id_trademark">
+            {{item.name_trademark}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control-search">
+      <div class="title">
+        <span>Dòng xe</span>
+      </div>
+      <div class="control-input">
+        <select class="col-select"
+                (change)="selectVehicles($event)">
+          <option selected
+                  value>Chọn dòng xe</option>
+          <option *ngFor="let item of vehicles"
+                  [value]="item">
+            {{item.name_vehicles}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control-search">
+      <div class="title">
+        <span>Phiên bản</span>
+      </div>
+      <div class="control-input">
+        <select class="col-select"
+                (change)="selectVersions($event)">
+          <option selected
+                  value>Chọn phiên bản</option>
+          <option *ngFor="let item of versions"
+                  [value]="item">
+            {{item.name_versions}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control-search">
+      <div class="title">
+        <span>Nơi đăng ký</span>
+      </div>
+      <div class="control-input">
+        <select class="col-select"
+                (change)="selectCityRegister($event)">
+          <option selected
+                  value>Chọn nơi đăng ký</option>
+          <option *ngFor="let item of cityRegister"
+                  [value]="item">
+            {{item.name_cityRegister}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="group-data-search">
+    <div class="image-vehicles">
+      <img src=""
+           alt="">
+    </div>
+    <div class="information-search">
+      <div class="group-data-search">
+        <span class="title-search">Giá xe</span>
+        <span></span>
+      </div>
+      <div class="group-data-search">
+        <span class="title-search">Phí trước bạ</span>
+        <span></span>
+      </div>
+      <div class="group-data-search">
+        <span class="title-search">Phí đăng ký biển số</span>
+        <span></span>
+      </div>
+      <div class="group-data-search">
+        <span class="title-search">Phí đường bộ (1 năm)</span>
+        <span></span>
+      </div>
+      <div class="group-data-search">
+        <span class="title-search">Bảo hiểm TNDS (1 năm)</span>
+        <span></span>
+      </div>
+      <div class="group-data-search">
+        <span class="title-search">Phí đăng kiểm</span>
+        <span></span>
+      </div>
+      <br>
+      <div class="group-data-search">
+        <span class="title-search">TỔNG CỘNG</span>
+        <span></span>
+      </div>
+
+      <div class="note-vehicles-fee">
+        <p>ảng tính giá xe ô tô lăn bánh ở trên chỉ mang tính chất tham khảo,
+          chưa bao gồm phí dịch vụ đăng ký,
+          Quý khách vui lòng liên hệ Showroom/Đại Lý gần nhất để có Báo Giá chính xác nhất.
+        </p>
+      </div>
+
+      <div class="group-advise-vehicle">
+        <div class="group-control">
+          <div class="control-advise">
+            <input type="text"
+                   placeholder="Vui lòng nhập số điện thoại">
+          </div>
+          <div class="control-advise">
+            <button>Yêu cầu báo giá</button>
+          </div>
+        </div>
+        <div class="group-control">
+          <div class="control-advise">
+            <button>Tìm đại lý</button>
+          </div>
+          <div class="control-advise">
+            <button>Mua trả góp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group-infor-more">
+    <h2>Hiểu rõ hơn về cách tính giá xe ô tô lăn bánh</h2>
+    <p>Khi quyết định mua một chiếc ô tô, người tiêu dùng thường quan tâm về giá của sản phẩm, bởi chi phí để sở hữu một
+      chiếc ô tô là rất lớn. Nhưng trước khi mua một chiếc xe hầu như người tiêu dùng sẽ không biết mình sẽ mua chiếc xe
+      ô tô đó với giá bao nhiêu? Bao gồm những loại chi phí nào? Cách tính giá xe lăn bánh ra sao?</p>
+
+    <p>Để giúp bạn đọc giải quyết vấn đề liên quan đến tài chính trước khi mua một chiếc ô tô, sau đây Oto360 cung cấp
+      đến bạn đọc tiện ích
+      <span class="font-bold">“Bảng tính giá xe ô tô lăn bánh”</span> - công cụ tính giá lăn bánh và thông tin các biểu
+      phí đăng ký xe ô tô trên toàn quốc.
+    </p>
+
+    <h4 class="title-infor-more">
+      Giá xe lăn bánh bao gồm những loại chi phí nào?
+    </h4>
+    <p>Khi mua một chiếc ô tô, bên cạnh phải trả tiền theo giá trị của xe, thì người tiêu dùng sẽ phải chịu các loại phí
+      khác bao gồm:</p>
+    <p><span class="font-bold">Giá xe: </span>Giá trị thực của xe được hãng công bố đến người tiêu dùng</p>
+    <p><span class="font-bold">Phí trước bạ: </span>Khoản lệ phí người tiêu dùng phải nộp cho cơ quan thuế khi muốn đăng
+      ký quyền sở hữu ô tô trong trường hợp mua ô tô mới hay ô tô đã qua sử dụng</p>
+    <p><span class="font-bold">Phí đăng ký biển số: </span>Khoản phí đăng ký biển số để xe được sử dụng hợp pháp</p>
+    <p><span class="font-bold">Phí đường bộ </span>(phí sử dụng đường bộ, phí bảo trì đường bộ): Khoản phí nộp nhằm mục
+      đích bảo trì và nâng cấp đường bộ phục vụ cho các phương tiện</p>
+    <p><span class="font-bold">Bảo hiểm TNDS: </span>Phí bảo hiểm bắt buộc trách nhiệm dân sự với người sở hữu xe, khoản
+      tiền phải thanh toán cho doanh nghiệp bảo hiểm khi mua bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe.</p>
+    <p><span class="font-bold">Phí đăng kiểm: </span>Khoản phí để cơ quan chức năng kiểm tra, đánh giá chi tiết xe có đủ
+      đảm bảo tiêu chuẩn an toàn khi tham gia giao thông.</p>
+    <p>Tổng của các loại chi phí này cộng lại chính là giá xe lăn bánh mà người tiêu dùng phải trả khi mua một chiếc ô
+      tô.</p>
+
+    <h4 class="title-infor-more">
+      Cách tính giá xe lăn bánh tại Oto360
+    </h4>
+    <p>Tại website Oto360.net hiện nay cũng cung cấp tiện ích<span class="font-bold font-static"> tính giá ô tô lăn bánh
+        và thông tin các biểu phí đăng ký xe ô tô trên toàn quốc dành cho tất cả mọi người.</span> Hãy cùng thực hiện
+      các bước đơn giản sau đây:</p>
+    <p>Bước 1: Truy cập <span class="font-bold font-static">website Oto360.net</span></p>
+    <p>Bước 2: Chọn mục <span class="font-bold font-static">“Tiện ích”</span> -> Chọn tiếp mục <span
+            class="font-bold font-static">“Bảng tính giá xe ô tô lăn bánh”</span></p>
+    <p>Bước 3: Hệ thống sẽ hiện lên các thông tin, bạn đọc chỉ cần <span class="font-bold font-static">hoàn thiện đầy đủ
+        thông tin về sản phẩm và nơi đăng ký lăn bánh </span>như sau:</p>
+    <ul>
+      <li>Thương hiệu ô tô</li>
+      <li>Dòng xe</li>
+      <li>Phiên bản</li>
+      <li>Nơi đăng ký</li>
+    </ul>
+    <p>Bước 4: Sau khi hoàn tất các thông tin, hệ thống trên Oto360 sẽ trả kết quả về giá xe lăn bánh bao gồm chi tiết
+      các loại phí chi.</p>
+    <p>Ngoài ra, chỉ cần nhập thông tin số điện thoại bạn đọc cũng có thể sử dụng thêm các tiện ích như: yêu cầu báo
+      giá, mua trả góp và tìm đại lý.</p>
+    <p>Hy vọng với tiện ích <span class="font-bold font-static">“Bảng tính giá xe ô tô lăn bánh”</span>Oto360 cung cấp,
+      bạn đọc sẽ ước tính được chi phí cần bỏ ra để mua một chiếc xe ô tô mình yêu thích.</p>
+  </div>
+
+  <div class="group-fee-use-vehicle">
+    <div class="title-fee-use-vehicle">
+      <h2>Các loại phí khi sử dụng ô tô cần biết</h2>
+      <p class="font-static">Dưới đây là các loại chi phí thường niên khi sử dụng xe ô tô theo quy định tại Việt Nam</p>
+    </div>
+    <div class="content-fee-use-vehicle">
+      <h3 class="title-table">Phí bảo trì đường bộ xe ô tô mới nhất</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td> Xe chở người dưới 10 chỗ đăng ký tên cá nhân </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td> Xe chở người dưới 10 chỗ (trừ xe đăng ký tên cá nhân); xe tải, xe ô tô chuyên dùng có khối lượng toàn
+              bộ dưới 4.000 kg; các loại xe buýt; xe chở hàng và xe chở người 4 bánh có gắn động cơ </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td> Xe chở người từ 10 chỗ đến dưới 25 chỗ; xe tải, xe ô tô chuyên dùng có khối lượng toàn bộ từ 4.000 kg
+              đến dưới 8.500 kg </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td> Xe chở người từ 25 chỗ đến dưới 40 chỗ; xe tải, xe ô tô chuyên dùng có khối lượng toàn bộ từ 8.500 kg
+              đến dưới 13.000 kg </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td> Xe chở người từ 40 chỗ trở lên; xe tải, xe ô tô chuyên dùng có khối lượng toàn bộ từ 13.000 kg đến dưới
+              19.000 kg; xe đầu kéo có khối lượng bản thân cộng với khối lượng cho phép kéo theo đến dưới 19.000 kg
+            </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe tải, xe ô tô chuyên dùng có khối lượng toàn bộ từ 19.000 kg đến dưới 27.000 kg; xe đầu kéo có khối
+              lượng bản thân cộng với khối lượng cho phép kéo theo từ 19.000 kg đến dưới 27.000 kg</td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe tải, xe ô tô chuyên dùng có khối lượng toàn bộ từ 27.000 kg trở lên; xe đầu kéo có khối lượng bản
+              thân cộng với khối lượng cho phép kéo theo từ 27.000 kg đến dưới 40.000 kg</td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe ô tô đầu kéo có khối lượng bản thân cộng với khối lượng cho phép kéo theo từ 40.000 kg trở lên</td>
+            <td class="td-price"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="title-table">Phí đăng kiểm xe ô tô mới nhất 5/2024</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td> Xe ô tô tải, đoàn xe ô tô, xe ô tô đầu kéo có trọng tải trên 20 tấn và các loại xe ô tô chuyên dùng
+            </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe ô tô tải, đoàn xe ô tô, xe ô tô đầu kéo có trọng tải trên 7 tấn đến 20 tấn và các loại máy kéo </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe ô tô tải có trọng tải trên 2 tấn đến 7 tấn </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe ô tô tải có trọng tải đến 2 tấn </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Máy kéo bông sen, công nông và các loại phương tiện vận chuyển tương tự </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Rơ moóc, sơ mi rơ moóc</td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe ô tô khách trên 40 ghế (kể cả lái xe), xe buýt </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td> Xe ô tô khách từ 25 đến 40 ghế (kể cả lái xe) </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe ô tô khách từ 10 ghế đến 24 ghế (kể cả lái xe) </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td>Xe ô tô dưới 10 chỗ ngồi </td>
+            <td class="td-price"></td>
+          </tr>
+          <tr>
+            <td> Xe ô tô cứu thương</td>
+            <td class="td-price"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
