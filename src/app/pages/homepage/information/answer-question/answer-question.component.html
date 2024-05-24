@@ -1,3 +1,43 @@
-<p>
-  answer-question works!
-</p>
+<div class="container-information">
+  <div class="title-infor">
+    <h2>Tin tức nổi bật thị trường ô tô</h2>
+  </div>
+  <div class="group-content">
+    <div class="group-infor content-left" >
+      <div class="control-information" *ngFor = "let answer of listAnswerQuestion">
+        <div class="image-infor">
+          <img [src]="answer.image" alt="">
+        </div>
+        <div class="content-infor">
+          <h2>{{answer.title_infor}}</h2>
+          <p class="text-infor">{{answer.content_infor}}</p>
+          <p class="featured_news">{{answer.answerQuestion}} <span> | Ngày đăng : {{answer.create_date}}</span></p>
+        </div>
+      </div>
+
+      <!-- pagination -->
+    </div>
+
+    <div class="content-right" >
+      <div class="title-image">
+        <img src="" alt="">
+      </div>
+
+      <div class="group-review group-title">
+        <h2 (click)="linkReview()">Review</h2>
+        <h4 *ngFor="let review of listReview">{{review.title}}</h4>
+      </div>
+
+      <div class="group-shared-advise group-title">
+        <h2 (click)="linkSharedAdvise()">Chia sẽ - Tư vấn</h2>
+        <h4 *ngFor="let share of listShared">{{share.title}}</h4>
+      </div>
+
+      <div class="group-answer-question group-title">
+        <h2 (click)="linkInformation()">Tin tức nổi bật</h2>
+        <h4 *ngFor="let infor of listInformation">{{infor.title}}</h4>
+      </div>
+
+    </div>
+  </div>
+</div>

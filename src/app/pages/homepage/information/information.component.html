@@ -1,6 +1,6 @@
 <div class="container-information">
   <div class="title-infor">
-    <h1>Tin tức nổi bật thị trường ô tô</h1>
+    <h2>Tin tức nổi bật thị trường ô tô</h2>
   </div>
   <div class="group-content">
     <div class="group-infor content-left" >
@@ -10,8 +10,8 @@
         </div>
         <div class="content-infor">
           <h2>{{info.title_infor}}</h2>
-          <p>{{info.content_infor}}</p>
-          <p>{{info.featured_news}} <span> Ngày đăng : {{info.create_date}}</span></p>
+          <p class="text-infor">{{info.content_infor}}</p>
+          <p class="featured_news">{{info.featured_news}} <span> | Ngày đăng : {{info.create_date}}</span></p>
         </div>
       </div>
 
@@ -23,19 +23,19 @@
         <img src="" alt="">
       </div>
 
-      <div class="group-review">
-        <h2>Review</h2>
-        <h3 *ngFor="let review of listReview">{{review.title}}</h3>
+      <div class="group-review group-title">
+        <h2 (click)="linkReview()">Review</h2>
+        <h4 *ngFor="let review of listReview">{{review.title}}</h4>
       </div>
 
-      <div class="group-shared-advise">
-        <h2>Chia sẽ - Tư vấn</h2>
-        <h3 *ngFor="let share of listShared">{{share.title}}</h3>
+      <div class="group-shared-advise group-title">
+        <h2 (click)="linkSharedAdvise()">Chia sẽ - Tư vấn</h2>
+        <h4 *ngFor="let share of listShared">{{share.title}}</h4>
       </div>
 
-      <div class="group-answer-question">
-        <h2>Hỏi - Đáp</h2>
-        <h3 *ngFor="let answer of listAnswerQuestion">{{answer.title}}</h3>
+      <div class="group-answer-question group-title">
+        <h2 (click)="linkAnswerQuestion()">Hỏi - Đáp</h2>
+        <h4 *ngFor="let answer of listAnswerQuestion">{{answer.title}}</h4>
       </div>
 
     </div>

@@ -9,6 +9,9 @@ import { InstallmentPriceComponent } from './installment-price/installment-price
 import { VehiclePriceComponent } from './vehicle-price/vehicle-price.component';
 import { HomepageMainComponent } from './homepage-main/homepage-main.component';
 import { CompareVehicleComponent } from './compare-vehicle/compare-vehicle.component';
+import { ReviewComponent } from './information/review/review.component';
+import { SharedAdviseComponent } from './information/shared-advise/shared-advise.component';
+import { AnswerQuestionComponent } from './information/answer-question/answer-question.component';
 
 const routes: Routes = [
   {
@@ -22,6 +25,15 @@ const routes: Routes = [
       },
       {
         path: 'information', component: InformationComponent
+      },
+      {
+        path: 'review', component: ReviewComponent
+      },
+      {
+        path: 'shared-advise', component: SharedAdviseComponent
+      },
+      {
+        path: 'answer-question', component: AnswerQuestionComponent
       },
       {
         path: 'installment-price', component: InstallmentPriceComponent
