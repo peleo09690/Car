@@ -4,7 +4,9 @@
     gap: 20px;
     width: 90%;
     margin: auto;
-    margin-top: 85px;
+    margin-top: 70px;
+    border: 1px solid #ddd;
+    padding: 15px;
 
     .installment-price {
         display: flex;
@@ -15,24 +17,6 @@
             width: 100%;
             font-size: 22px;
             margin: 0 0 15px;
-        }
-
-        .interest-heading {
-            font-size: 20px;
-            text-align: center;
-            position: relative;
-            color: #ad193d;
-            font-weight: 500;
-        }
-
-        .interest-heading:before {
-            content: '';
-            position: absolute;
-            width: 150px;
-            height: 2px;
-            background: #ad193d;
-            left: calc(50% - 75px);
-            bottom: -5px;
         }
 
         .frm-half-page {
@@ -53,6 +37,11 @@
             flex-direction: column;
             gap: 10px;
 
+            label{
+                text-transform: uppercase;
+                color: #333;
+            }
+
            input {
                 background: #ffffff;
                 height: 45px;
@@ -64,6 +53,21 @@
                 font-size: 16px;
                 font-family: inherit;
                 outline: none;
+            }
+            select{
+                    float: left;
+                    position: relative;
+                    display: block;
+                    background: #ffffff;
+                    height: 45px;
+                    border-radius: 3px;
+                    padding: 0 10px;
+                    border: 1px solid #e6dfdf;
+                    color: #000;
+                    width: 100%;
+                    font-size: 16px;
+                    font-family: inherit;
+                    outline: none;
             }
         }
         .btn-price{
@@ -130,6 +134,69 @@
             text-align: center;
         }
     }
+    .list-bank-container{
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        width: 100%;
+        .list-bank{
+            width: calc(50% - 8px);
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+            border-radius: 8px;
+            padding-bottom: 0;
+            .bank-img{
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                .img-clone{
+                width: 10%;
+                img{
+                    width: 60px;
+                    float: left;
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                }
+                }
+                .title{
+                    width: 90%;
+                    .infor{
+                        font-weight: 500;
+                        font-size: 15px;
+                        line-height: 1.4;
+                    }
+                  
+                }
+
+            }
+            .price-info{
+                display: flex;
+                justify-content: space-between;
+                border-top: 1px solid #dfe1e5;
+                line-height: 40px;
+            }
+        }
+
+        
+    }
+}
+.interest-heading {
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    color: #ad193d;
+    font-weight: 500;
+}
+
+.interest-heading:before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 2px;
+    background: #ad193d;
+    left: calc(50% - 75px);
+    bottom: -5px;
 }
 
 .font-14 {
@@ -155,4 +222,7 @@
 
 .w-40 {
     width: 40%;
+}
+.color-red{
+    color: #ad193d;
 }
