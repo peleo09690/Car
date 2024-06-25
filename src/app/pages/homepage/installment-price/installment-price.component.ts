@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { FormControlName, FormGroup, FormBuilder } from '@angular/forms';
+import { Utils } from '@common/utils/utils';
 
 @Component({
   selector: 'app-installment-price',
@@ -16,9 +17,9 @@ public objectPrice:any ={};
 public totallai :number;
 public totalgoc:number;
  public constructor( 
-  private formBuilder: FormBuilder
+  private formBuilder: FormBuilder,
  ){}
-   ngOnInit() {
+   public ngOnInit() {
     this.getInitForm();
     this.installment();
   }
@@ -112,4 +113,22 @@ public installment() {
   // $('#total_goc').html(totalgoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ₫');
 }
  
+ /**
+   * Format `-` for tel/fax
+   * @param value
+   */
+ public  formatCurrency(value : number) {
+  return value && this.roundUp(value, 2).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+}
+
+  /**
+* @author AnhNQ1
+* Round up number. Example num = 123.212 , precision = 0 => result = 124 | num = 123.212 , precision = 2 => result = 122.22
+* @param num
+* @param precision
+*/
+  public  roundUp(num : number, precision:number) {
+precision = Math.pow(10, precision);
+return Math.ceil(num * precision) / precision;
+}
 }

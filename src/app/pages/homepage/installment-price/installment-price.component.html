@@ -32,8 +32,8 @@
       <button type="submit" (click)="installment()">Ước tính khoản vay</button>
     </div>
     <div class="total-installment">
-      <p>Tổng lãi phải trả<span>{{totallai}} ₫</span></p>
-      <p>Tổng số tiền phải trả<span>{{totalgoc}} ₫</span></p>
+      <p>Tổng lãi phải trả<span>{{this.formatCurrency(totallai)}} ₫</span></p>
+      <p>Tổng số tiền phải trả<span>{{this.formatCurrency(totalgoc)}} ₫</span></p>
     </div>
     <div class="max-height">
       <table>
@@ -49,10 +49,10 @@
         <tbody id="show-installment">
           <tr *ngFor="let data of this.arrayPrice">
             <td>{{data.thang}}</td>
-            <td>{{data.duno}}</td>
-            <td>{{data.tiengoc}}</td>
-            <td>{{data.tienlai}}</td>
-            <td>{{data.goclai}}</td>
+            <td>{{this.formatCurrency(data.duno)}}</td>
+            <td>{{this.formatCurrency(data.tiengoc)}}</td>
+            <td>{{this.formatCurrency(data.tienlai)}}</td>
+            <td>{{this.formatCurrency(data.goclai)}}</td>
           </tr>
           
         </tbody>
